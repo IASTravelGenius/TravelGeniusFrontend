@@ -1,0 +1,45 @@
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Search bar on the left -->
+        <form class="d-flex search-bar">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+
+        <!-- Centered nav buttons -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a routerLink='/home'><button class="btn btn-primary" id="home">Home</button></a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" id="countries">Countries</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" id="news">News</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" id="flight">Flight</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" id="must-see">Must See</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Profile dropdown on the right -->
+        <div class="profile-area">
+            <div class="dropdown profile-dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>

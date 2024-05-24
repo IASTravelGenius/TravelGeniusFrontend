@@ -1,0 +1,92 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#last-accessed {
+    /* border-color: aqua; */
+    height: 100vh;
+    width: 20%;
+    /* border-width: 1px;
+    border-style: dashed; */
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+ul {
+    list-style-type: none; /* This removes the bullet points */
+    padding-left: 0; /* This removes the default padding */
+}
+
+figcaption {
+    font-size: x-large;
+    font-weight: bold;
+}   
+
+#top-articles {
+    border-color: aqua;
+    height: 100vh;
+    width: 55%;
+    border-width: 3px;
+    border-style: dashed;
+    border-bottom: none;
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#best-deals {
+    /* border-color: aqua; */
+    height: 100vh;
+    width: 20%;
+    /* border-width: 1px;
+    border-style: dashed; */
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+#article-title {
+    font-size: large;
+    font-weight: bold;
+}
+
+.top-article-item {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+    border: 1px solid lightgray;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    align-items: center;
+}
+
+#class-part {
+    margin-left: 1vw;
+}
+
+#image-part {
+    margin-right: 1vw;
+    width: 5vw;
+    height: auto;
+}
+
+.best-deals-item {
+    display: flex;
+    justify-content: space-between;
+    width: 15vw;
+    border: 1px solid lightgray;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    align-items: center;
+}

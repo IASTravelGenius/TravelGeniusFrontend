@@ -1,0 +1,1 @@
+Imaginea din preview de articol sa fie imagine de background cu fade pentru articolu respectiv
