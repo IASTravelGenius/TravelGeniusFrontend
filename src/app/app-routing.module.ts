@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { CountriesComponent } from './countries/countries.component';
+import { NewsComponent } from './news/news.component';
+import { FlightsComponent } from './flights/flights.component';
+import { MustSeeComponent } from './must-see/must-see.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '',   redirectTo: '/first-component', pathMatch: 'full' }, // redirect to `first-component`
+  { path: 'countries', component: CountriesComponent},
+  { path: 'news', component: NewsComponent},
+  { path: 'flights', component: FlightsComponent},
+  { path: 'must-see', component: MustSeeComponent},
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }, // redirect to `first-component
+  // , pathMatch: 'full' }, // redirect to `first-component`
 ];
 
 @NgModule({
