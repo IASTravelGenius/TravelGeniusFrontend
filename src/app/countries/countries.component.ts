@@ -1,15 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
   styleUrls: ['./countries.component.css']
 })
-export class CountriesComponent implements OnInit {
+export class CountriesComponent {
+  isMenuOpen = false;
+  menuItems = [
+    'Home',
+    'Countries',
+    'News',
+    'Flight',
+    'Must See'
+  ];
 
-  constructor() { }
+  countryItems = [
+    'USA',
+    'Canada',
+    'Mexico',
+    'Brazil',
+    'Argentina',
+    'Chile',
+    'Peru',
+    'Colombia',
+    'Venezuela',
+    'Ecuador',
+    'Bolivia',
+    'Paraguay',
+    'Uruguay'
+  ];
 
-  ngOnInit(): void {
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
-
 }
