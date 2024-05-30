@@ -7,7 +7,7 @@ body {
     background-color: #007BFF;
     color: white;
     box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.1);
-    padding: 0.5vh 1vw;
+    padding: 1vh 2vw; /* Increase padding for a wider header */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,19 +17,19 @@ body {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    padding-right: 15vw; /* Adjust padding to account for profile pic */
+    padding-right: 6vh; /* Adjust padding to account for larger profile pic */
 }
 
 .profile-dropdown .dropdown-toggle {
-    width: 4vh;
-    height: 4vh;
+    width: 6vh; /* Increase size of profile picture */
+    height: 6vh; /* Increase size of profile picture */
     background-color: #007BFF;
     color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5vh;
+    font-size: 2vh; /* Adjust font size */
     border: none;
 }
 
@@ -47,6 +47,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
 }
 
 .btn-primary {
@@ -89,7 +90,7 @@ body {
 }
 
 .profile-icon {
-    width: 2vh;
+    width: 4vh; /* Increase size of profile icon */
     height: auto;
     border-radius: 50%;
 }

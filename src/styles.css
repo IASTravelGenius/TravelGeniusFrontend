@@ -6,7 +6,7 @@ body {
 #best-deals {
     position: fixed;
     right: 0;
-    top: 8vh; /* Adjust based on the height of the other header */
+    top: 9vh; /* Adjust based on the height of the other header */
     width: 10vw;
     border-radius: 1.5vw;
     background-color: #ffffff;
@@ -46,7 +46,7 @@ header {
     padding: 0.5vw;
     position: fixed;
     left: 0;
-    top: 8vh; /* Adjust based on the height of the other header */
+    top: 9vh; /* Adjust based on the height of the other header */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,5 +70,5 @@ header.open {
 }
 
 .best-deals-lowered {
-    margin-top: 10vh; /* Adjust as needed for dropdown */
+    margin-top: 11vh; /* Adjust as needed for dropdown */
 }
