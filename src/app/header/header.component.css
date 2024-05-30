@@ -1,37 +1,95 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
 .navbar {
-    background-color: rgb(244, 253, 201);
+    background-color: #007BFF;
+    color: white;
+    box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.1);
+    padding: 0.5vh 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-nav {
-    justify-content: center;
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding-right: 15vw; /* Adjust padding to account for profile pic */
 }
+
 .profile-dropdown .dropdown-toggle {
-    width: 40px;
-    height: 40px;
-    background-color: #007bff;
+    width: 4vh;
+    height: 4vh;
+    background-color: #007BFF;
     color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 1.5vh;
+    border: none;
 }
+
 .nav-item {
-    margin: 0 5px; /* Adds spacing between buttons */
+    margin: 0 1vw; /* Adds spacing between buttons */
 }
+
 .search-bar {
     flex-grow: 1;
+    max-width: 20vw; /* Ensures the search bar doesn't get too big */
+    margin-right: 1vw;
 }
 
 .profile-area {
-    flex-grow: 1;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .btn-primary {
     background-color: white;
-    color: black;
-    border-color: gray;
+    color: #007BFF;
+    border: none;
+    padding: 0.5vh 1vw;
+    border-radius: 0.5vh;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1.5vh;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border: none;
+    box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    color: #007BFF;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+.profile-icon {
+    width: 2vh;
+    height: auto;
+    border-radius: 50%;
 }

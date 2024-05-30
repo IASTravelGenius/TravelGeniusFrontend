@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-countries',
@@ -30,6 +31,15 @@ export class CountriesComponent {
     'Paraguay',
     'Uruguay'
   ];
+
+  isDropdownOpen = false;
+  constructor(private globalsService: GlobalsService) {}
+
+  ngOnInit() {
+    this.globalsService.dropdownOpen$.subscribe(isOpen => {
+      this.isDropdownOpen = isOpen;
+    });
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

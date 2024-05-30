@@ -68,3 +68,7 @@ header.open {
     cursor: pointer;
     margin-bottom: 0.5vw;
 }
+
+.best-deals-lowered {
+    margin-top: 10vh; /* Adjust as needed for dropdown */
+}

@@ -1,0 +1,28 @@
+# Node.js
+node_modules/
+
+.angular/*
+# Build artifacts
+dist/
+tmp/
+out-tsc/
+
+# IDE files
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.prod
+.env.dev
+
+# Testing artifacts
+coverage/

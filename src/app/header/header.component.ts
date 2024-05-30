@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,28 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isDropdownOpen = false;
 
-  constructor() { }
+  constructor(private globalsService: GlobalsService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.globalsService.closeDropdown();
+      }
+    });
+
+    this.globalsService.dropdownOpen$.subscribe(isOpen => {
+      this.isDropdownOpen = isOpen;
+    });
   }
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    this.globalsService.setDropdownOpen(this.isDropdownOpen);
+  }
+
+  closeDropdown() {
+    this.globalsService.closeDropdown();
+  }
 }
