@@ -10,6 +10,7 @@ import { FlightsComponent } from './flights/flights.component';
 import { MustSeeComponent } from './must-see/must-see.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
+import { CountryComponent } from './country/country.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderComponent } from './header/header.component';
     FlightsComponent,
     MustSeeComponent,
     ProfileComponent,
-    HeaderComponent
+    HeaderComponent,
+    CountryComponent
   ],
   imports: [
     BrowserModule,

@@ -21,9 +21,9 @@
         <section id="top-countries">
             <h2>Top Countries</h2>
             <ul id="top-countries-list">
-                <li class="top-country-item" *ngFor="let country of countryItems">
+                <li class="top-country-item" *ngFor="let country of countries">
                     <div class="country-info">
-                        <p class="country-name">Italy</p>
+                        <p class="country-name"><a [routerLink]="['/countries', country.id]">{{country.name}}</a></p>
                         <p class="country-text">Italy is a nice country</p>
                     </div>
                     <div class="country-details">
@@ -47,8 +47,6 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Travel Deals</p>
-    </footer>
+
 </body>
 </html>
