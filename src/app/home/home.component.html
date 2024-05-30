@@ -1,61 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.component.css">
+</head>
 <body>
-    <article id="last-accessed">
-        <figcaption>Last accessed!</figcaption>
-        <ul id="last-accessed-list">
-            <li>Home</li>
-            <li>Countries</li>
-            <li>News</li>
-            <li>Flight</li>
-            <li>Must See</li>
-        </ul>
-    </article>
-    <article id="top-articles">
-        <figcaption>Top Articles!</figcaption>
-        <ul id="top-articles-list">
-            <li class="top-article-item">
-                <div id="class-part">
-                    <p id="article-title">Italy</p>
-                    <p id="article-text">Italy is a nice country</p>
-                </div>
-                <img id="image-part" src="assets/Flag_of_Italy.svg">
-            </li>
-            <li class="top-article-item">
-                <div id="class-part">
-                    <p id="article-title">Sagrada Familia</p>
-                    <p id="article-text">Sagrada Familia is now open for visiting!</p>
-                </div>
-                <img id="image-part" src="assets/sagrada_familia.jpg">
-            </li>
-            <li class="top-article-item">
-                <div id="class-part">
-                    <p id="article-title">Eiffel Tower</p>
-                    <p id="article-text">The Eiffel Tower is again the most visited touristic attraction</p>
-                </div>
-                <img id="image-part" src="assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg">
-            </li>
-        </ul>
-    </article>
-    <article id="best-deals">
-        <figcaption>Best deals!</figcaption>
-        <ul id="best-deals-list">
-            <li class="best-deals-item">
-                <div id="class-part">
-                    <p id="article-title">E moca bro!</p>
-                    <p id="article-text">Egipt is now on sale!</p>
-                </div>
-            </li>
-            <li class="best-deals-item">
-                <div id="class-part">
-                    <p id="article-title">E pomana!</p>
-                    <p id="article-text">Egipt is now on sale!</p>
-                </div>
-            </li>
-            <li class="best-deals-item">
-                <div id="class-part">
-                    <p id="article-title">Nu ai cum sa nu iei! E promotie de promotie!</p>
-                    <p id="article-text">Egipt is now on sale!</p>
-                </div>
-            </li>
-        </ul>
-    </article>
+    <!-- <app-header></app-header> Add the header component here -->
+    <header id="sidebar" [ngClass]="{'open': isMenuOpen}">
+        <button id="menu-toggle" (click)="toggleMenu()">☰ Last Accessed</button>
+        <nav [ngClass]="{'open': isMenuOpen}" id="nav-menu">
+            <ul id="nav-list">
+                <li *ngFor="let item of menuItems"><a href="#">{{ item }}</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="top-articles">
+            <h2>Top Articles</h2>
+            <ul id="top-articles-list">
+                <li class="top-article-item">
+                    <div class="article-info">
+                        <p id="article-title">Italy</p>
+                        <p id="article-text">Italy is a nice country</p>
+                    </div>
+                    <img id="image-part" src="assets/Flag_of_Italy.svg" alt="Italy Flag">
+                </li>
+                <li class="top-article-item">
+                    <div class="article-info">
+                        <p id="article-title">Sagrada Familia</p>
+                        <p id="article-text">Sagrada Familia is now open for visiting!</p>
+                    </div>
+                    <img id="image-part" src="assets/sagrada_familia.jpg" alt="Sagrada Familia">
+                </li>
+                <li class="top-article-item">
+                    <div class="article-info">
+                        <p id="article-title">Eiffel Tower</p>
+                        <p id="article-text">The Eiffel Tower is again the most visited touristic attraction</p>
+                    </div>
+                    <img id="image-part" src="assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg" alt="Eiffel Tower">
+                </li>
+            </ul>
+        </section>
+
+        <section id="best-deals">
+            <h2>Best Deals</h2>
+            <ul id="best-deals-list">
+                <li class="best-deals-item" *ngFor="let deal of menuItems.slice(0, 3)">
+                    <div class="deal-info">
+                        <p class="deal-title">E moca bro!</p>
+                        <p class="deal-text">Egipt is now on sale!</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Travel Deals</p>
+    </footer>
 </body>
+</html>
