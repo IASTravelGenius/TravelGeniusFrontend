@@ -1,6 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="header.component.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
 <body>
-    
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <!-- Search bar on the left -->
         <form class="d-flex search-bar">
@@ -8,49 +16,48 @@
         </form>
 
         <!-- Centered nav buttons -->
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a routerLink='/home'>
-                        <button class="btn btn-primary" id="home">Home</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink='/countries'>
-                        <button class="btn btn-primary" id="countries">Countries</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/news">
-                        <button class="btn btn-primary" id="news">News</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/flights">
-                        <button class="btn btn-primary" id="flight">Flights</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/must-see">
-                        <button class="btn btn-primary" id="must-see">Must See</button>
-                    </a>
-                </li>
-            </ul>
+        <div class="navbar-nav" (click)="closeDropdown()">
+            <li class="nav-item">
+                <a routerLink='/home'>
+                    <button class="btn btn-primary" id="home">Home</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink='/countries'>
+                    <button class="btn btn-primary" id="countries">Countries</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/news">
+                    <button class="btn btn-primary" id="news">News</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/flights">
+                    <button class="btn btn-primary" id="flight">Flights</button>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/must-see">
+                    <button class="btn btn-primary" id="must-see">Must See</button>
+                </a>
+            </li>
         </div>
 
         <!-- Profile dropdown on the right -->
         <div class="profile-area">
-            <div class="dropdown profile-dropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile
+            <div class="dropdown profile-dropdown" (click)="toggleDropdown()">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton">
+                    <img src="assets/download.jpeg" alt="Profile" class="profile-icon">
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
         </div>
-    </div>
+    </div>
 </nav>
 </body>
+</html>
