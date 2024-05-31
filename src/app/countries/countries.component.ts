@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalsService } from '../globals.service';
+import { LastAccessedService } from '../last-accessed.service';
+
 
 @Component({
   selector: 'app-countries',
@@ -8,7 +10,9 @@ import { GlobalsService } from '../globals.service';
 })
 export class CountriesComponent {
   isMenuOpen = false;
-  menuItems = [
+  lastAccessedPaths: { path: string, display: string }[] = [];
+
+menuItems = [
     'Home',
     'Countries',
     'News',
@@ -59,11 +63,14 @@ export class CountriesComponent {
   ];
 
   isDropdownOpen = false;
-  constructor(private globalsService: GlobalsService) {}
+  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService) {}
 
   ngOnInit() {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
       this.isDropdownOpen = isOpen;
+    });
+    this.lastAccessedService.lastAccessed$.subscribe(paths => {
+      this.lastAccessedPaths = paths;
     });
   }
 

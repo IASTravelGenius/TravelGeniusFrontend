@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../country.service';
+import { LastAccessedService } from '../last-accessed.service';
+import { GlobalsService } from '../globals.service';
+
+
 
 @Component({
   selector: 'app-country',
@@ -8,9 +12,20 @@ import { CountryService } from '../country.service';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
-  country: any;
+  isMenuOpen = false;
 
-  constructor(private route: ActivatedRoute, private countryService: CountryService) { }
+  country: any;
+  menuItems = [
+    'Home',
+    'Countries',
+    'News',
+    'Flight',
+    'Must See'
+  ];
+  isDropdownOpen = false;
+  lastAccessedPaths: { path: string, display: string }[] = [];
+
+  constructor(private globalsService: GlobalsService, private route: ActivatedRoute, private countryService: CountryService, private lastAccessedService: LastAccessedService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -21,5 +36,17 @@ export class CountryComponent implements OnInit {
         });
       }
     });
+
+    this.globalsService.dropdownOpen$.subscribe(isOpen => {
+      this.isDropdownOpen = isOpen;
+    });
+
+    this.lastAccessedService.lastAccessed$.subscribe(paths => {
+      this.lastAccessedPaths = paths;
+    });
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

@@ -1,7 +1,19 @@
-<div *ngIf="country">
-    <h1>{{ country.name }}</h1>
-    <img [src]="country.flag" alt="{{ country.name }} Flag" width="200">
-    <p>{{ country.description }}</p>
-    <!-- Add more details as needed -->
-  </div>
-  
+<body>
+  <header id="sidebar" [ngClass]="{'open': isMenuOpen}">
+    <button id="menu-toggle" (click)="toggleMenu()">☰ Last Accessed</button>
+    <nav [ngClass]="{'open': isMenuOpen}" id="nav-menu">
+        <ul id="nav-list">
+            <li *ngFor="let item of lastAccessedPaths.slice(1)">
+                <a [routerLink]="[item.path]">{{ item.display }}</a>
+            </li>           
+        </ul>
+    </nav>
+  </header>
+  <!-- <div *ngIf="country">
+      <h1>{{ country.name }}</h1>
+      <img [src]="country.flag" alt="{{ country.name }} Flag" width="200">
+      <p>{{ country.description }}</p>
+       Add more details as needed -->
+    <!-- </div> -->
+    
+</body>
