@@ -32,4 +32,16 @@ export class HeaderComponent implements OnInit {
   closeDropdown() {
     this.globalsService.closeDropdown();
   }
+
+  isLoggedIn(): boolean {
+    return this.globalsService.areTokensSet();
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.globalsService.clearTokens();
+  }
 }

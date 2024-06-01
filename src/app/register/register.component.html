@@ -1,0 +1,52 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label [ngClass]="{'invalid-label': isEmailInvalid()}" for="email">Email</label>
+        <input id="email" formControlName="email" type="email" required>
+        <div *ngIf="isEmailInvalid()" class="error-message">
+          * this is not a valid email address
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" required (input)="validatePassword()">
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" formControlName="confirmPassword" type="password" required (input)="validatePassword()">
+    </div>
+
+    <div class="password-requirements">
+      <p [ngClass]="{'valid': passwordValidations.match, 'invalid': !passwordValidations.match}">
+        <span *ngIf="passwordValidations.match">✔</span>
+        <span *ngIf="!passwordValidations.match">✖</span> Passwords match
+      </p>
+      <p [ngClass]="{'valid': passwordValidations.minLength, 'invalid': !passwordValidations.minLength}">
+        <span *ngIf="passwordValidations.minLength">✔</span>
+        <span *ngIf="!passwordValidations.minLength">✖</span> Minimum 8 characters
+      </p>
+      <p [ngClass]="{'valid': passwordValidations.upperLowerCase, 'invalid': !passwordValidations.upperLowerCase}">
+        <span *ngIf="passwordValidations.upperLowerCase">✔</span>
+        <span *ngIf="!passwordValidations.upperLowerCase">✖</span> At least one uppercase and one lowercase letter
+      </p>
+      <p [ngClass]="{'valid': passwordValidations.number, 'invalid': !passwordValidations.number}">
+        <span *ngIf="passwordValidations.number">✔</span>
+        <span *ngIf="!passwordValidations.number">✖</span> At least one number
+      </p>
+      <p [ngClass]="{'valid': passwordValidations.specialChar, 'invalid': !passwordValidations.specialChar}">
+        <span *ngIf="passwordValidations.specialChar">✔</span>
+        <span *ngIf="!passwordValidations.specialChar">✖</span> At least one special character
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="!registerForm.valid || !allValidationsMet()">Register</button>
+  </form>
+</div>

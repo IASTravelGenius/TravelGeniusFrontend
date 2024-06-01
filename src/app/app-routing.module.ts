@@ -7,6 +7,9 @@ import { NewsComponent } from './news/news.component';
 import { FlightsComponent } from './flights/flights.component';
 import { MustSeeComponent } from './must-see/must-see.component';
 import { CityComponent } from './city/city.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +21,9 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'flights', component: FlightsComponent },
   { path: 'must-see', component: MustSeeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+
   // Add other routes here
 ];
 
