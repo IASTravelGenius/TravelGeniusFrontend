@@ -6,12 +6,15 @@ import { CountriesComponent } from './countries/countries.component';
 import { NewsComponent } from './news/news.component';
 import { FlightsComponent } from './flights/flights.component';
 import { MustSeeComponent } from './must-see/must-see.component';
+import { CityComponent } from './city/city.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'countries', component: CountriesComponent },
-  { path: 'countries/:id', component: CountryComponent },
+  { path: 'countries/:countryId', component: CountryComponent, children: [
+    { path: ':cityId', component: CityComponent }
+  ]},
   { path: 'news', component: NewsComponent },
   { path: 'flights', component: FlightsComponent },
   { path: 'must-see', component: MustSeeComponent },

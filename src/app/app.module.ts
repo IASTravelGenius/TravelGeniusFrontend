@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { MustSeeComponent } from './must-see/must-see.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { CountryComponent } from './country/country.component';
+import { CityComponent } from './city/city.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { CountryComponent } from './country/country.component';
     MustSeeComponent,
     ProfileComponent,
     HeaderComponent,
-    CountryComponent
+    CountryComponent,
+    CityComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
