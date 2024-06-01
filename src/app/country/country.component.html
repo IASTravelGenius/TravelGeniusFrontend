@@ -9,6 +9,60 @@
         </ul>
     </nav>
   </header>
+  
+    <main>
+        <section id="top-countries">
+            <h2>Top Cities</h2>
+            <ul id="top-cities-list">
+                <li class="top-city-item" *ngFor="let city of cities">
+                    <div class="city-info">
+                        <h2>{{ city.name }}</h2>
+                        <img [src]="city.mainPhotoUrl" alt="{{ city.name }}" class="city-photo">
+                        <!-- <p>Population: {{ city.population | number }}</p> -->
+                        <h3>Tourist Attractions:</h3>
+                        <ul>
+                            <li *ngFor="let attraction of city.attractions">
+                            <h4>{{ attraction.name }}</h4>
+                            <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+                            <p>{{ attraction.description }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- <ul>
+                <li *ngFor="let city of cities">
+                  <div class="city-info">
+                    <h2>{{ city.name }}</h2>
+                    <img [src]="city.mainPhotoUrl" alt="{{ city.name }}" class="city-photo">
+                    <p>Population: {{ city.population | number }}</p>
+                    <h3>Tourist Attractions:</h3>
+                    <ul>
+                      <li *ngFor="let attraction of city.attractions">
+                        <h4>{{ attraction.name }}</h4>
+                        <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+                        <p>{{ attraction.description }}</p>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul> -->
+        </section>
+
+        <section id="best-deals"  [ngClass]="{'best-deals-lowered': isDropdownOpen}">
+            <h2>Best Deals</h2>
+            <ul id="best-deals-list">
+                <li class="best-deals-item" *ngFor="let deal of menuItems.slice(0, 3)">
+                    <div class="deal-info">
+                        <p class="deal-title">E moca bro!</p>
+                        <p class="deal-text">Egipt is now on sale!</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
   <!-- <div *ngIf="country">
       <h1>{{ country.name }}</h1>
       <img [src]="country.flag" alt="{{ country.name }} Flag" width="200">

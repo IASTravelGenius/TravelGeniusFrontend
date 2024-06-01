@@ -77,4 +77,5 @@ menuItems = [
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../country.service';
+import { CityService } from '../city.service';
 import { LastAccessedService } from '../last-accessed.service';
 import { GlobalsService } from '../globals.service';
+import { City } from '../models/city';
 
 
 
@@ -23,16 +25,19 @@ export class CountryComponent implements OnInit {
     'Must See'
   ];
   isDropdownOpen = false;
+  
   lastAccessedPaths: { path: string, display: string }[] = [];
+  cities: City[] = [];
 
-  constructor(private globalsService: GlobalsService, private route: ActivatedRoute, private countryService: CountryService, private lastAccessedService: LastAccessedService) { }
+  constructor(private globalsService: GlobalsService, private route: ActivatedRoute, private countryService: CountryService, private lastAccessedService: LastAccessedService, private cityService: CityService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const countryId = params.get('id');
+      const countryId = params.get('countryId');
       if (countryId) {
         this.countryService.getCountryById(countryId).subscribe(data => {
           this.country = data;
+          this.fetchCities(countryId);
         });
       }
     });
@@ -48,5 +53,11 @@ export class CountryComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  fetchCities(countryId: string) {
+    this.cityService.getCities(countryId).subscribe(cities => {
+      this.cities = cities.sort((a, b) => b.population - a.population);
+    });
   }
 }
