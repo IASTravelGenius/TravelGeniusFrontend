@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { CountryComponent } from './country/country.component';
 import { CityComponent } from './city/city.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RegisterComponent } from './register/register.component';
     HeaderComponent,
     CountryComponent,
     CityComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

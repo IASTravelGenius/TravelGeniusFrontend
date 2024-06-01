@@ -7,7 +7,7 @@ body {
     background-color: #007BFF;
     color: white;
     box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.1);
-    padding: 1vh 2vw; /* Increase padding for a wider header */
+    padding: 1vh 2vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,29 +17,29 @@ body {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    padding-right: 6vh; /* Adjust padding to account for larger profile pic */
+    padding-right: 6vh;
 }
 
 .profile-dropdown .dropdown-toggle {
-    width: 6vh; /* Increase size of profile picture */
-    height: 6vh; /* Increase size of profile picture */
+    width: 6vh;
+    height: 6vh;
     background-color: #007BFF;
     color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2vh; /* Adjust font size */
+    font-size: 2vh;
     border: none;
 }
 
 .nav-item {
-    margin: 0 1vw; /* Adds spacing between buttons */
+    margin: 0 1vw;
 }
 
 .search-bar {
     flex-grow: 1;
-    max-width: 20vw; /* Ensures the search bar doesn't get too big */
+    max-width: 20vw;
     margin-right: 1vw;
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .profile-icon {
-    width: 4vh; /* Increase size of profile icon */
+    width: 4vh;
     height: auto;
     border-radius: 50%;
 }

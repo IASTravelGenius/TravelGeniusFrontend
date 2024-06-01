@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { GlobalsService } from '../globals.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +19,8 @@ export class RegisterComponent implements OnInit {
     specialChar: false
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient,
+    private globalsService: GlobalsService, private router: Router) {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
@@ -42,10 +46,23 @@ export class RegisterComponent implements OnInit {
     return Object.values(this.passwordValidations).every(validation => validation);
   }
 
+  isEmailInvalid(): boolean {
+    const emailControl = this.registerForm.get('email');
+    return !!(emailControl && emailControl.invalid && emailControl.touched);
+  }
+
   onSubmit() {
     if (this.registerForm.valid && this.allValidationsMet()) {
-      // Handle the registration logic here
-      console.log('Form Submitted', this.registerForm.value);
+      const { email, username, password } = this.registerForm.value;
+      this.globalsService.setTokens('accesstoken', 'refreshtoken');
+      this.router.navigate(['/home']);
+      // this.http.post('/api/register', { email, username, password }).subscribe((response: any) => {
+      //   this.globalsService.setTokens(response.accessToken, response.refreshToken);
+      //   console.log('Tokens saved:', response.accessToken, response.refreshToken);
+      //   // Redirect or handle successful registration
+      // }, error => {
+      //   console.error('Registration error:', error);
+      // });
     }
   }
 }

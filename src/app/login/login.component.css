@@ -1,4 +1,4 @@
-.register-container {
+.login-container {
     width: 75vw;
     margin: 0 auto;
     padding: 5vh;
@@ -24,27 +24,6 @@
     border-radius: 10px;
   }
   
-  .invalid-label {
-    color: red;
-  }
-
-  .password-requirements {
-    margin-top: 20px;
-  }
-  
-  .password-requirements p {
-    margin: 5px 0;
-    color: grey;
-  }
-  
-  .password-requirements p.valid {
-    color: green;
-  }
-  
-  .password-requirements p.invalid {
-    color: grey;
-  }
-
   button {
     width: 100%;
     padding: 10px;
@@ -57,5 +36,15 @@
   
   button:disabled {
     background-color: #ccc;
+  }
+  
+  .register-instead {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .register-instead a {
+    color: #007BFF;
+    cursor: pointer;
   }
   
