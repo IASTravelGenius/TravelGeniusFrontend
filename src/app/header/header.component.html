@@ -52,9 +52,9 @@
                         <img src="assets/download.jpeg" alt="Profile" class="profile-icon">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <button class="dropdown-item" routerLink="/profile">Profile</button>
+                        <button class="dropdown-item" routerLink="/settings">Settings</button>
+                        <button class="dropdown-item" (click)="logout()">Logout</button>
                     </div>
                 </div>
             </ng-container>

@@ -40,4 +40,8 @@ export class HeaderComponent implements OnInit {
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
+
+  logout() {
+    this.globalsService.clearTokens();
+  }
 }
