@@ -48,3 +48,13 @@
     cursor: pointer;
   }
   
+  .error-display {
+    color: red;
+    margin-top: 1vh;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 5px;
+  }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { GlobalsService } from '../globals.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ import { GlobalsService } from '../globals.service';
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
 
-  constructor(private globalsService: GlobalsService, private router: Router) {}
+  constructor(private globalsService: GlobalsService, private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
     this.router.events.subscribe(event => {
@@ -42,6 +44,18 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.globalsService.clearTokens();
+    const requestBody = {
+      "accessToken" : this.globalsService.getAccessToken(),
+      "refreshToken" : this.globalsService.getRefreshToken()
+    };
+
+    const url = environment.authenticationServiceUrl + '/authService/logout';
+
+    this.http.post(url, requestBody).subscribe(() => {
+      this.globalsService.clearTokens();
+    }, error => {
+      console.error('Logout error:', error);
+      this.globalsService.clearTokens();
+    });
   }
 }
