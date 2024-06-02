@@ -2,16 +2,19 @@
   <h2>Register</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label [ngClass]="{'invalid-label': isEmailInvalid()}" for="email">Email</label>
-        <input id="email" formControlName="email" type="email" required>
-        <div *ngIf="isEmailInvalid()" class="error-message">
-          * this is not a valid email address
-        </div>
+      <label [ngClass]="{'invalid-label': isEmailInvalid()}" for="email">Email</label>
+      <input id="email" formControlName="email" type="email" required>
+      <div *ngIf="isEmailInvalid()" class="error-message">
+        <div *ngFor="let error of getEmailErrors()">{{ error }}</div>
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="username">Username</label>
+      <label [ngClass]="{'invalid-label': isUsernameInvalid()}" for="username">Username</label>
       <input id="username" formControlName="username" type="text" required>
+      <div *ngIf="isUsernameInvalid()" class="error-message">
+        <div *ngFor="let error of getUsernameErrors()">{{ error }}</div>
+      </div>
     </div>
 
     <div class="form-group">

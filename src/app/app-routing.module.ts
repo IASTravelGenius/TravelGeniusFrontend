@@ -15,9 +15,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'countries', component: CountriesComponent },
-  { path: 'countries/:countryId', component: CountryComponent, children: [
-    { path: ':cityId', component: CityComponent }
-  ]},
+  { path: 'countries/:countryId', component: CountryComponent},
+  // , children: [
+  // { path: ':cityId', component: CityComponent },
+  // ]},
+  { path: 'countries/:countryId/:cityId', component: CityComponent},
   { path: 'news', component: NewsComponent },
   { path: 'flights', component: FlightsComponent },
   { path: 'must-see', component: MustSeeComponent },

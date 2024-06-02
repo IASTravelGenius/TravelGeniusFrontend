@@ -7,9 +7,9 @@ body {
     background-color: #f5f5f5;
     position: relative;
     padding-top: 8vh; /* Adjust based on the height of the other header */
-}
-
-main {
+  }
+  
+  main {
     margin-left: 10vw;
     margin-right: 10vw;
     flex-grow: 1;
@@ -19,88 +19,78 @@ main {
     padding: 1.5vw 0.5vw; /* Adjust the padding for proper alignment */
     overflow-y: auto;
     transition: margin-left 0.3s;
-}
-
-header.open + main {
+  }
+  
+  header.open + main {
     margin-left: 18vw;
-}
-
-section {
+  }
+  
+  section {
     width: 100%;
     background: #ffffff;
     padding: 1.5vw;
     border-radius: 0.5vw;
     box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
-}
-
-h2 {
+  }
+  
+  h2 {
     font-size: 1.8vw;
     margin-bottom: 0.8vw;
     color: #333333;
-}
-
-ul {
+  }
+  
+  ul {
     list-style-type: none;
     padding: 0;
-}
-
-li {
+  }
+  
+  li {
     margin: 0.5vw 0;
-}
-
-.top-city-item {
+  }
+  
+  .top-city-item {
+    padding: 1vw;
+    border-bottom: 0.1vw solid #dddddd;
+  }
+  
+  .city-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5vw;
-    border-bottom: 0.1vw solid #dddddd;
-}
-
-.city-info {
-    flex: 1;
-}
-
-.city-name {
+  }
+  
+  .city-name {
     font-size: 1.5vw;
     font-weight: bold;
     color: #007BFF;
-}
-
-.city-text {
-    font-size: 0.8vw;
-    color: #666666;
-}
-
-.city-details {
-    display: flex;
-    align-items: center;
-}
-
-
-.city-image {
-    width: 4vw;
-    height: auto;
-    margin-right: 0.5vw;
-}
-
-
-.city-info {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 0.5rem;
   }
   
   .city-photo {
-    width: 100%;
+    width: 20vw;
     height: auto;
-    margin-bottom: 1rem;
+    margin-left: 1vw;
+    border-radius: 0.5vw;
+  }
+  
+  .attractions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1vw;
+  }
+  
+  .attraction {
+    width: 48%;
+  }
+  
+  .attraction h4 {
+    font-size: 1.2vw;
+    margin-bottom: 0.5vw;
+    color: #333333;
   }
   
   .attraction-photo {
     width: 100%;
     height: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 1vw;
+    border-radius: 0.5vw;
   }
-  
-

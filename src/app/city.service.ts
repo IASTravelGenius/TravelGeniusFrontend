@@ -28,7 +28,7 @@ export const MOCK_CITIES: City[] = [
   new City(
     'rome',
     'Rome',
-    'assets/rome.jpg',
+    'assets/rome.jpeg',
     2873000,
     [
       new Attraction('colosseum', 'Colosseum', 'An ancient amphitheater in Rome.', 'assets/colosseum.jpg'),
