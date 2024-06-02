@@ -16,5 +16,9 @@
     <p class="register-instead">
         <a (click)="navigateToRegister()"> Do you want to register instead? </a>
     </p>
+
+    <div *ngIf="errorMessage" class="error-display">
+      {{ errorMessage }}
+    </div>
   </div>
   

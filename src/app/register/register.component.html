@@ -52,4 +52,8 @@
 
     <button type="submit" [disabled]="!registerForm.valid || !allValidationsMet()">Register</button>
   </form>
+
+  <div *ngIf="errorMessage" class="error-display">
+    {{ errorMessage }}
+  </div>
 </div>

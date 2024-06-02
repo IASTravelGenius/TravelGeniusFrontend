@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors }
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GlobalsService } from '../globals.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,9 @@ export class RegisterComponent implements OnInit {
     number: false,
     specialChar: false
   };
+
+  errorMessage: string | null = null;
+
 
   constructor(
     private fb: FormBuilder,
@@ -101,18 +105,50 @@ export class RegisterComponent implements OnInit {
     return errors;
   }
 
+  // onSubmit() {
+  //   if (this.registerForm.valid && this.allValidationsMet()) {
+  //     const { email, username, password } = this.registerForm.value;
+  //     this.globalsService.setTokens('accessToken', 'refreshToken');
+  //     this.router.navigate(['/home']);
+  //     this.http.post('/authService/register', { username, email, password }).subscribe((response: any) => {
+  //       this.globalsService.setTokens(response.accessToken, response.refreshToken);
+  //       console.log('Tokens saved:', response.accessToken, response.refreshToken);
+  //       this.router.navigate(['/home']);
+  //     }, error => {
+  //       console.error('Registration error:', error);
+  //     });
+  //   }
+  // }
+
   onSubmit() {
     if (this.registerForm.valid && this.allValidationsMet()) {
       const { email, username, password } = this.registerForm.value;
-      this.globalsService.setTokens('accessToken', 'refreshToken');
-      this.router.navigate(['/home']);
-      // this.http.post('/api/register', { email, username, password }).subscribe((response: any) => {
-        // this.globalsService.setTokens(response.accessToken, response.refreshToken);
-        // console.log('Tokens saved:', response.accessToken, response.refreshToken);
-        // this.router.navigate(['/home']);
-      // }, error => {
-        // console.error('Registration error:', error);
-      // });
+      const requestBody = {
+        username: username,
+        email: email,
+        password: password
+      };
+
+      const url = environment.authenticationServiceUrl + '/authService/register';
+
+      this.http.post(url, requestBody, { observe: 'response' }).subscribe((response: any) => {
+        console.log(response.status);
+        if (response.error === null) {
+          this.globalsService.setTokens(response.accessToken, response.refreshToken);
+          console.log('Tokens saved:', response.accessToken, response.refreshToken);
+          this.router.navigate(['/home']);
+        } else {
+          console.error('Registration error:', response.error);
+          this.errorMessage = response.error.error.error;
+        }
+      }, error => {
+        const errorObject = error.error;
+        console.log(errorObject);
+        const errorString = errorObject.error;
+        console.error('Registration error:', errorString);
+        this.errorMessage = errorString;
+      });
     }
   }
+
 }

@@ -58,4 +58,14 @@
   button:disabled {
     background-color: #ccc;
   }
+
+  .error-message {
+    color: red;
+    margin-top: 5px;
+  }
   
+  .error-display {
+    color: red;
+    margin-top: 1vh;
+    font-weight: bold;
+  }
