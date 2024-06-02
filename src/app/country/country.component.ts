@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CountryService } from '../country.service';
 import { CityService } from '../city.service';
 import { LastAccessedService } from '../last-accessed.service';
@@ -17,19 +18,17 @@ export class CountryComponent implements OnInit {
   isMenuOpen = false;
 
   country: any;
-  menuItems = [
-    'Home',
-    'Countries',
-    'News',
-    'Flight',
-    'Must See'
+  deals = [
+    { title: 'Flight to Italy', description: 'Flights are cheap' },
+    { title: 'Flight to France', description: 'Flights are cheap' },
+    { title: 'Egipt is on sale', description: 'E moca bro!'},
   ];
   isDropdownOpen = false;
   
   lastAccessedPaths: { path: string, display: string }[] = [];
   cities: City[] = [];
 
-  constructor(private globalsService: GlobalsService, private route: ActivatedRoute, private countryService: CountryService, private lastAccessedService: LastAccessedService, private cityService: CityService) { }
+  constructor(private globalsService: GlobalsService, private route: ActivatedRoute, private countryService: CountryService, private lastAccessedService: LastAccessedService, private cityService: CityService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -59,5 +58,9 @@ export class CountryComponent implements OnInit {
     this.cityService.getCities(countryId).subscribe(cities => {
       this.cities = cities.sort((a, b) => b.population - a.population);
     });
+  }
+
+  navigateToCity(cityId: string) {
+    this.router.navigate([`/countries/${this.country.id}/${cityId}`]);
   }
 }
