@@ -1,1 +1,24 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <div class="profile-header">
+      <h2>{{ profile.username }}</h2>
+      <img [src]="profile.profilePic" alt="Profile Picture" class="profile-pic">
+    </div>
+    <div class="profile-details">
+      <p><strong>Description:</strong> {{ profile.description }}</p>
+      <p><strong>Country:</strong> {{ profile.country }}</p>
+      <p><strong>City:</strong> {{ profile.city }}</p>
+    </div>
+    <div class="profile-tags">
+      <h3>Our guess of your most interested tags?</h3>
+      <div class="tags">
+        <span *ngFor="let tag of profile.tags" class="tag">
+          {{ tag }} <button (click)="removeTag(tag)">x</button>
+        </span>
+      </div>
+      <div class="add-tag">
+        <input [(ngModel)]="newTag" placeholder="Add a new tag" (keyup.enter)="addTag()">
+        <button (click)="addTag()">Add Tag</button>
+      </div>
+    </div>
+  </div>
+  

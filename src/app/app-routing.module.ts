@@ -9,6 +9,8 @@ import { MustSeeComponent } from './must-see/must-see.component';
 import { CityComponent } from './city/city.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'must-see', component: MustSeeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent},
+  { path: 'settings', component: SettingsComponent},
 
   // Add other routes here
 ];
