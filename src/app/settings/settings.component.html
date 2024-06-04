@@ -1,1 +1,67 @@
-<p>settings works!</p>
+<div class="settings-container">
+    <h2>Settings</h2>
+  
+    <!-- Notifications Toggle -->
+    <div class="form-group notification-group">
+      <label for="notifications">Notifications</label>
+      <div class="notification-buttons">
+        <button id="ON" class="btn btn-success" [ngClass]="{'selected': notificationsEnabled}" (click)="toggleNotifications(true)">ON</button>
+        <button id="OFF" class="btn btn-danger" [ngClass]="{'selected': !notificationsEnabled}" (click)="toggleNotifications(false)">OFF</button>
+      </div>
+    </div>
+  
+    <!-- Change Password -->
+    <button class="btn btn-primary spaced-btn" (click)="openChangePasswordModal()">Change Password</button>
+  
+    <!-- Delete Data About Me -->
+    <button class="btn btn-danger spaced-btn" (click)="deleteData()">Delete Data About Me</button>
+  
+    <!-- Delete Account -->
+    <button class="btn btn-danger spaced-btn" (click)="deleteAccount()">Delete Account</button>
+  
+    <!-- Change Password Modal -->
+    <div *ngIf="isChangePasswordModalOpen" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="closeChangePasswordModal()">&times;</span>
+        <h2>Change Password</h2>
+        <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePasswordSubmit()">
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input id="currentPassword" formControlName="currentPassword" type="password" required>
+          </div>
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input id="newPassword" formControlName="newPassword" type="password" required (input)="validatePassword()">
+          </div>
+          <div class="form-group">
+            <label for="confirmNewPassword">Confirm New Password</label>
+            <input id="confirmNewPassword" formControlName="confirmNewPassword" type="password" required (input)="validatePassword()">
+          </div>
+          <div class="password-requirements">
+            <p [ngClass]="{'valid': passwordValidations.match, 'invalid': !passwordValidations.match}">
+              <span *ngIf="passwordValidations.match">✔</span>
+              <span *ngIf="!passwordValidations.match">✖</span> Passwords match
+            </p>
+            <p [ngClass]="{'valid': passwordValidations.minLength, 'invalid': !passwordValidations.minLength}">
+              <span *ngIf="passwordValidations.minLength">✔</span>
+              <span *ngIf="!passwordValidations.minLength">✖</span> Minimum 8 characters
+            </p>
+            <p [ngClass]="{'valid': passwordValidations.upperLowerCase, 'invalid': !passwordValidations.upperLowerCase}">
+              <span *ngIf="passwordValidations.upperLowerCase">✔</span>
+              <span *ngIf="!passwordValidations.upperLowerCase">✖</span> At least one uppercase and one lowercase letter
+            </p>
+            <p [ngClass]="{'valid': passwordValidations.number, 'invalid': !passwordValidations.number}">
+              <span *ngIf="passwordValidations.number">✔</span>
+              <span *ngIf="!passwordValidations.number">✖</span> At least one number
+            </p>
+            <p [ngClass]="{'valid': passwordValidations.specialChar, 'invalid': !passwordValidations.specialChar}">
+              <span *ngIf="passwordValidations.specialChar">✔</span>
+              <span *ngIf="!passwordValidations.specialChar">✖</span> At least one special character
+            </p>
+          </div>
+          <button type="submit" [disabled]="!changePasswordForm.valid || !allValidationsMet()">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
