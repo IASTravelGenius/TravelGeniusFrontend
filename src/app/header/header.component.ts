@@ -53,9 +53,11 @@ export class HeaderComponent implements OnInit {
 
     this.http.post(url, requestBody).subscribe(() => {
       this.globalsService.clearTokens();
+      this.globalsService.closeDropdown();
     }, error => {
       console.error('Logout error:', error);
       this.globalsService.clearTokens();
+      this.globalsService.closeDropdown();
     });
   }
 }
