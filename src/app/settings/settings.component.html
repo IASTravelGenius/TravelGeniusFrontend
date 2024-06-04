@@ -14,10 +14,10 @@
     <button class="btn btn-primary spaced-btn" (click)="openChangePasswordModal()">Change Password</button>
   
     <!-- Delete Data About Me -->
-    <button class="btn btn-danger spaced-btn" (click)="deleteData()">Delete Data About Me</button>
+    <button class="btn btn-danger spaced-btn" (click)="openConfirmationModal('data')">Delete Data About Me</button>
   
     <!-- Delete Account -->
-    <button class="btn btn-danger spaced-btn" (click)="deleteAccount()">Delete Account</button>
+    <button class="btn btn-danger spaced-btn" (click)="openConfirmationModal('account')">Delete Account</button>
   
     <!-- Change Password Modal -->
     <div *ngIf="isChangePasswordModalOpen" class="modal">
@@ -61,6 +61,16 @@
           </div>
           <button type="submit" [disabled]="!changePasswordForm.valid || !allValidationsMet()">Submit</button>
         </form>
+      </div>
+    </div>
+  
+    <!-- Confirmation Modal -->
+    <div *ngIf="isConfirmationModalOpen" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="closeConfirmationModal()">&times;</span>
+        <h2>Are you sure?</h2>
+        <button class="btn btn-danger" (click)="confirmAction()">Yes</button>
+        <button class="btn btn-secondary" (click)="closeConfirmationModal()">No</button>
       </div>
     </div>
   </div>

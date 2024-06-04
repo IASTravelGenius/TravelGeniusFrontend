@@ -42,7 +42,7 @@
     border-color: #dc3545;
     color: #fff;
   }
-  
+
   .form-group label {
     display: block;
     margin-bottom: 5px;
@@ -142,19 +142,19 @@
     font-weight: bold;
   }
   
-  
   #ON {
     background-color: #28a745;
     border-color: #28a745;
     color: #fff;
   }
-
+  
   #OFF {
     background-color: #dc3545;
     border-color: #dc3545;
     color: #fff;
   }
-
+  
   label {
     font-weight: bold;
   }
+  

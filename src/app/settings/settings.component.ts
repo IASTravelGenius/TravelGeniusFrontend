@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 export class SettingsComponent implements OnInit {
   changePasswordForm: FormGroup;
   isChangePasswordModalOpen = false;
+  isConfirmationModalOpen = false;
+  actionToConfirm: string = '';
   passwordValidations = {
     match: false,
     minLength: false,
@@ -34,7 +36,6 @@ export class SettingsComponent implements OnInit {
   }
 
   loadNotificationState(): void {
-    // Example loading of initial state, replace with actual logic
     console.log('Notification state loaded successfully');
     // const url = `${environment.apiUrl}/notifications/state`;
     // this.http.get(url).subscribe((response: any) => {
@@ -90,6 +91,24 @@ export class SettingsComponent implements OnInit {
     //     console.error('Error changing password', error);
     //   });
     // }
+  }
+
+  openConfirmationModal(action: string): void {
+    this.actionToConfirm = action;
+    this.isConfirmationModalOpen = true;
+  }
+
+  closeConfirmationModal(): void {
+    this.isConfirmationModalOpen = false;
+  }
+
+  confirmAction(): void {
+    if (this.actionToConfirm === 'data') {
+      this.deleteData();
+    } else if (this.actionToConfirm === 'account') {
+      this.deleteAccount();
+    }
+    this.closeConfirmationModal();
   }
 
   deleteData(): void {
