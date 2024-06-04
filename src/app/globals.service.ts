@@ -6,38 +6,49 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class GlobalsService {
   private dropdownOpenSource = new BehaviorSubject<boolean>(false);
-  private accessToken: string | null = null;
-  private refreshToken: string | null = null;
+
+
+  private accessTokenKey = 'accessToken';
+  private refreshTokenKey = 'refreshToken';
 
   dropdownOpen$ = this.dropdownOpenSource.asObservable();
+
+  constructor() {
+    // Initialize tokens from localStorage
+    const accessToken = localStorage.getItem(this.accessTokenKey);
+    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+    if (accessToken && refreshToken) {
+      this.setTokens(accessToken, refreshToken);
+    }
+  }
 
   setDropdownOpen(isOpen: boolean) {
     this.dropdownOpenSource.next(isOpen);
   }
 
   closeDropdown() {
-    this.dropdownOpenSource.next(false);
+    this.setDropdownOpen(false);
   }
 
   setTokens(accessToken: string, refreshToken: string) {
-    this.accessToken = accessToken;
-    this.refreshToken = refreshToken;
+    localStorage.setItem(this.accessTokenKey, accessToken);
+    localStorage.setItem(this.refreshTokenKey, refreshToken);
   }
 
   getAccessToken(): string | null {
-    return this.accessToken;
+    return localStorage.getItem(this.accessTokenKey);
   }
 
   getRefreshToken(): string | null {
-    return this.refreshToken;
+    return localStorage.getItem(this.refreshTokenKey);
   }
 
   clearTokens() {
-    this.accessToken = null;
-    this.refreshToken = null;
+    localStorage.removeItem(this.accessTokenKey);
+    localStorage.removeItem(this.refreshTokenKey);
   }
 
   areTokensSet(): boolean {
-    return this.accessToken !== null && this.refreshToken !== null;
+    return !!this.getAccessToken() && !!this.getRefreshToken();
   }
 }

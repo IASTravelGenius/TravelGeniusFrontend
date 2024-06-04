@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-profile',
@@ -35,7 +36,9 @@ export class ProfileComponent implements OnInit {
   filteredCities: Observable<string[]>;
   changesMade: boolean = false;
 
-  constructor(private http: HttpClient) {
+  isDropdownOpen = false;
+
+  constructor(private http: HttpClient, private globalsService: GlobalsService) {
     this.filteredCountries = this.countryControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filterCountries(value))
@@ -47,6 +50,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.globalsService.dropdownOpen$.subscribe(isOpen => {
+      this.isDropdownOpen = isOpen;
+    });
     // Initialize filteredCities based on the selected country
     this.filteredCities = this.cityControl.valueChanges.pipe(
       startWith(''),

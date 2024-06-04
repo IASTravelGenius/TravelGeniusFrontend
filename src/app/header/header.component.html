@@ -52,8 +52,8 @@
                         <img src="assets/download.jpeg" alt="Profile" class="profile-icon">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="dropdownMenuButton">
-                        <button class="dropdown-item" routerLink="/profile">Profile</button>
-                        <button class="dropdown-item" routerLink="/settings">Settings</button>
+                        <button class="dropdown-item" (click)="navigateToProfile()">Profile</button>
+                        <button class="dropdown-item" (click)="navigateToSettings()">Settings</button>
                         <button class="dropdown-item" (click)="logout()">Logout</button>
                     </div>
                 </div>
