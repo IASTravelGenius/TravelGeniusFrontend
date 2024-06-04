@@ -47,13 +47,13 @@
         <!-- Profile dropdown on the right -->
         <div class="profile-area">
             <ng-container *ngIf="isLoggedIn(); else loginTemplate">
-                <div class="dropdown profile-dropdown" (click)="toggleDropdown()">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton">
+                <div class="dropdown profile-dropdown" >
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" (click)="toggleDropdown()">
                         <img src="assets/download.jpeg" alt="Profile" class="profile-icon">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownOpen}" aria-labelledby="dropdownMenuButton">
-                        <button class="dropdown-item" routerLink="/profile">Profile</button>
-                        <button class="dropdown-item" routerLink="/settings">Settings</button>
+                        <button class="dropdown-item" (click)="navigateToProfile()">Profile</button>
+                        <button class="dropdown-item" (click)="navigateToSettings()">Settings</button>
                         <button class="dropdown-item" (click)="logout()">Logout</button>
                     </div>
                 </div>
