@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Router, NavigationStart } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,21 @@ export class GlobalsService {
 
   dropdownOpen$ = this.dropdownOpenSource.asObservable();
 
-  constructor() {
+  constructor(private router: Router) {
     // Initialize tokens from localStorage
     const accessToken = localStorage.getItem(this.accessTokenKey);
     const refreshToken = localStorage.getItem(this.refreshTokenKey);
     if (accessToken && refreshToken) {
       this.setTokens(accessToken, refreshToken);
     }
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.closeDropdown();
+      }
+    });
   }
 
   setDropdownOpen(isOpen: boolean) {

@@ -45,12 +45,10 @@ export class HeaderComponent implements OnInit {
 
   navigateToProfile() {
     this.router.navigate(['/profile']);
-    this.globalsService.closeDropdown();
   }
 
   navigateToSettings() {
     this.router.navigate(['/settings']);
-    this.globalsService.closeDropdown();
   }
 
   logout() {

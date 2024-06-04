@@ -53,12 +53,14 @@ export class ProfileComponent implements OnInit {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
       this.isDropdownOpen = isOpen;
     });
+    this.globalsService.closeDropdown();
     // Initialize filteredCities based on the selected country
     this.filteredCities = this.cityControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filterCities(value))
     );
   }
+
 
   private _filterCountries(value: string): string[] {
     const filterValue = value.toLowerCase();
