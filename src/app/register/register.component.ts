@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     private globalsService: GlobalsService
   ) {
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email, Validators.minLength(3), Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email, Validators.minLength(3), Validators.maxLength(80)]],
       username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20), this.usernameValidator]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
       errors.push('* email must be at least 3 characters');
     }
     if (emailControl?.errors?.['maxlength']) {
-      errors.push('* email must be at most 50 characters');
+      errors.push('* email must be at most 80 characters');
     }
     return errors;
   }
