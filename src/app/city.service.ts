@@ -62,7 +62,7 @@ export class CityService {
   constructor(private http: HttpClient) { }
 
   getCities(countryId: string): Observable<City[]> {
-    return of(MOCK_CITIES);
+    return of(MOCK_CITIES.sort((a, b) => b.population - a.population));
     // return this.http.get<City[]>(`/api/countries/${countryId}/cities`);
   }
 
