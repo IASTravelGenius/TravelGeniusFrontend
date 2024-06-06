@@ -12,7 +12,7 @@
   
   <main>
     <section id="top-cities">
-      <h2>Top Cities and Tourist Attractions</h2>
+      <h2>{{ country.name }}</h2>
       <ul id="mixed-list">
         <ng-container *ngFor="let item of mixedList; let i = index">
           <li *ngIf="item.type === 'city'" class="top-city-item">
