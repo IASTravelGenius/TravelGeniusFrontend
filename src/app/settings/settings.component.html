@@ -68,7 +68,7 @@
     <div *ngIf="isConfirmationModalOpen" class="modal">
       <div class="modal-content">
         <span class="close" (click)="closeConfirmationModal()">&times;</span>
-        <h2>Are you sure?</h2>
+        <h2 id="are-sure">Are you sure?</h2>
         <button class="btn btn-danger" (click)="confirmAction()">Yes</button>
         <button class="btn btn-secondary" (click)="closeConfirmationModal()">No</button>
       </div>
