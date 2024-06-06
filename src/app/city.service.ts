@@ -12,7 +12,7 @@ export const MOCK_CITIES: City[] = [
     2148000,
     [
       new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
-      new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/louvre.jpg')
+      new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg')
     ]
   ),
   new City(
@@ -49,7 +49,7 @@ export const MOCK_CITIES: City[] = [
 
   export const MOCK_ATTRACTIONS: Attraction[] = [
     new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
-    new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/louvre.jpg'),
+    new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg'),
     new Attraction('basilica', 'Basilica of Notre-Dame de Fourvière', 'A minor basilica in Lyon.', 'assets/basilica.jpg'),
     new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg')
   ];
