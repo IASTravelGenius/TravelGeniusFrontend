@@ -33,4 +33,9 @@ export class TouristicAttractionService {
     return of(attraction);
     // return this.http.get<Attraction>(`/api/attractions/${attractionId}`);
   }
+
+  getAttractionsByCoordinates(latitude: number, longitude: number, range: number): Observable<Attraction[]> {
+    return of(MOCK_ATTRACTIONS);
+    // return this.http.get<Attraction[]>(`/api/attractions?latitude=${latitude}&longitude=${longitude}&range=${range}`);
+  }
 }

@@ -1,0 +1,47 @@
+<body>
+    <header id="sidebar" [ngClass]="{'open': isMenuOpen}">
+      <button id="menu-toggle" (click)="toggleMenu()">☰ Last Accessed</button>
+      <nav [ngClass]="{'open': isMenuOpen}" id="nav-menu">
+        <ul id="nav-list">
+          <li *ngFor="let item of lastAccessedPaths.slice(1)">
+            <a [routerLink]="[item.path]">{{ item.display }}</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  
+    <main>
+      <div class="search-controls">
+        <label for="range">Range (km):</label>
+        <input id="range" type="number" [(ngModel)]="range"  class="styled-input">
+        <button class="btn-toggle" (click)="toggleMap()">{{ showMap ? 'Hide Map' : 'Show Map' }}</button>
+      </div>
+  
+      <!-- <div *ngIf="showMap" id="map"></div> -->
+      <!-- <button *ngIf="showMap" class="btn-search" (click)="searchAttractions()">Search Attractions</button> -->
+  
+      <section *ngIf="!showMap && attractions.length > 0" id="attractions-list">
+        <h3>Touristic Attractions</h3>
+        <ul>
+          <li *ngFor="let attraction of attractions" class="attraction-item">
+            <h4>{{ attraction.name }}</h4>
+            <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+            <p>{{ attraction.description }}</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+  
+    <section id="best-deals" [ngClass]="{'best-deals-lowered': isDropdownOpen}">
+      <h2>Best Deals</h2>
+      <ul id="best-deals-list">
+        <li class="best-deals-item" *ngFor="let deal of deals.slice(0, 3)">
+          <div class="deal-info">
+            <p class="deal-title">{{ deal.title }}</p>
+            <p class="deal-text">{{ deal.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </body>
+  
