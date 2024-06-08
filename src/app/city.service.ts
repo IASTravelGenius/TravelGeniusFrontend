@@ -11,8 +11,8 @@ export const MOCK_CITIES: City[] = [
     'assets/paris.jpg',
     2148000,
     [
-      new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/eiffel.jpg'),
-      new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/louvre.jpg')
+      new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
+      new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg')
     ]
   ),
   new City(
@@ -47,6 +47,13 @@ export const MOCK_CITIES: City[] = [
   )
 ];
 
+  export const MOCK_ATTRACTIONS: Attraction[] = [
+    new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
+    new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg'),
+    new Attraction('basilica', 'Basilica of Notre-Dame de Fourvière', 'A minor basilica in Lyon.', 'assets/basilica.jpg'),
+    new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg')
+  ];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -55,7 +62,12 @@ export class CityService {
   constructor(private http: HttpClient) { }
 
   getCities(countryId: string): Observable<City[]> {
-    return of(MOCK_CITIES);
+    return of(MOCK_CITIES.sort((a, b) => b.population - a.population));
     // return this.http.get<City[]>(`/api/countries/${countryId}/cities`);
+  }
+
+  getTouristAttractions(countryId: string): Observable<Attraction[]> {
+    return of(MOCK_ATTRACTIONS);
+    // return this.http.get<Attraction[]>(`/api/countries/${countryId}/attractions`);
   }
 }

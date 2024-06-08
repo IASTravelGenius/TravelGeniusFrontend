@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { CountryService } from '../country.service';
 import { CityService } from '../city.service';
-import { LastAccessedService } from '../last-accessed.service';
-import { GlobalsService } from '../globals.service';
+import { CountryService } from '../country.service';
 import { City } from '../models/city';
+import { Deal } from '../models/deal';
+import { Attraction } from '../models/attraction';
+import { GlobalsService } from '../globals.service';
+import { LastAccessedService } from '../last-accessed.service';
+import { DealsService } from '../deals.service';
 
 
 
@@ -15,52 +17,75 @@ import { City } from '../models/city';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
-  isMenuOpen = false;
-
   country: any;
-  deals = [
-    { title: 'Flight to Italy', description: 'Flights are cheap' },
-    { title: 'Flight to France', description: 'Flights are cheap' },
-    { title: 'Egipt is on sale', description: 'E moca bro!'},
-  ];
-  isDropdownOpen = false;
-  
-  lastAccessedPaths: { path: string, display: string }[] = [];
   cities: City[] = [];
+  attractions: Attraction[] = [];
+  mixedList: any[] = [];
+  isMenuOpen = false;
+  isDropdownOpen = false;
+  lastAccessedPaths:  { path: string, display: string }[] = [];
+  deals: Deal[] = [];
 
-  constructor(private globalsService: GlobalsService, private route: ActivatedRoute, private countryService: CountryService, private lastAccessedService: LastAccessedService, private cityService: CityService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private countryService: CountryService, private cityService: CityService, private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private dealsService: DealsService) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const countryId = params.get('countryId');
-      if (countryId) {
-        this.countryService.getCountryById(countryId).subscribe(data => {
-          this.country = data;
-          this.fetchCities(countryId);
-        });
-      }
-    });
-
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
       this.isDropdownOpen = isOpen;
     });
-
     this.lastAccessedService.lastAccessed$.subscribe(paths => {
       this.lastAccessedPaths = paths;
     });
-  }
+    this.dealsService.getDeals().subscribe(deals => {
+      this.deals = deals;
+    });
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  fetchCities(countryId: string) {
-    this.cityService.getCities(countryId).subscribe(cities => {
-      this.cities = cities.sort((a, b) => b.population - a.population);
+    this.route.params.subscribe(params => {
+      const countryId = params['countryId'];
+      if (countryId) {
+        this.countryService.getCountryById(countryId).subscribe(data => {
+          this.country = data;
+          this.loadCountryData(countryId);
+        });
+      }
     });
   }
 
-  navigateToCity(cityId: string) {
-    this.router.navigate([`/countries/${this.country.id}/${cityId}`]);
+  loadCountryData(countryId: string): void {
+    this.cityService.getCities(countryId).subscribe(cities => {
+      this.cities = cities;
+      this.createMixedList();
+    }, error => {
+      console.error('Error loading cities:', error);
+    });
+
+    this.cityService.getTouristAttractions(countryId).subscribe(attractions => {
+      this.attractions = attractions;
+      this.createMixedList();
+    }, error => {
+      console.error('Error loading attractions:', error);
+    });
+  }
+
+  createMixedList(): void {
+    const maxLength = Math.max(this.cities.length, this.attractions.length);
+    let cityIndex = 0;
+    let attractionIndex = 0;
+
+    this.mixedList = [];
+
+    for (let i = 0; i < maxLength; i++) {
+      if (cityIndex < this.cities.length) {
+        this.mixedList.push({ type: 'city', data: this.cities[cityIndex] });
+        cityIndex++;
+      }
+      if (attractionIndex < this.attractions.length) {
+        this.mixedList.push({ type: 'attraction', data: this.attractions[attractionIndex] });
+        attractionIndex++;
+      }
+    }
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

@@ -2,31 +2,39 @@
   <header id="sidebar" [ngClass]="{'open': isMenuOpen}">
     <button id="menu-toggle" (click)="toggleMenu()">☰ Last Accessed</button>
     <nav [ngClass]="{'open': isMenuOpen}" id="nav-menu">
-        <ul id="nav-list">
-            <li *ngFor="let item of lastAccessedPaths.slice(1)">
-                <a [routerLink]="[item.path]">{{ item.display }}</a>
-            </li>           
-        </ul>
+      <ul id="nav-list">
+        <li *ngFor="let item of lastAccessedPaths.slice(1)">
+          <a [routerLink]="[item.path]">{{ item.display }}</a>
+        </li>
+      </ul>
     </nav>
   </header>
   
   <main>
     <section id="top-cities">
-      <h2>Top Cities</h2>
-      <ul id="top-cities-list">
-        <li class="top-city-item" *ngFor="let city of cities">
-          <div class="city-header">
-            <h2 class="city-name"><a [routerLink]="['/countries', country.id, city.id]">{{ city.name }}</a></h2>
-            <img [src]="city.mainPhotoUrl" alt="{{ city.name }}" class="city-photo">
-          </div>
-          <h3>Tourist Attractions:</h3>
-          <div class="attractions">
-            <div class="attraction" *ngFor="let attraction of city.attractions">
-              <h4>{{ attraction.name }}</h4>
-              <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+      <h2>{{ country.name }}</h2>
+      <ul id="mixed-list">
+        <ng-container *ngFor="let item of mixedList; let i = index">
+          <li *ngIf="item.type === 'city'" class="top-city-item">
+            <div class="city-header">
+              <h2 class="city-name"><a [routerLink]="['/countries', country.id, item.data.id]">{{ item.data.name }}</a></h2>
+              <img [src]="item.data.mainPhotoUrl" alt="{{ item.data.name }}" class="city-photo">
             </div>
-          </div>
-        </li>
+            <h3>Tourist Attractions:</h3>
+            <div class="attractions">
+              <div class="attraction" *ngFor="let attraction of item.data.attractions">
+                <h4>{{ attraction.name }}</h4>
+                <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+              </div>
+            </div>
+          </li>
+          <li *ngIf="item.type === 'attraction'" class="tourist-attraction-item">
+            <div class="attraction-header">
+              <h2 class="attraction-name">{{ item.data.name }}</h2>
+              <img [src]="item.data.photoUrl" alt="{{ item.data.name }}" class="city-photo">
+            </div>
+          </li>
+        </ng-container>
       </ul>
     </section>
 
