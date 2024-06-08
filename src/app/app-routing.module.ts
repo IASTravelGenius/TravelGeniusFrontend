@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
+import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   // { path: ':cityId', component: CityComponent },
   // ]},
   { path: 'countries/:countryId/:cityId', component: CityComponent},
+  { path: 'countries/:countryId/ta/:touristicAttractionId', component: TouristicAttractionComponent},
   { path: 'news', component: NewsComponent },
   { path: 'flights', component: FlightsComponent },
   { path: 'must-see', component: MustSeeComponent },

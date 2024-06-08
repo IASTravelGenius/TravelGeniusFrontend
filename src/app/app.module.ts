@@ -24,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';  // Import Angular Mat
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { MatAutocompleteModule } from '@angular/material/autocomplete'; // Import MatAutocompleteModule
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component'; // Import MatAutocompleteModule
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'; // Impor
     CityComponent,
     RegisterComponent,
     LoginComponent,
-    SettingsComponent
+    SettingsComponent,
+    TouristicAttractionComponent
   ],
   imports: [
     BrowserModule,
