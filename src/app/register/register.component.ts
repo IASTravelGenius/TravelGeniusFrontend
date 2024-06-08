@@ -133,12 +133,12 @@ export class RegisterComponent implements OnInit {
 
       this.http.post(url, requestBody, { observe: 'response' }).subscribe((response: any) => {
         console.log(response.status);
-        if (response.error === null) {
+        if (response.status >= 200 && response.status < 300) {
           this.globalsService.setTokens(response.accessToken, response.refreshToken);
           console.log('Tokens saved:', response.accessToken, response.refreshToken);
           this.router.navigate(['/home']);
         } else {
-          console.error('Registration error:', response.error);
+          console.error('Registration error in else:', response.error);
           this.errorMessage = response.error.error.error;
         }
       }, error => {
