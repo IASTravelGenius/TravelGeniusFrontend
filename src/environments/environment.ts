@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   authenticationServiceUrl: 'http://localhost:8888',
+  backendUrl: 'http://localhost:8081'
 };
 
 /*
