@@ -161,4 +161,6 @@ export class CityService {
     return of(city ? city.attractions : []);
     // return this.http.get<Attraction[]>(`/api/cities/${cityId}/attractions`);
   }
+
+
 }

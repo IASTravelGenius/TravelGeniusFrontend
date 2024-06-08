@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+    position: relative;
+    padding-top: 8vh; /* Adjust based on the height of the other header */
+}
+
+
+main {
+  margin: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5vw 0.5vw; /* Adjust the padding for proper alignment */
+  overflow-y: auto;
+  max-width: 80vw; /* Adjust based on your design */
+}
+
+header.open + main {
+  margin-left: 18vw;
+}
+
+section {
+  width: 100%;
+  background: #ffffff;
+  padding: 1.5vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
+  margin-bottom: 2vw;
+}
+
+h3, h4 {
+  color: #333333;
+}
+
+h2 {
+    font-size: 1.8vw;
+    margin-bottom: 0.8vw;
+    color: #333333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 0.5vw 0;
+}
+
+.attraction-main-photo {
+  width: 50%;
+  height: auto;
+  border-radius: 0.5vw;
+  margin-bottom: 1vw;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #007BFF;
+  color: #ffffff;
+  padding: 0.5vw 1vw;
+  border-radius: 0.5vw;
+  margin: 0.2vw;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.attraction-photo {
+  width: 48%;
+  height: auto;
+  margin: 1%;
+  border-radius: 0.5vw;
+}
+
+.author-photo {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+}
