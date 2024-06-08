@@ -22,6 +22,7 @@ export class CityComponent implements OnInit {
   isMenuOpen = false;
   isDropdownOpen = false;
   lastAccessedPaths: any[] = [];
+  countryId = '';
 
   constructor(private route: ActivatedRoute, private cityService: CityService, private globalsService: GlobalsService, 
     private lastAccessedService: LastAccessedService, private dealsService: DealsService
@@ -40,6 +41,8 @@ export class CityComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       const cityId = params['cityId'];
+      this.countryId = params['countryId'];
+
       this.loadCityData(cityId);
     });
   }

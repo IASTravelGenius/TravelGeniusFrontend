@@ -11,43 +11,23 @@
     </header>
     
     <main>
-      <section id="city-info">
-        <h2>{{ city.name }}</h2>
-        <img [src]="city.mainPhotoUrl" alt="{{ city.name }}" class="city-main-photo">
-        <p id="city-description">{{ city.description }}</p>
+      <section id="attraction-info">
+        <h2>{{ attraction.name }}</h2>
+        <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-main-photo">
+        <p id="attraction-description">{{ attraction.description }}</p>
         <div class="tags">
           <span>Tags: </span>
-          <span *ngFor="let tag of city.tags" class="tag">{{ tag }}</span>
+          <span *ngFor="let tag of attraction.tags" class="tag">{{ tag }}</span>
         </div>
         <div class="photos">
-          <img *ngFor="let photo of city.photos" [src]="photo" alt="City Photo" class="city-photo">
+          <img *ngFor="let photo of attraction.photos" [src]="photo" alt="Attraction Photo" class="attraction-photo">
         </div>
       </section>
-  
-      <section id="tourist-attractions">
-        <h3>Touristic Attractions</h3>
-        <ul>
-          <li *ngFor="let attraction of city.attractions">
-            <h4><a [routerLink]="['/countries', countryId, 'ta', attraction.id]">{{ attraction.name }}</a></h4>
-            <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
-          </li>
-        </ul>
-      </section>
-  
-      <!-- <section id="news">
-        <h3>News</h3>
-        <ul>
-          <li *ngFor="let newsItem of news">
-            <h4>{{ newsItem.title }}</h4>
-            <p>{{ newsItem.excerpt }}</p>
-          </li>
-        </ul>
-      </section> -->
   
       <section id="reviews">
         <h3>Reviews</h3>
         <ul>
-          <li *ngFor="let review of city.reviews">
+          <li *ngFor="let review of attraction.reviews">
             <h4>{{ review.title }} - <span [innerHTML]="getStars(review.rating)"></span></h4>
             <p>{{ review.text }}</p>
             <small>By {{ review.userId }} on {{ review.date | date }}</small>
@@ -55,7 +35,6 @@
           </li>
         </ul>
       </section>
-  
     </main>
     <section id="best-deals" [ngClass]="{'best-deals-lowered': isDropdownOpen}">
       <h2>Best Deals</h2>

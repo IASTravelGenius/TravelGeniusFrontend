@@ -30,7 +30,7 @@
           </li>
           <li *ngIf="item.type === 'attraction'" class="tourist-attraction-item">
             <div class="attraction-header">
-              <h2 class="attraction-name">{{ item.data.name }}</h2>
+              <h2 class="attraction-name"><a [routerLink]="['/countries', country.id, 'ta', item.data.id]">{{ item.data.name }} </a></h2>
               <img [src]="item.data.photoUrl" alt="{{ item.data.name }}" class="city-photo">
             </div>
           </li>
