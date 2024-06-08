@@ -1,0 +1,82 @@
+main {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5vw 0.5vw; /* Adjust the padding for proper alignment */
+    overflow-y: auto;
+    transition: margin-left 0.3s;
+  }
+  
+  header.open + main {
+    margin-left: 18vw;
+  }
+  
+  section {
+    width: 100%;
+    background: #ffffff;
+    padding: 1.5vw;
+    border-radius: 0.5vw;
+    box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
+    margin-bottom: 2vw;
+  }
+  
+  h2, h3, h4 {
+    color: #333333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 0.5vw 0;
+  }
+  
+  .city-main-photo {
+    width: 50%;
+    height: auto;
+    border-radius: 0.5vw;
+    margin-bottom: 1vw;
+  }
+  
+  .tag {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 0.5vw 1vw;
+    border-radius: 1.5vw;
+    margin: 0.2vw;
+  }
+  
+  .photos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .city-photo {
+    width: 48%;
+    height: auto;
+    margin: 1%;
+    border-radius: 0.5vw;
+  }
+  
+  .attraction-photo {
+    width: 50%;
+    height: auto;
+    border-radius: 0.5vw;
+  }
+  
+  .author-photo {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+  }
+  
+  #city-description {
+    font-size: x-larger;
+    size: 1.5vw;
+  }
