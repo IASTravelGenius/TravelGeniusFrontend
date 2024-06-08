@@ -1,1 +1,72 @@
-<p>city works!</p>
+<body>
+    <header id="sidebar" [ngClass]="{'open': isMenuOpen}">
+      <button id="menu-toggle" (click)="toggleMenu()">☰ Last Accessed</button>
+      <nav [ngClass]="{'open': isMenuOpen}" id="nav-menu">
+        <ul id="nav-list">
+          <li *ngFor="let item of lastAccessedPaths.slice(1)">
+            <a [routerLink]="[item.path]">{{ item.display }}</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <section id="city-info">
+        <h2>{{ city.name }}</h2>
+        <img [src]="city.mainPhotoUrl" alt="{{ city.name }}" class="city-main-photo">
+        <p id="city-description">{{ city.description }}</p>
+        <div class="tags">
+          <span>Tags: </span>
+          <span *ngFor="let tag of city.tags" class="tag">{{ tag }}</span>
+        </div>
+        <div class="photos">
+          <img *ngFor="let photo of city.photos" [src]="photo" alt="City Photo" class="city-photo">
+        </div>
+      </section>
+  
+      <section id="tourist-attractions">
+        <h3>Touristic Attractions</h3>
+        <ul>
+          <li *ngFor="let attraction of city.attractions">
+            <h4>{{ attraction.name }}</h4>
+            <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+          </li>
+        </ul>
+      </section>
+  
+      <!-- <section id="news">
+        <h3>News</h3>
+        <ul>
+          <li *ngFor="let newsItem of news">
+            <h4>{{ newsItem.title }}</h4>
+            <p>{{ newsItem.excerpt }}</p>
+          </li>
+        </ul>
+      </section> -->
+  
+      <section id="reviews">
+        <h3>Reviews</h3>
+        <ul>
+          <li *ngFor="let review of city.reviews">
+            <h4>{{ review.title }} - <span [innerHTML]="getStars(review.rating)"></span></h4>
+            <p>{{ review.text }}</p>
+            <small>By {{ review.userId }} on {{ review.date | date }}</small>
+            <img [src]="review.userPhotoUrl" alt="{{ review.userId }}" class="author-photo">
+          </li>
+        </ul>
+      </section>
+  
+    </main>
+    <section id="best-deals" [ngClass]="{'best-deals-lowered': isDropdownOpen}">
+      <h2>Best Deals</h2>
+      <ul id="best-deals-list">
+        <li class="best-deals-item" *ngFor="let deal of deals.slice(0, 3)">
+          <div class="deal-info">
+            <p class="deal-title">{{ deal.title }}</p>
+            <p class="deal-text">{{ deal.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </body>
+  
