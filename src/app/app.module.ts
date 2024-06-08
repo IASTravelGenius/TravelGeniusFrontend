@@ -25,7 +25,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component'; // Import MatAutocompleteModule
+import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component';
+import { TouristicAttractionsAllComponent } from './touristic-attractions-all/touristic-attractions-all.component';
+import { TouristicAttractionsResultsComponent } from './touristic-attractions-results/touristic-attractions-results.component'; // Import MatAutocompleteModule
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { TouristicAttractionComponent } from './touristic-attraction/touristic-a
     RegisterComponent,
     LoginComponent,
     SettingsComponent,
-    TouristicAttractionComponent
+    TouristicAttractionComponent,
+    TouristicAttractionsAllComponent,
+    TouristicAttractionsResultsComponent
   ],
   imports: [
     BrowserModule,
