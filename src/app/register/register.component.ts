@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GlobalsService } from '../globals.service';
 import { environment } from 'src/environments/environment';
@@ -130,13 +130,53 @@ export class RegisterComponent implements OnInit {
       };
 
       const url = environment.authenticationServiceUrl + '/authService/register';
+      const urlBackend = environment.backendUrl + '/register';
 
       this.http.post(url, requestBody, { observe: 'response' }).subscribe((response: any) => {
         console.log(response.status);
         if (response.status >= 200 && response.status < 300) {
-          this.globalsService.setTokens(response.accessToken, response.refreshToken);
-          console.log('Tokens saved:', response.accessToken, response.refreshToken);
-          this.router.navigate(['/home']);
+          console.log('Registration successful:', response);
+          this.globalsService.setTokens(response.body.accessToken, response.body.refreshToken);
+          console.log('Tokens saved:', this.globalsService.getAccessToken(), this.globalsService.getRefreshToken());
+          
+          // var my_headers = new HttpHeaders({'Authorization': 'Bearer ' + this.globalsService.getAccessToken()});
+          // this
+          const headers_dict = {
+            'Authorization': 'Bearer ' + this.globalsService.getAccessToken(),
+          }
+          const options = {
+            headers: new HttpHeaders(headers_dict),
+            observe: 'response' as 'response'  // Correct usage for the observe option
+          };
+          
+          this.http.post(urlBackend, {}, options).subscribe((response2: HttpResponse<any>) => {
+            console.log('Backend response:', response2);
+            if (response2.status >= 200 && response2.status < 300) {
+              this.router.navigate(['/home']);
+            }
+          }, error => {
+            console.error('Backend error:', error);
+          });
+          // my_headers = my_headers.append('Authorization', 'Bearer ' + this.globalsService.getAccessToken());
+          // console.log(my_headers);
+          // const options = { headers: my_headers };
+          // this.http.post(urlBackend, { headers: my_headers }).subscribe((response: any) => {
+          //   console.log('Backend response:', response);
+          //   if (response.status >= 200 && response.status < 300) {
+          //     this.router.navigate(['/home']);
+          //   }
+          // } , error => {
+          //   console.error('Backend error:', error);
+          // });
+          // this.http.post(urlBackend, headers:my_headers).subscribe((response: any) => {
+          //   console.log('Backend response:', response);
+          //   if (response.status >= 200 && response.status < 300) {
+          //     this.router.navigate(['/home']);
+          //   }
+          // }, error => {
+          //   console.error('Backend error:', error);
+          // });
+
         } else {
           console.error('Registration error in else:', response.error);
           this.errorMessage = response.error.error.error;
