@@ -1,1 +1,45 @@
-<p>news works!</p>
+<body>
+    <!-- <app-header></app-header> Add the header component here -->
+    <header id="sidebar" [ngClass]="{'open': isMenuOpen}">
+        <button id="menu-toggle" (click)="toggleMenu()">☰ Last Accessed</button>
+        <nav [ngClass]="{'open': isMenuOpen}" id="nav-menu">
+            <ul id="nav-list">
+                <li *ngFor="let item of lastAccessedPaths.slice(1)">
+                    <a [routerLink]="[item.path]">{{ item.display }}</a>
+                 </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="news-section">
+            <h2>News</h2>
+            <ul class="news-list">
+              <li *ngFor="let newsItem of news" class="news-item">
+                <h4 class="news-title">{{ newsItem.title }}</h4>
+                <p class="news-excerpt">{{ newsItem.excerpt }}</p>
+                <div class="tags">
+                    <div>Tags: </div>
+                    <span *ngFor="let tag of newsItem.tags" class="tag">{{ tag }}</span>
+                  </div>
+                  <a [href]="newsItem.source" target="_blank" class="read-more">Read more</a>
+              </li>
+            </ul>
+          </section>
+
+    </main>
+
+    <section id="best-deals" [ngClass]="{'best-deals-lowered': isDropdownOpen}">
+        <h2>Best Deals</h2>
+        <ul id="best-deals-list">
+          <li class="best-deals-item" *ngFor="let deal of deals.slice(0, 3)">
+            <div class="deal-info">
+              <p class="deal-title">{{ deal.title }}</p>
+              <p class="deal-text">{{ deal.description }}</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+
+</body>

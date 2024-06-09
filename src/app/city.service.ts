@@ -26,9 +26,9 @@ export const MOCK_CITIES: City[] = [
       new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg')
     ],
     [
-      new News('News Title 1', 'This is an excerpt of the news 1.'),
-      new News('News Title 2', 'This is an excerpt of the news 2.'),
-      new News('News Title 3', 'This is an excerpt of the news 3.')
+      new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
+      new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4']),
+      new News('News Title 3', 'This is an excerpt of the news 3.', 'Source 3', ['tag5', 'tag6'])
     ],
     [
       new Review('A great city', 'I loved Paris!', 5, 'I really enjoyed visting Paris.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'paris'),
@@ -55,8 +55,8 @@ export const MOCK_CITIES: City[] = [
       new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg')
     ],
     [
-      new News('News Title 1', 'This is an excerpt of the news 1.'),
-      new News('News Title 2', 'This is an excerpt of the news 2.'),
+      new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
+      new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4']),
     ],
     [
       new Review('Great city', 'I loved Lyon!', 5, 'I really enjoyed visting Lyon.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'lyon'),
@@ -83,8 +83,8 @@ export const MOCK_CITIES: City[] = [
       new Attraction('vatican', 'Vatican Museums', 'Christian and art museums located within Vatican City.', 'assets/vatican.jpg')
     ],
     [
-      new News('News Title 1', 'This is an excerpt of the news 1.'),
-      new News('News Title 2', 'This is an excerpt of the news 2.')
+      new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
+      new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4'])
     ],
     [
       new Review('Great city', 'I loved Rome!', 5, 'I really enjoyed visting Rome.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'rome'),
@@ -111,8 +111,8 @@ export const MOCK_CITIES: City[] = [
       new Attraction('gallery', 'Galleria Vittorio Emanuele II', 'A shopping gallery in Milan.', 'assets/gallery.jpg')
     ],
     [
-      new News('News Title 1', 'This is an excerpt of the news 1.'),
-      new News('News Title 2', 'This is an excerpt of the news 2.')
+      new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
+      new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4']),
     ],
     [
       new Review('Great city', 'I loved Milan!', 5, 'I really enjoyed visting Milan.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'milan'),
