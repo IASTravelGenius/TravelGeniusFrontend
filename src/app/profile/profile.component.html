@@ -17,8 +17,8 @@
   <mat-label>Country</mat-label>
 <input type="text" matInput [formControl]="countryControl" [matAutocomplete]="autoCountry" (ngModelChange)="onInputChange()">
 <mat-autocomplete #autoCountry="matAutocomplete" (optionSelected)="onCountrySelected($event)">
-  <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
-    {{ country }}
+  <mat-option *ngFor="let country of filteredCountries | async" [value]="country.name">
+    {{ country.name }}
   </mat-option>
 </mat-autocomplete>
 </mat-form-field>
@@ -26,8 +26,8 @@
   <mat-label>City</mat-label>
 <input type="text" matInput [formControl]="cityControl" [matAutocomplete]="autoCity" (ngModelChange)="onInputChange()">
 <mat-autocomplete #autoCity="matAutocomplete" (optionSelected)="onCitySelected($event)">
-  <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-    {{ city }}
+  <mat-option *ngFor="let city of filteredCities | async" [value]="city.name">
+    {{ city.name }}
   </mat-option>
 </mat-autocomplete>
 </mat-form-field>
