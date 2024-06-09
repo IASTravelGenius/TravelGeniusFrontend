@@ -10,28 +10,29 @@
     </nav>
   </header>
   
-  <main>
+
+  <main *ngIf="country">
     <section id="top-cities">
       <h2>{{ country.name }}</h2>
       <ul id="mixed-list">
-        <ng-container *ngFor="let item of mixedList; let i = index">
-          <li *ngIf="item.type === 'city'" class="top-city-item">
+        <ng-container *ngFor="let destination of country.destinations; let i = index">
+          <li *ngIf="destination.type === 'city'" class="top-city-item">
             <div class="city-header">
-              <h2 class="city-name"><a [routerLink]="['/countries', country.id, item.data.id]">{{ item.data.name }}</a></h2>
-              <img [src]="item.data.mainPhotoUrl" alt="{{ item.data.name }}" class="city-photo">
+              <h2 class="city-name"><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, destination.name.toLowerCase() + '_' + destination.id]">{{ destination.name }}</a></h2>
+              <img [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
             </div>
             <h3>Tourist Attractions:</h3>
             <div class="attractions">
-              <div class="attraction" *ngFor="let attraction of item.data.attractions">
-                <h4>{{ attraction.name }}</h4>
-                <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+              <div class="attraction" *ngFor="let attraction of destination.touristicAttractions">
+                <h4><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, 'ta', attraction.name.toLowerCase() + '_' + attraction.id]">{{ attraction.name }}</a></h4>
+                <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
               </div>
             </div>
           </li>
-          <li *ngIf="item.type === 'attraction'" class="tourist-attraction-item">
+          <li *ngIf="destination.type === 'touristicAttraction'" class="tourist-attraction-item">
             <div class="attraction-header">
-              <h2 class="attraction-name"><a [routerLink]="['/countries', country.id, 'ta', item.data.id]">{{ item.data.name }} </a></h2>
-              <img [src]="item.data.photoUrl" alt="{{ item.data.name }}" class="city-photo">
+              <h2 class="attraction-name"><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, 'ta', destination.name.toLowerCase() + '_' + destination.id]">{{ destination.name }} </a></h2>
+              <img [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
             </div>
           </li>
         </ng-container>

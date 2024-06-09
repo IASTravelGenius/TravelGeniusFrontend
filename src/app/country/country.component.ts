@@ -8,6 +8,7 @@ import { Attraction } from '../models/attraction';
 import { GlobalsService } from '../globals.service';
 import { LastAccessedService } from '../last-accessed.service';
 import { DealsService } from '../deals.service';
+import { Country } from '../models/country';
 
 
 
@@ -17,10 +18,10 @@ import { DealsService } from '../deals.service';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
-  country: any;
-  cities: City[] = [];
-  attractions: Attraction[] = [];
-  mixedList: any[] = [];
+  country: Country | null = null;
+  // cities: City[] = [];
+  // attractions: Attraction[] = [];
+  // mixedList: any[] = [];
   isMenuOpen = false;
   isDropdownOpen = false;
   lastAccessedPaths:  { path: string, display: string }[] = [];
@@ -51,39 +52,50 @@ export class CountryComponent implements OnInit {
   }
 
   loadCountryData(countryId: string): void {
-    this.cityService.getCities(countryId).subscribe(cities => {
-      this.cities = cities;
-      this.createMixedList();
-    }, error => {
-      console.error('Error loading cities:', error);
-    });
+    this.countryService.getCountryById(countryId).subscribe(
+      (data: Country) =>{
+        console.log("Received country data", data);
+        this.country = data;
+        console.log("Received country", this.country);
 
-    this.cityService.getTouristAttractions(countryId).subscribe(attractions => {
-      this.attractions = attractions;
-      this.createMixedList();
-    }, error => {
-      console.error('Error loading attractions:', error);
-    });
+      },
+      (error: any) => console.error('Error loading country:', error)
+    );
   }
 
-  createMixedList(): void {
-    const maxLength = Math.max(this.cities.length, this.attractions.length);
-    let cityIndex = 0;
-    let attractionIndex = 0;
+    // this.cityService.getCities(countryId).subscribe(cities => {
+    //   this.cities = cities;
+    //   this.createMixedList();
+    // }, error => {
+    //   console.error('Error loading cities:', error);
+    // });
 
-    this.mixedList = [];
+    // this.cityService.getTouristAttractions(countryId).subscribe(attractions => {
+    //   this.attractions = attractions;
+    //   this.createMixedList();
+    // }, error => {
+    //   console.error('Error loading attractions:', error);
+    // });
+  // }
 
-    for (let i = 0; i < maxLength; i++) {
-      if (cityIndex < this.cities.length) {
-        this.mixedList.push({ type: 'city', data: this.cities[cityIndex] });
-        cityIndex++;
-      }
-      if (attractionIndex < this.attractions.length) {
-        this.mixedList.push({ type: 'attraction', data: this.attractions[attractionIndex] });
-        attractionIndex++;
-      }
-    }
-  }
+  // createMixedList(): void {
+  //   const maxLength = Math.max(this.cities.length, this.attractions.length);
+  //   let cityIndex = 0;
+  //   let attractionIndex = 0;
+
+  //   this.mixedList = [];
+
+  //   for (let i = 0; i < maxLength; i++) {
+  //     if (cityIndex < this.cities.length) {
+  //       this.mixedList.push({ type: 'city', data: this.cities[cityIndex] });
+  //       cityIndex++;
+  //     }
+  //     if (attractionIndex < this.attractions.length) {
+  //       this.mixedList.push({ type: 'attraction', data: this.attractions[attractionIndex] });
+  //       attractionIndex++;
+  //     }
+  //   }
+  // }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;

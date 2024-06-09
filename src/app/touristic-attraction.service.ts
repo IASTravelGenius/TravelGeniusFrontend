@@ -10,9 +10,9 @@ export const MOCK_ATTRACTIONS: Attraction[] = [
   new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg', ['beautiful', 'romantic'],
     ['assets/park1.jpg', 'assets/park2.jpg', 'assets/park3.jpg'], 
     [
-      new Review('A great park', 'I loved the park!', 5, 'I really enjoyed visting the park.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'park'),
-      new Review('Beautiful park', 'The park is beautiful.', 4, 'I loved the flowers in the park.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'park'),
-      new Review('The park is amazing', 'I had a great time in the park.', 2, 'I loved the animals in the park.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'park')
+      // new Review('A great park', 'I loved the park!', 5, 'I really enjoyed visting the park.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'park'),
+      // new Review('Beautiful park', 'The park is beautiful.', 4, 'I loved the flowers in the park.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'park'),
+      // new Review('The park is amazing', 'I had a great time in the park.', 2, 'I loved the animals in the park.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'park')
     ]
   )
 ];
