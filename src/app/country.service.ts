@@ -23,8 +23,8 @@ export class CountryService {
 
   getCountryById(id: string): Observable<Country> {
     // country= first part of id capitalised
-    const country = id.split('_')[0][0].toUpperCase() + id.split('_')[0].substr(1).toLowerCase();
-    const urlBackend = environment.backendUrl + "/countries/country=" + country;
+    // const country = id.split('_')[0][0].toUpperCase() + id.split('_')[0].substr(1).toLowerCase();
+    const urlBackend = environment.backendUrl + "/countries/country=" + id.split('_')[1];
     
     const headers_dict = {
       Authorization: 'Bearer ' + this.globalsService.getAccessToken(),
