@@ -95,3 +95,39 @@ button[mat-raised-button] {
 #submit-button {
   margin-bottom: 100px;
 }
+
+#tags-mat-form-field .mat-form-field-flex {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+#tags-mat-form-field .mat-form-field-outline-start,
+#tags-mat-form-field .mat-form-field-outline-end,
+#tags-mat-form-field .mat-form-field-outline-gap {
+  border: none;
+}
+
+#tags-mat-form-field .mat-form-field-outline {
+  border: none;
+}
+
+#tags-mat-form-field .mat-form-field-underline {
+  border: none;
+}
+
+#tags-mat-form-field .mat-input-element {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+#tags-mat-form-field .mat-form-field-infix {
+  padding: 0;
+  margin: 0;
+}
+
+#tags-mat-form-field .mat-form-field-wrapper {
+  padding-bottom: 0;
+}

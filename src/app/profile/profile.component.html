@@ -1,46 +1,65 @@
-<div class="profile-container">
-  <div class="profile-header">
-    <h2>{{ profile.username }}</h2>
+<div *ngIf="profile">
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <h2>{{ profile.username }}</h2>
     <div class="profile-pic-container" (click)="fileInput.click()">
-      <img [src]="profile.profilePic || 'assets/default-profile-pic.jpg'" alt="Profile Picture" class="profile-pic">
-      <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+      <img [src]="profile.profilePhoto.photoUrl || 'assets/default-profile-pic.jpg'" alt="Profile Picture" class="profile-pic">
+    <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
     </div>
   </div>
-  <div class="profile-details">
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="profile.description" (ngModelChange)="onInputChange()">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Country</mat-label>
-      <input type="text" matInput [formControl]="countryControl" [matAutocomplete]="autoCountry" (ngModelChange)="onInputChange()">
-      <mat-autocomplete #autoCountry="matAutocomplete" (optionSelected)="onCountrySelected($event)">
-        <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
-          {{ country }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>City</mat-label>
-      <input type="text" matInput [formControl]="cityControl" [matAutocomplete]="autoCity" (ngModelChange)="onInputChange()">
-      <mat-autocomplete #autoCity="matAutocomplete" (optionSelected)="onCitySelected($event)">
-        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-          {{ city }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </div>
-  <div class="profile-tags">
-    <h3>Our guess of your most interested tags?</h3>
-    <div class="tags">
-      <span *ngFor="let tag of profile.tags" class="tag">
-        {{ tag }} <button (click)="removeTag(tag)">x</button>
-      </span>
-    </div>
-    <div class="add-tag">
-      <input [(ngModel)]="newTag" placeholder="Add a new tag" (keyup.enter)="addTag()">
-      <button (click)="addTag()">Add Tag</button>
-    </div>
-  </div>
-  <button id="submit-button" mat-raised-button color="primary" [disabled]="!changesMade" (click)="submitChanges()">Submit Changes</button>
+<div class="profile-details">
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+  <input matInput [(ngModel)]="profile.description" (ngModelChange)="onInputChange()">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Country</mat-label>
+<input type="text" matInput [formControl]="countryControl" [matAutocomplete]="autoCountry" (ngModelChange)="onInputChange()">
+<mat-autocomplete #autoCountry="matAutocomplete" (optionSelected)="onCountrySelected($event)">
+  <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+    {{ country }}
+  </mat-option>
+</mat-autocomplete>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>City</mat-label>
+<input type="text" matInput [formControl]="cityControl" [matAutocomplete]="autoCity" (ngModelChange)="onInputChange()">
+<mat-autocomplete #autoCity="matAutocomplete" (optionSelected)="onCitySelected($event)">
+  <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+    {{ city }}
+  </mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</div>
+<div class="profile-tags">
+  <h3>Our guess of your most interested tags?</h3>
+<div class="tags">
+  <span *ngFor="let tag of profile.tags" class="tag">
+    {{ tag.tag }} <button (click)="removeTag(tag.id)">x</button>
+  </span>
+</div>
+
+<div class="add-tag">
+  <mat-form-field appearance="fill" id="tags-mat-form-field">
+    <mat-label>Add a new tag</mat-label>
+    <input type="text" matInput [formControl]="tagControl" [matAutocomplete]="autoTag">
+    <mat-autocomplete #autoTag="matAutocomplete" (optionSelected)="onTagSelected($event)">
+      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.tag">
+        {{ tag.tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button (click)="addTag()">Add Tag</button>
+</div>
+
+<!-- <div class="add-tag">
+  <input [(ngModel)]="newTag" placeholder="Add a new tag" (keyup.enter)="addTag()">
+<button (click)="addTag()">Add Tag</button>
+</div> -->
+
+</div>
+<button id="submit-button" mat-raised-button color="primary" [disabled]="!changesMade" (click)="submitChanges()">Submit Changes</button>
+</div>
+
 </div>
