@@ -31,9 +31,9 @@ export const MOCK_CITIES: City[] = [
       new News('News Title 3', 'This is an excerpt of the news 3.', 'Source 3', ['tag5', 'tag6'])
     ],
     [
-      new Review('A great city', 'I loved Paris!', 5, 'I really enjoyed visting Paris.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'paris'),
-      new Review('Beautiful city', 'Paris is a beautiful city.', 4, 'I loved the architecture in Paris.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'paris'),
-      new Review('Paris is amazing', 'I had a great time in Paris.', 5, 'I loved the food in Paris.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'paris')
+      // new Review('A great city', 'I loved Paris!', 5, 'I really enjoyed visting Paris.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'paris'),
+      // new Review('Beautiful city', 'Paris is a beautiful city.', 4, 'I loved the architecture in Paris.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'paris'),
+      // new Review('Paris is amazing', 'I had a great time in Paris.', 5, 'I loved the food in Paris.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'paris')
     ]
 
   
@@ -59,9 +59,9 @@ export const MOCK_CITIES: City[] = [
       new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4']),
     ],
     [
-      new Review('Great city', 'I loved Lyon!', 5, 'I really enjoyed visting Lyon.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'lyon'),
-      new Review('Beautiful city', 'Lyon is a beautiful city.', 4, 'I loved the architecture in Lyon.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'lyon'),
-      new Review('Lyon is amazing', 'I had a great time in Lyon.', 5, 'I loved the food in Lyon.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'lyon')
+      // new Review('Great city', 'I loved Lyon!', 5, 'I really enjoyed visting Lyon.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'lyon'),
+      // new Review('Beautiful city', 'Lyon is a beautiful city.', 4, 'I loved the architecture in Lyon.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'lyon'),
+      // new Review('Lyon is amazing', 'I had a great time in Lyon.', 5, 'I loved the food in Lyon.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'lyon')
     ]
   ),
 
@@ -87,11 +87,11 @@ export const MOCK_CITIES: City[] = [
       new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4'])
     ],
     [
-      new Review('Great city', 'I loved Rome!', 5, 'I really enjoyed visting Rome.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'rome'),
-      new Review('Beautiful city', 'Rome is a beautiful city.', 4, 'I loved the architecture in Rome.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'rome'),
-      new Review('Rome is amazing', 'I had a great time in Rome.', 5, 'I loved the food in Rome.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'rome'),
-      new Review('Rome is amazing', 'I had a great time in Rome.', 5, 'I loved the food in Rome.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'rome'),
-      new Review('Rome is amazing', 'I had a great time in Rome.', 5, 'I loved the food in Rome.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'rome')
+      // new Review('Great city', 'I loved Rome!', 5, 'I really enjoyed visting Rome.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'rome'),
+      // new Review('Beautiful city', 'Rome is a beautiful city.', 4, 'I loved the architecture in Rome.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'rome'),
+      // new Review('Rome is amazing', 'I had a great time in Rome.', 5, 'I loved the food in Rome.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'rome'),
+      // new Review('Rome is amazing', 'I had a great time in Rome.', 5, 'I loved the food in Rome.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'rome'),
+      // new Review('Rome is amazing', 'I had a great time in Rome.', 5, 'I loved the food in Rome.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'rome')
     ]
   ),
   new City(
@@ -115,9 +115,9 @@ export const MOCK_CITIES: City[] = [
       new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4']),
     ],
     [
-      new Review('Great city', 'I loved Milan!', 5, 'I really enjoyed visting Milan.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'milan'),
-      new Review('Beautiful city', 'Milan is a beautiful city.', 4, 'I loved the architecture in Milan.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'milan'),
-      new Review('Milan is amazing', 'I had a great time in Milan.', 5, 'I loved the food in Milan.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'milan')
+      // new Review('Great city', 'I loved Milan!', 5, 'I really enjoyed visting Milan.', new Date('2021-01-01'), 'John Doe', 'assets/download.jpeg', 'milan'),
+      // new Review('Beautiful city', 'Milan is a beautiful city.', 4, 'I loved the architecture in Milan.', new Date('2021-01-02'), 'Jane Doe', 'assets/download.jpeg', 'milan'),
+      // new Review('Milan is amazing', 'I had a great time in Milan.', 5, 'I loved the food in Milan.', new Date('2021-01-03'), 'Alice', 'assets/download.jpeg', 'milan')
     ]
   )
 ];

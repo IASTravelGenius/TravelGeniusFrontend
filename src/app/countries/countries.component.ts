@@ -16,13 +16,13 @@ export class CountriesComponent {
   isMenuOpen = false;
   lastAccessedPaths: { path: string, display: string }[] = [];
 
-menuItems = [
-    'Home',
-    'Countries',
-    'News',
-    'Flight',
-    'Must See'
-  ];
+// menuItems = [
+//     'Home',
+//     'Countries',
+//     'News',
+//     'Flight',
+//     'Must See'
+//   ];
 
   // countries = [
   //   { id: 'italy', name: 'Italy' },
