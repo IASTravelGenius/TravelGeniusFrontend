@@ -7,6 +7,8 @@ import { environment } from '../../environments/environment';
 import { GlobalsService } from '../globals.service';
 import { Profile } from '../models/profile.interface';
 import { Tag } from '../models/tag.interface';
+import { Country } from '../models/country';
+import { City } from '../models/city';
 import { Photo } from '../models/photo.interface';
 
 
@@ -29,19 +31,21 @@ export class ProfileComponent implements OnInit {
   profile: Profile | null = null;
 
   newTag: string = '';
-  countries: string[] = ['USA', 'Canada', 'UK', 'Germany', 'France'];
-  cities: { [key: string]: string[] } = {
-    USA: ['New York', 'Los Angeles', 'Chicago'],
-    Canada: ['Toronto', 'Vancouver', 'Montreal'],
-    UK: ['London', 'Manchester', 'Birmingham'],
-    Germany: ['Berlin', 'Hamburg', 'Munich'],
-    France: ['Paris', 'Lyon', 'Marseille']
-  };
+  countries: Country[] = [];
+  // countries: string[] = ['USA', 'Canada', 'UK', 'Germany', 'France'];
+  // cities: { [key: string]: string[] } = {
+  //   USA: ['New York', 'Los Angeles', 'Chicago'],
+  //   Canada: ['Toronto', 'Vancouver', 'Montreal'],
+  //   UK: ['London', 'Manchester', 'Birmingham'],
+  //   Germany: ['Berlin', 'Hamburg', 'Munich'],
+  //   France: ['Paris', 'Lyon', 'Marseille']
+  // };
+  cities: City[] = [];
 
   countryControl = new FormControl();
   cityControl = new FormControl();
-  filteredCountries: Observable<string[]>;
-  filteredCities: Observable<string[]>;
+  filteredCountries: Observable<Country[]>;
+  filteredCities: Observable<City[]>;
   changesMade: boolean = false;
   isMenuOpen = false;
   
@@ -62,7 +66,7 @@ export class ProfileComponent implements OnInit {
       map(value => this._filterCities(value))
     );
 
-    this.filteredTags = this.tagControl.valueChanges.pipe(
+    this.filteredTags = this.tagControl.valueChanges.pipe(  
       startWith(''),
       map(value => typeof value === 'string' ? value : value.name),
       map(value => this._filterTags(value))
@@ -82,22 +86,63 @@ export class ProfileComponent implements OnInit {
     );
 
     this.loadProfile();
+    this.loadAllCountries();
+    // this.countryControl.valueChanges.subscribe(value => {
+    //   this.cityControl.setValue('');
+    //   this.filteredCities = this.cityControl.valueChanges.pipe(
+    //     startWith(''),
+    //     map(cityValue => this._filterCities(value))
+    //   );
+    // });
+    // if (this.profile?.countryName !== '') {
+    //   const countryId = this.countries.find(c => c.name === this.profile?.countryName)?.id;
+    //   if (countryId) {
+    //     console.log("Caut dupa country id", countryId);
+    //     this.loadCities(countryId.toString());
+    //   }
+  
+    // }
     this.loadAllTags();
   }
 
 
-  private _filterCountries(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.countries.filter(country => country.toLowerCase().includes(filterValue));
+  private _filterCountries(value: string): Country[] {
+    const filterValue = (value || '').toLowerCase();
+    return this.countries.filter(country => country.name.toLowerCase().includes(filterValue));
   }
 
-  private _filterCities(value: string): string[] {
+  private _filterCities(value: string): City[] {
     const filterValue = (value || '').toLowerCase();
-    if (!this.profile?.countryName) {
-      return [];
-    }
-    return this.cities[this.profile.countryName]?.filter(city => city.toLowerCase().includes(filterValue)) || [];
+    console.log("Cities in filter", this.cities);
+    console.log("Filter value in filter", filterValue);
+    return this.cities.filter(city => city.name.toLowerCase().includes(filterValue));
   }
+
+  // private _filterCountries(value: Country): Country[] {
+  //   if (!value) {
+  //     return this.countries;
+  //   }
+  //   if (!value.name) {
+  //     return this.countries;
+  //   }
+  //   const filterValue = value.name.toLowerCase();
+  //   return this.countries.filter(country => country.name.toLowerCase().includes(filterValue));
+  // }
+
+  // private _filterCities(value: City): City[] {
+  //   if (!this.profile?.countryName) {
+  //     return [];
+  //   }
+  //   if (!value) {
+  //     return this.cities;
+  //   }
+  //   if (!value.name) {
+  //     return this.cities;
+  //   }
+  //   const filterValue = value.name.toLowerCase();
+  //   return this.cities.filter(city => city.name.toLowerCase().includes(filterValue));
+  //   // return this.cities[this.profile.countryName]?.filter(city => city.toLowerCase().includes(filterValue)) || [];
+  // }
 
   private _filterTags(value: string | Tag): Tag[] {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.tag.toLowerCase();
@@ -108,9 +153,22 @@ export class ProfileComponent implements OnInit {
 
   onCountrySelected(event: any): void {
     if (!this.profile) {
+      console.log("Nu am avut profile in country selected")
       return;
     }
+    console.log("Country selected", event.option.value);
     this.profile.countryName = event.option.value;
+    if (this.profile === null) {
+      console.log("Nu am avut profile in country selected")
+      return;
+    }
+    const countryId = this.countries.find(c => c.name === this.profile?.countryName)?.id;
+    if (countryId === null || countryId === undefined) {
+      console.log("Nu am gasit country id pentru tara selectata");
+      return;
+    }
+    console.log("Country id in country selected", countryId);
+    this.loadCities(countryId.toString());
     this.cityControl.setValue('');
     this.filteredCities = this.cityControl.valueChanges.pipe(
       startWith(''),
@@ -121,9 +179,12 @@ export class ProfileComponent implements OnInit {
 
   onCitySelected(event: any): void {
     if (!this.profile) {
+      console.log("Nu am avut profile in city selected")
       return;
     }
-    this.profile.cityName = event.option.value;
+    console.log("City selected", event.option.value.name);
+    this.profile.cityName = event.option.value.name;
+    console.log("City selected", this.profile.cityName);
     // this.profile?.cityName = event.option.value;
     this.changesMade = true;
   }
@@ -243,6 +304,57 @@ export class ProfileComponent implements OnInit {
     ).subscribe(tags => {
       this.allTags = tags;
       console.log('All tags:', this.allTags);
+    });
+  }
+
+  loadAllCountries(): void {
+    const urlBackend = environment.backendUrl + "/countries";
+    const headers_dict = {
+      'Authorization': 'Bearer ' + this.globalsService.getAccessToken(),
+    }
+
+    const options = {
+      headers: new HttpHeaders(headers_dict),
+      observe: 'response' as 'response'  // Correct usage for the observe option
+    };
+
+    this.http.get<Country[]>(urlBackend, options).pipe(
+      map(response => {
+        console.log('Countries response:', response);
+        return response.body as Country[]}),
+      catchError(error => {
+        console.error('Backend error:', error);
+        return throwError(error);
+      })
+    ).subscribe(countries => {
+      this.countries = countries;
+      console.log('Countries:', this.countries);
+    });
+  }
+
+  loadCities(countryId: string): void {
+    console.log("Incarc orasele pentru tara cu id", countryId);
+    const urlBackend = environment.backendUrl + "/cities/country=" + countryId;
+    const headers_dict = {
+      Authorization: 'Bearer ' + this.globalsService.getAccessToken(),
+    };
+
+    const options = {
+      headers: new HttpHeaders(headers_dict),
+      observe: 'response' as 'response', // Correct usage for the observe option
+    };
+
+    this.http.get<City[]>(urlBackend, options).pipe(
+      map(response => {
+        console.log('Cities response:', response);
+        return response.body as City[]}),
+      catchError(error => {
+        console.error('Backend error:', error);
+        return throwError(error);
+      })
+    ).subscribe(cities => {
+      this.cities = cities;
+      console.log('Cities:', this.cities);
     });
   }
 
