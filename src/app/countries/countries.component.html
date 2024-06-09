@@ -23,14 +23,26 @@
         <section id="top-countries">
             <h2>Top Countries</h2>
             <ul id="top-countries-list">
-                <li class="top-country-item" *ngFor="let country of countries">
+                <li class="top-country-item" *ngFor="let country of countries; let i = index;">
                     <div class="country-info">
-                        <p class="country-name"><a [routerLink]="['/countries', country.id]">{{country.name}}</a></p>
-                        <p class="country-text">Italy is a nice country</p>
+                        <p class="country-name"><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id.toString()]">{{country.name}}</a></p>
+                        <p class="country-text">{{country.description}}</p>
+                        <!-- <p class="country-text">Italy is a nice country</p> -->
                     </div>
                     <div class="country-details">
-                        <img class="country-flag" src="assets/Flag_of_Italy.svg" alt="Flag of Italy">
-                        <p class="country-rating">86</p>
+                        <!-- <img class="country-flag" src="assets/Flag_of_Italy.svg" alt="Flag of Italy"> -->
+                        <img class="country-flag" src={{country.mainPhoto.photoUrl}} alt={{country.mainPhoto.source}}>
+                        <p class="country-rating"
+                           [ngClass]="{
+                              'gold': i === 0,
+                              'silver': i === 1,
+                              'bronze': i === 2,
+                              'light-blue': i > 2
+                           }">
+                           {{country.rating}}
+                        </p>
+                        <!-- <p class="country-rating">{{country.rating}}</p> -->
+                        <!-- <p class="country-rating">86</p> -->
                     </div>
                 </li>
             </ul>
@@ -39,10 +51,12 @@
         <section id="best-deals"  [ngClass]="{'best-deals-lowered': isDropdownOpen}">
             <h2>Best Deals</h2>
             <ul id="best-deals-list">
-                <li class="best-deals-item" *ngFor="let deal of menuItems.slice(0, 3)">
+                <li class="best-deals-item" *ngFor="let deal of deals.slice(0, 3)">
                     <div class="deal-info">
-                        <p class="deal-title">E moca bro!</p>
-                        <p class="deal-text">Egipt is now on sale!</p>
+                        <p class="deal-title"> {{deal.title}} </p>
+                        <p class="deal-text"> {{deal.description}} </p>
+                        <!-- <p class="deal-title">E moca bro!</p>
+                        <p class="deal-text">Egipt is now on sale!</p> -->
                     </div>
                 </li>
             </ul>

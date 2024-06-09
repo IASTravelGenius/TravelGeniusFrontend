@@ -96,3 +96,20 @@ li {
     text-align: center;
     box-shadow: 0 0 0.3vw rgba(0, 0, 0, 0.2);
 }
+
+
+.gold {
+    background: gold;
+}
+
+.silver {
+    background: silver;
+}
+
+.bronze {
+    background: #cd7f32;
+}
+
+.light-blue {
+    background: lightblue;
+}
