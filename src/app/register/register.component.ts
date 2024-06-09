@@ -130,7 +130,7 @@ export class RegisterComponent implements OnInit {
       };
 
       const url = environment.authenticationServiceUrl + '/authService/register';
-      const urlBackend = environment.backendUrl + '/register';
+      const urlBackend = environment.backendUrl + '/user/register';
 
       this.http.post(url, requestBody, { observe: 'response' }).subscribe((response: any) => {
         console.log(response.status);

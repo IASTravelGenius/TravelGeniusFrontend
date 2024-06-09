@@ -45,18 +45,10 @@ export class ProfileComponent implements OnInit {
   changesMade: boolean = false;
   isMenuOpen = false;
   
-  allTags: Tag[] = [
-    { id: 1, name: 'travel' },
-    { id: 2, name: 'food' },
-    { id: 3, name: 'photography' },
-    { id: 4, name: 'nature' },
-    { id: 5, name: 'sports' },
-    { id: 6, name: 'music' },
-    { id: 7, name: 'art' },
-    { id: 8, name: 'fashion' },
-    { id: 9, name: 'fitness' },
-    { id: 10, name: 'books' }
-  ];
+  tagControl = new FormControl();
+  filteredTags: Observable<Tag[]>;
+
+  allTags: Tag[] = [];
 
   isDropdownOpen = false;
 
@@ -68,6 +60,12 @@ export class ProfileComponent implements OnInit {
     this.filteredCities = this.cityControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filterCities(value))
+    );
+
+    this.filteredTags = this.tagControl.valueChanges.pipe(
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(value => this._filterTags(value))
     );
   }
 
@@ -94,12 +92,19 @@ export class ProfileComponent implements OnInit {
   }
 
   private _filterCities(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = (value || '').toLowerCase();
     if (!this.profile?.countryName) {
       return [];
     }
     return this.cities[this.profile.countryName]?.filter(city => city.toLowerCase().includes(filterValue)) || [];
   }
+
+  private _filterTags(value: string | Tag): Tag[] {
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.tag.toLowerCase();
+    console.log("All tags in filter", this.allTags);
+    return this.allTags.filter(tag => tag.tag.toLowerCase().includes(filterValue));
+  }
+  
 
   onCountrySelected(event: any): void {
     if (!this.profile) {
@@ -123,6 +128,16 @@ export class ProfileComponent implements OnInit {
     this.changesMade = true;
   }
 
+  onTagSelected(event: any): void {
+    if (!this.profile) {
+      console.log("Nu am avut profile in tag selected")
+      return;
+    }
+    console.log("Tag selected", event.option);
+    this.newTag = event.option.value;
+    console.log("Tag selected", this.newTag);
+  }
+
   removeTag(tagId: number): void {
     if (!this.profile) {
       return;
@@ -132,18 +147,29 @@ export class ProfileComponent implements OnInit {
   }
 
   addTag(): void {
+    console.log('Adding tag', this.newTag);
     if (!this.profile) {
+      console.log('No profile');
       return;
     }
 
-    if (this.newTag.trim() && !this.profile.tags.find(t => t.name === this.newTag)) {
-      const newTag = this.allTags.find(t => t.name === this.newTag);
+    if (this.newTag.trim() && !this.profile.tags.find(t => t.tag === this.newTag)) {
+      const newTag = this.allTags.find(t => t.tag === this.newTag);
       if (newTag) {
         this.profile.tags.push(newTag);
         this.newTag = '';
         this.changesMade = true;
       }
     }
+
+    // if (this.newTag.trim() && !this.profile.tags.find(t => t.tag === this.newTag)) {
+    //   const newTag = this.allTags.find(t => t.tag === this.newTag);
+    //   if (newTag) {
+    //     this.profile.tags.push(newTag);
+    //     this.newTag = '';
+    //     this.changesMade = true;
+    //   }
+    // }
     
     // if (this.newTag.trim() && !this.profile.tags.includes(this.newTag)) {
     //   this.profile.tags.push(this.newTag);
@@ -172,7 +198,7 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfile(): void {
-    const urlBackend = environment.backendUrl + "/completeProfile";
+    const urlBackend = environment.backendUrl + "/user/completeProfile";
     const headers_dict = {
       'Authorization': 'Bearer ' + this.globalsService.getAccessToken(),
     }
@@ -216,10 +242,12 @@ export class ProfileComponent implements OnInit {
       })
     ).subscribe(tags => {
       this.allTags = tags;
+      console.log('All tags:', this.allTags);
     });
   }
 
   submitChanges(): void {
+    console.log(this.filteredTags);
     console.log('Profile updated successfully', this.profile);
     this.changesMade = false;
     // const url = `${environment.apiUrl}/profile/update`;
