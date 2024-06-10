@@ -131,3 +131,90 @@ button[mat-raised-button] {
 #tags-mat-form-field .mat-form-field-wrapper {
   padding-bottom: 0;
 }
+
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* .profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-details {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-tags {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+} */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  padding: 5px 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  transition: background-color 0.3s;
+}
+
+.tag:hover {
+  background-color: #d0d0d0;
+}
+
+.drag-preview {
+  padding: 5px 10px;
+  background-color: #c0c0c0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.drag-placeholder {
+  background-color: #f0f0f0;
+  border: 2px dashed #aaa;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cdk-drag-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

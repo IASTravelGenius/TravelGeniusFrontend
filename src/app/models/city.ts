@@ -1,6 +1,7 @@
 import { Attraction } from './attraction';
 import { News } from './news';
 import { Review } from './review';
+import { Tag } from './tag.interface';
 
 export class City {
   constructor(
@@ -10,7 +11,7 @@ export class City {
     public mainPhotoUrl: string,
     public population: number,
     public photos: string[],
-    public tags: string[],
+    public tags: Tag[],
     public attractions: Attraction[],
     public news: News[],
     public reviews: Review[],

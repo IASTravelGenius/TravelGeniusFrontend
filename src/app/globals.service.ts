@@ -45,6 +45,10 @@ export class GlobalsService {
   }
 
   getAccessToken(): string | null {
+    if (!localStorage.getItem(this.accessTokenKey)) {
+      console.log('Access token is null');
+      return 'default';
+    }
     return localStorage.getItem(this.accessTokenKey);
   }
 
