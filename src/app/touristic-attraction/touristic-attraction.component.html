@@ -13,11 +13,11 @@
     <main>
       <section id="attraction-info">
         <h2>{{ attraction.name }}</h2>
-        <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-main-photo">
+        <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-main-photo">
         <p id="attraction-description">{{ attraction.description }}</p>
         <div class="tags">
           <span>Tags: </span>
-          <span *ngFor="let tag of attraction.tags" class="tag">{{ tag }}</span>
+          <span *ngFor="let tag of attraction.tags" class="tag">{{ tag.tag }}</span>
         </div>
         <div class="photos">
           <img *ngFor="let photo of attraction.photos" [src]="photo" alt="Attraction Photo" class="attraction-photo">

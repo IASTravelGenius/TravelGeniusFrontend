@@ -9,6 +9,7 @@ import { GlobalsService } from './globals.service';
 import { throwError } from 'rxjs';
 import { News } from './models/news';
 import { environment } from 'src/environments/environment';
+import { TouristicAttraction } from './models/touristic-attraction';
 
 export const MOCK_CITIES: City[] = [
   new City(
@@ -26,10 +27,11 @@ export const MOCK_CITIES: City[] = [
     ],
     [],
     // ['romantic', 'historic'],
-    [
-      new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
-      new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg')
-    ],
+    [],
+    // [
+    //   new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
+    //   new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg')
+    // ],
     [
       new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
       new News('News Title 2', 'This is an excerpt of the news 2.', 'Source 2', ['tag3', 'tag4']),
@@ -57,8 +59,8 @@ export const MOCK_CITIES: City[] = [
     [],
     // ['gastronomy', 'history'],
     [
-      new Attraction('basilica', 'Basilica of Notre-Dame de Fourvière', 'A minor basilica in Lyon.', 'assets/basilica.jpg'),
-      new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg')
+      // new Attraction('basilica', 'Basilica of Notre-Dame de Fourvière', 'A minor basilica in Lyon.', 'assets/basilica.jpg'),
+      // new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg')
     ],
     [
       new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
@@ -86,8 +88,8 @@ export const MOCK_CITIES: City[] = [
     // ['historic', 'artistic', 'religious', 'romantic', 'culinary'],
   
     [
-      new Attraction('colosseum', 'Colosseum', 'An ancient amphitheater in Rome.', 'assets/colosseum.jpg'),
-      new Attraction('vatican', 'Vatican Museums', 'Christian and art museums located within Vatican City.', 'assets/vatican.jpg')
+      // new Attraction('colosseum', 'Colosseum', 'An ancient amphitheater in Rome.', 'assets/colosseum.jpg'),
+      // new Attraction('vatican', 'Vatican Museums', 'Christian and art museums located within Vatican City.', 'assets/vatican.jpg')
     ],
     [
       new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
@@ -115,8 +117,8 @@ export const MOCK_CITIES: City[] = [
     [],
     // ['fashion', 'design', 'art', 'finance'],
     [
-      new Attraction('duomo', 'Duomo di Milano', 'The Cathedral Church of Milan.', 'assets/duomo.jpg'),
-      new Attraction('gallery', 'Galleria Vittorio Emanuele II', 'A shopping gallery in Milan.', 'assets/gallery.jpg')
+      // new Attraction('duomo', 'Duomo di Milano', 'The Cathedral Church of Milan.', 'assets/duomo.jpg'),
+      // new Attraction('gallery', 'Galleria Vittorio Emanuele II', 'A shopping gallery in Milan.', 'assets/gallery.jpg')
     ],
     [
       new News('News Title 1', 'This is an excerpt of the news 1.', 'Source 1', ['tag1', 'tag2']),
@@ -187,11 +189,12 @@ export class CityService {
     // return this.http.get<City>(`/api/cities/${cityId}`);
   }
 
-  getAttractionsByCityId(cityId: string): Observable<Attraction[]> {
-    const city = MOCK_CITIES.find(c => c.id === cityId);
-    return of(city ? city.attractions : []);
-    // return this.http.get<Attraction[]>(`/api/cities/${cityId}/attractions`);
-  }
+  // getAttractionsByCityId(cityId: string): Observable<TouristicAttraction[]> {
+  //   return 
+  //   // const city = MOCK_CITIES.find(c => c.id === cityId);
+  //   // return of(city ? city.attractions : []);
+  //   // return this.http.get<Attraction[]>(`/api/cities/${cityId}/attractions`);
+  // }
 
 
 }

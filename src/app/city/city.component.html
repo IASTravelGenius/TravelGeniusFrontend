@@ -27,9 +27,9 @@
       <section id="tourist-attractions">
         <h3>Touristic Attractions</h3>
         <ul>
-          <li *ngFor="let attraction of city.attractions">
-            <h4><a [routerLink]="['/countries', countryId, 'ta', attraction.id]">{{ attraction.name }}</a></h4>
-            <img [src]="attraction.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+          <li *ngFor="let attraction of city.touristicAttractions">
+            <h4><a [routerLink]="['/countries', countryId, 'ta', attraction.name + '_' +  attraction.id.toString()]">{{ attraction.name }}</a></h4>
+            <img [src]="attraction.mainPhotoUrl.source" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-photo">
           </li>
         </ul>
       </section>

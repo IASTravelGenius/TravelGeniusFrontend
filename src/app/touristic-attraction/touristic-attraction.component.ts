@@ -6,6 +6,7 @@ import { Deal } from '../models/deal';
 import { GlobalsService } from '../globals.service';
 import { LastAccessedService } from '../last-accessed.service';
 import { DealsService } from '../deals.service';
+import { TouristicAttraction } from '../models/touristic-attraction';
 
 @Component({
   selector: 'app-touristic-attraction',
@@ -13,7 +14,28 @@ import { DealsService } from '../deals.service';
   styleUrls: ['./touristic-attraction.component.css']
 })
 export class TouristicAttractionComponent implements OnInit {
-  attraction: Attraction = new Attraction('Not found', 'Not Found', 'Not found', 'Not found', [], [], []);
+  attraction: TouristicAttraction = {
+    name: 'Not found',
+    id: 0,
+    description: 'Not found',
+    tags: [],
+    matchingFactor: 0,
+    latitude: 0,
+    longitude: 0,
+    countryName: 'Not found',
+    mainPhotoUrl: {
+      id: 0,
+      photoUrl: '',
+      source: ''
+    },
+    photos: [],
+    reviews: [],
+    type: 'Not found',
+    cityName: 'Not found',
+    cityId: 0,
+  
+  };
+  
   deals: Deal[] = [];
   isMenuOpen = false;
   isDropdownOpen = false;
