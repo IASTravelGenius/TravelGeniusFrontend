@@ -15,9 +15,9 @@ import { DealsService } from '../deals.service';
 })
 export class CityComponent implements OnInit {
   city: City = new City('Not found', 'Not Found', 'Not found', 'Not found', 0, [], [], [], [], []);
-  attractions: Attraction[] = [];
+  // attractions: Attraction[] = [];
   news: any[] = [];
-  reviews: any[] = [];
+  // reviews: any[] = [];
   deals: Deal[] = [];
   isMenuOpen = false;
   isDropdownOpen = false;
@@ -54,15 +54,15 @@ export class CityComponent implements OnInit {
       console.error('Error loading city data:', error);
     });
 
-    this.cityService.getAttractionsByCityId(cityId).subscribe(attractions => {
-      this.attractions = attractions;
-    }, error => {
-      console.error('Error loading attractions:', error);
-    });
+    // this.cityService.getAttractionsByCityId(cityId).subscribe(attractions => {
+    //   this.attractions = attractions;
+    // }, error => {
+    //   console.error('Error loading attractions:', error);
+    // });
 
     // Load news and reviews for the city
     this.loadNews(cityId);
-    this.loadReviews(cityId);
+    // this.loadReviews(cityId);
   }
 
   loadNews(cityId: string): void {
@@ -73,13 +73,13 @@ export class CityComponent implements OnInit {
     ];
   }
 
-  loadReviews(cityId: string): void {
-    // Mock data for now
-    this.reviews = [
-      { title: 'Great City!', stars: 5, text: 'This city is amazing!', date: new Date(), author: { username: 'JohnDoe', photoUrl: 'author1.jpg' } },
-      { title: 'Nice Place', stars: 4, text: 'I enjoyed my visit.', date: new Date(), author: { username: 'JaneDoe', photoUrl: 'author2.jpg' } }
-    ];
-  }
+  // loadReviews(cityId: string): void {
+  //   // Mock data for now
+  //   // this.reviews = [
+  //   //   { title: 'Great City!', stars: 5, text: 'This city is amazing!', date: new Date(), author: { username: 'JohnDoe', photoUrl: 'author1.jpg' } },
+  //   //   { title: 'Nice Place', stars: 4, text: 'I enjoyed my visit.', date: new Date(), author: { username: 'JaneDoe', photoUrl: 'author2.jpg' } }
+  //   // ];
+  // }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
