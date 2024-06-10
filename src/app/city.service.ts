@@ -3,8 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { City } from './models/city';
 import { Attraction } from './models/attraction';
-import { Review } from './models/review';
+import { catchError, map } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
+import { GlobalsService } from './globals.service';
+import { throwError } from 'rxjs';
 import { News } from './models/news';
+import { environment } from 'src/environments/environment';
 
 export const MOCK_CITIES: City[] = [
   new City(
@@ -138,7 +142,7 @@ export const MOCK_CITIES: City[] = [
 })
 export class CityService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private globalsService: GlobalsService) { }
 
   getCities(countryId: string): Observable<City[]> {
     return of(MOCK_CITIES.sort((a, b) => b.population - a.population));
@@ -150,13 +154,36 @@ export class CityService {
     // return this.http.get<Attraction[]>(`/api/countries/${countryId}/attractions`);
   }
 
-  getCityById(cityId: string): Observable<City> {
-    console.log(cityId);
-    var city = MOCK_CITIES.find(c => c.id === cityId);
-    if (city === undefined) {
-      city =  new City(cityId, cityId[0].toUpperCase() + cityId.substr(1).toLowerCase(), '', '', 0, [], [], [], [], []);
-    }
-    return of(city)
+  getCityById(cityParameter: string): Observable<City> {
+    // console.log(cityId);
+    // var city = MOCK_CITIES.find(c => c.id === cityId);
+    // if (city === undefined) {
+    //   city =  new City(cityId, cityId[0].toUpperCase() + cityId.substr(1).toLowerCase(), '', '', 0, [], [], [], [], []);
+    // }
+    // return of(city)
+    const cityId = cityParameter.split('_')[1];
+    const urlBackend = environment.backendUrl + "/cities/city=" + cityId;
+
+    const headers_dict = {
+      Authorization: 'Bearer ' + this.globalsService.getAccessToken(),
+    };
+
+    const options = {
+      headers: new HttpHeaders(headers_dict),
+      observe: 'response' as 'response', // Correct usage for the observe option
+    };
+
+    return this.http.get<City>(urlBackend, options).pipe(
+      map((response) => {
+        console.log('City response:', response);
+        return response.body as City;
+      }),
+      catchError((error) => {
+        console.error('Backend error:', error);
+        return throwError(error);
+      })
+    );
+
     // return this.http.get<City>(`/api/cities/${cityId}`);
   }
 
