@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsModule
 import { FormsModule } from '@angular/forms';  // Import FormsModule
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,7 +60,8 @@ import { TouristicAttractionsResultsComponent } from './touristic-attractions-re
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

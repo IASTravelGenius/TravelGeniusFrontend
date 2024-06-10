@@ -20,7 +20,8 @@ export const MOCK_CITIES: City[] = [
       'assets/paris2.jpg',
       'assets/paris3.jpg'
     ],
-    ['romantic', 'historic'],
+    [],
+    // ['romantic', 'historic'],
     [
       new Attraction('eiffel', 'Eiffel Tower', 'An iconic symbol of France.', 'assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg'),
       new Attraction('louvre', 'Louvre Museum', 'The world\'s largest art museum.', 'assets/colosseum.jpg')
@@ -49,7 +50,8 @@ export const MOCK_CITIES: City[] = [
       'assets/lyon2.jpg',
       'assets/lyon3.jpg'
     ],
-    ['gastronomy', 'history'],
+    [],
+    // ['gastronomy', 'history'],
     [
       new Attraction('basilica', 'Basilica of Notre-Dame de Fourvière', 'A minor basilica in Lyon.', 'assets/basilica.jpg'),
       new Attraction('park', 'Parc de la Tête d\'Or', 'A large urban park in Lyon.', 'assets/park.jpg')
@@ -76,7 +78,8 @@ export const MOCK_CITIES: City[] = [
       'assets/rome2.jpg',
       'assets/rome3.jpg'
     ],
-    ['historic', 'artistic', 'religious', 'romantic', 'culinary'],
+    [],
+    // ['historic', 'artistic', 'religious', 'romantic', 'culinary'],
   
     [
       new Attraction('colosseum', 'Colosseum', 'An ancient amphitheater in Rome.', 'assets/colosseum.jpg'),
@@ -105,7 +108,8 @@ export const MOCK_CITIES: City[] = [
       'assets/milan2.jpg',
       'assets/milan3.jpg'
     ],
-    ['fashion', 'design', 'art', 'finance'],
+    [],
+    // ['fashion', 'design', 'art', 'finance'],
     [
       new Attraction('duomo', 'Duomo di Milano', 'The Cathedral Church of Milan.', 'assets/duomo.jpg'),
       new Attraction('gallery', 'Galleria Vittorio Emanuele II', 'A shopping gallery in Milan.', 'assets/gallery.jpg')
