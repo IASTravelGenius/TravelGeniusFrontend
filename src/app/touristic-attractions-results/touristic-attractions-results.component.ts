@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TouristicAttractionService } from '../touristic-attraction.service';
-import { Attraction } from '../models/attraction';
+import { TouristicAttraction } from '../models/touristic-attraction';
 import { Deal } from '../models/deal';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalsService } from '../globals.service';
@@ -16,7 +16,7 @@ declare const google: any;
   styleUrls: ['./touristic-attractions-results.component.css']
 })
 export class TouristicAttractionsResultsComponent implements OnInit {
-  attractions: Attraction[] = [];
+  attractions: TouristicAttraction[] = [];
   deals: Deal[] = [];
   isMenuOpen = false;
   isDropdownOpen = false;
@@ -49,6 +49,7 @@ export class TouristicAttractionsResultsComponent implements OnInit {
       if (this.latitude && this.longitude && this.range) {
         this.attractionService.getAttractionsByCoordinates(this.latitude, this.longitude, this.range)
           .subscribe(attractions => {
+            console.log('attractions:', attractions)
             this.attractions = attractions;
             this.showMap = false;
           }, error => {
