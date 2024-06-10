@@ -17,7 +17,7 @@
         <p id="city-description">{{ city.description }}</p>
         <div class="tags">
           <span>Tags: </span>
-          <span *ngFor="let tag of city.tags" class="tag">{{ tag }}</span>
+          <span *ngFor="let tag of city.tags" class="tag">{{ tag.tag }}</span>
         </div>
         <div class="photos">
           <img *ngFor="let photo of city.photos" [src]="photo" alt="City Photo" class="city-photo">
