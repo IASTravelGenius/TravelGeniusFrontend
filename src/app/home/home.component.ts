@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { GlobalsService } from '../globals.service';
 import { LastAccessedService } from '../last-accessed.service';
+import { HomeEntity } from '../models/home-entity';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -19,9 +22,9 @@ export class HomeComponent {
   ];
   isDropdownOpen = false;
   lastAccessedPaths: { path: string, display: string }[] = [];
-  topArticles: any = [];
+  topArticles: HomeEntity[] = [];
 
-  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService) {}
+  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private http: HttpClient) {}
 
   ngOnInit() {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
@@ -31,8 +34,32 @@ export class HomeComponent {
     this.lastAccessedService.lastAccessed$.subscribe(paths => {
       this.lastAccessedPaths = paths;
     });
+
+    this.loadArticles();
   }
   
+  loadArticles() {
+    //we will directly call the backend and load the articles
+    const url = environment.backendUrl + '/home';
+
+    const headers_dict = {
+      Authorization: 'Bearer ' + this.globalsService.getAccessToken()
+    }
+
+    const options = {
+      headers: headers_dict,
+      observe: 'response' as 'response'
+    }
+
+    this.http.get<HomeEntity[]>(url, options).subscribe(response => {
+      console.log('Articles response:', response);
+      this.topArticles = response.body as HomeEntity[];
+      console.log('Top articles:', this.topArticles);
+    }, error => {
+      console.error('Error loading articles:', error);
+    });
+  }
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }

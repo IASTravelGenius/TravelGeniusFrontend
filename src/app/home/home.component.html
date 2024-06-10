@@ -21,6 +21,19 @@
 
     <main>
         <section id="top-articles">
+            <h2>Top Destinations</h2>
+            <ul id="top-articles-list">
+                <li class="top-article-item" *ngFor="let destination of topArticles">
+                    <div id="article-info">
+                        <p id="article-title">{{ destination.name }}</p>
+                        <p id="article-text">{{ destination.description }}</p>
+                    </div>
+                    <img id="image-part" [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}">
+                </li>
+            </ul>
+        </section>
+        
+        <!-- <section id="top-articles">
             <h2>Top Articles</h2>
             <ul id="top-articles-list">
                 <li class="top-article-item">
@@ -45,7 +58,7 @@
                     <img id="image-part" src="assets/640px-Tour_Eiffel_Wikimedia_Commons_(cropped).jpg" alt="Eiffel Tower">
                 </li>
             </ul>
-        </section>
+        </section> -->
 
         <section id="best-deals" [ngClass]="{'best-deals-lowered': isDropdownOpen}">
             <h2>Best Deals</h2>
