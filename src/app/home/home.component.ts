@@ -19,6 +19,7 @@ export class HomeComponent {
   ];
   isDropdownOpen = false;
   lastAccessedPaths: { path: string, display: string }[] = [];
+  topArticles: any = [];
 
   constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService) {}
 

@@ -14,7 +14,7 @@ import { DealsService } from '../deals.service';
   styleUrls: ['./city.component.css']
 })
 export class CityComponent implements OnInit {
-  city: City = new City('Not found', 'Not Found', 'Not found', 'Not found', 0, [], [], [], [], []);
+  city: City = new City('Not found', 'Not Found', 'Not found', 'Not found', 0, [], [], [], [], [], 'Not found', 0);
   // attractions: Attraction[] = [];
   news: any[] = [];
   // reviews: any[] = [];

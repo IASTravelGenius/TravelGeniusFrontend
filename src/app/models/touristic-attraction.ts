@@ -17,4 +17,5 @@ export interface TouristicAttraction {
   type: string;
   cityName: string;
   cityId: number;
+  countryId: number;
 }

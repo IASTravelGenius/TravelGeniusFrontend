@@ -16,5 +16,7 @@ export class City {
     public touristicAttractions: TouristicAttraction[],
     public news: News[],
     public reviews: Review[],
+    public countryName: string,
+    public countryId: number,
   ) {}
 }
