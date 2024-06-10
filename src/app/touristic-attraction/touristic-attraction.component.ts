@@ -33,6 +33,7 @@ export class TouristicAttractionComponent implements OnInit {
     type: 'Not found',
     cityName: 'Not found',
     cityId: 0,
+    countryId: 0
   
   };
   
