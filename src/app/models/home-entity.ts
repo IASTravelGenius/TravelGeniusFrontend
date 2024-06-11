@@ -17,6 +17,7 @@ export class HomeEntity {
     type: string;
     cityName: string;
     cityId: number;
+    countryId: number;
 
     constructor(data: any) {
         this.name = data.name;
@@ -44,7 +45,8 @@ export class HomeEntity {
         this.reviews = data.reviews;
         this.type = data.type;
         this.cityName = data.cityName;
-        this.cityId = data.city
+        this.cityId = data.cityId;
+        this.countryId = data.countryId;
     }
   
 }

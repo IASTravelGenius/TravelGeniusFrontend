@@ -4,6 +4,8 @@ import { LastAccessedService } from '../last-accessed.service';
 import { HomeEntity } from '../models/home-entity';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Destination } from '../models/destination.interface';
 
 
 @Component({
@@ -24,7 +26,7 @@ export class HomeComponent {
   lastAccessedPaths: { path: string, display: string }[] = [];
   topArticles: HomeEntity[] = [];
 
-  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private http: HttpClient) {}
+  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
@@ -58,6 +60,22 @@ export class HomeComponent {
     }, error => {
       console.error('Error loading articles:', error);
     });
+  }
+
+  navigateToDestination(destination: HomeEntity) {
+    console.log('Navigating to destination:', destination, destination.type)
+    if(destination.type === 'city') {
+      this.router.navigate(['/countries', destination.countryName.toLowerCase() + '_' + destination.countryId, destination.name.toLowerCase() + '_' + destination.id]);
+      return;
+    }
+    if (destination.type === 'touristicAttraction') {
+      this.router.navigate(['/countries', destination.countryName.toLowerCase() + '_' + destination.countryId, 'ta',  destination.name.toLowerCase() + '_' + destination.id]);
+      return;
+    } else {
+      this.router.navigate(['/countries', destination.name.toLowerCase() + '_' + destination.id]);
+    
+    }
+
   }
 
   toggleMenu() {

@@ -97,6 +97,9 @@ li {
     font-size: 1.5vw;
     font-weight: bold;
     color: #007BFF;
+
+
+
 }
 
 #article-text {
@@ -120,4 +123,9 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
+}
+
+.hover-effect-underline:hover {
+    text-decoration: underline;
+    color: #0056b3
 }
