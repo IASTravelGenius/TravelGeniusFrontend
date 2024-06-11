@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
 import { ReactiveFormsModule } from '@angular/forms';  // Import ReactiveFormsModule
 import { FormsModule } from '@angular/forms';  // Import FormsModule
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSliderModule } from '@angular/material/slider';
+// import { MatSliderValueAccessor } from './mat-slider-accessor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component';
 import { TouristicAttractionsAllComponent } from './touristic-attractions-all/touristic-attractions-all.component';
-import { TouristicAttractionsResultsComponent } from './touristic-attractions-results/touristic-attractions-results.component'; // Import MatAutocompleteModule
+import { TouristicAttractionsResultsComponent } from './touristic-attractions-results/touristic-attractions-results.component';
+import { MatSliderAccessorDirective } from './mat-slider-accessor.directive';
+import { StarRatingComponent } from './star-rating/star-rating.component'; // Import MatAutocompleteModule
 
 
 @NgModule({
@@ -47,7 +51,9 @@ import { TouristicAttractionsResultsComponent } from './touristic-attractions-re
     SettingsComponent,
     TouristicAttractionComponent,
     TouristicAttractionsAllComponent,
-    TouristicAttractionsResultsComponent
+    TouristicAttractionsResultsComponent,
+    MatSliderAccessorDirective,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,9 @@ import { TouristicAttractionsResultsComponent } from './touristic-attractions-re
     MatFormFieldModule,
     MatButtonModule,
     MatAutocompleteModule,
-    DragDropModule
+    DragDropModule,
+    MatSliderModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

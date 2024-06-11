@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CityService } from '../city.service';
 import { City } from '../models/city';
-import { Attraction } from '../models/attraction';
+import { Review } from '../models/review';
 import { Deal } from '../models/deal';
 import { GlobalsService } from '../globals.service';
 import { LastAccessedService } from '../last-accessed.service';
 import { DealsService } from '../deals.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-city',
@@ -24,8 +27,11 @@ export class CityComponent implements OnInit {
   lastAccessedPaths: any[] = [];
   countryId = '';
 
+  newReview: Review = { title: '', text: '', rating: 0, username: '', userPhoto: { id: 0, photoUrl: '', source: '' }, publishingDate: '' };
+
+
   constructor(private route: ActivatedRoute, private cityService: CityService, private globalsService: GlobalsService, 
-    private lastAccessedService: LastAccessedService, private dealsService: DealsService
+    private lastAccessedService: LastAccessedService, private dealsService: DealsService, private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -72,6 +78,26 @@ export class CityComponent implements OnInit {
       { title: 'News Title 2', excerpt: 'This is an excerpt of the news 2.' }
     ];
   }
+
+  addReview(): void {
+    console.log(this.newReview);
+    if (this.city) {
+      const url = `${environment.backendUrl}/addReview/entity_id=${this.city.id}/entity_type=2`;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.globalsService.getAccessToken() });
+
+      this.http.post(url, this.newReview, { headers }).subscribe(
+        response => {
+          console.log('Review added:', response);
+          this.city?.reviews.unshift(this.newReview);  // Add the new review to the top of the reviews list
+          this.newReview = { title: '', text: '', rating: 0, username: '', userPhoto: { id: 0, photoUrl: '', source: '' }, publishingDate: '' };
+        },
+        error => {
+          console.error('Error adding review:', error);
+        }
+      );
+    }
+  }
+
 
   // loadReviews(cityId: string): void {
   //   // Mock data for now

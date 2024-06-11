@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TouristicAttractionService } from '../touristic-attraction.service';
-import { Attraction } from '../models/attraction';
 import { Deal } from '../models/deal';
 import { GlobalsService } from '../globals.service';
 import { LastAccessedService } from '../last-accessed.service';
 import { DealsService } from '../deals.service';
 import { TouristicAttraction } from '../models/touristic-attraction';
+import { Review } from '../models/review';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-touristic-attraction',
@@ -41,8 +45,10 @@ export class TouristicAttractionComponent implements OnInit {
   isMenuOpen = false;
   isDropdownOpen = false;
   lastAccessedPaths: any[] = [];
+  newReview: Review = { title: '', text: '', rating: 0, username: '', userPhoto: { id: 0, photoUrl: '', source: '' }, publishingDate: '' };
 
-  constructor(private route: ActivatedRoute, private touristicAttractionService: TouristicAttractionService, private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private dealsService: DealsService) {}
+
+  constructor(private route: ActivatedRoute, private touristicAttractionService: TouristicAttractionService, private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private dealsService: DealsService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
@@ -83,6 +89,25 @@ export class TouristicAttractionComponent implements OnInit {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  addReview(): void {
+    console.log(this.newReview);
+    if (this.attraction) {
+      const url = `${environment.backendUrl}/addReview/entity_id=${this.attraction.id}/entity_type=3`;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.globalsService.getAccessToken() });
+
+      this.http.post(url, this.newReview, { headers }).subscribe(
+        response => {
+          console.log('Review added:', response);
+          this.attraction?.reviews.unshift(this.newReview);  // Add the new review to the top of the reviews list
+          this.newReview = { title: '', text: '', rating: 0, username: '', userPhoto: { id: 0, photoUrl: '', source: '' }, publishingDate: '' };
+        },
+        error => {
+          console.error('Error adding review:', error);
+        }
+      );
+    }
   }
 
   getStars(rating: number): string {

@@ -5,4 +5,5 @@ export interface SimpleProfile {
     countryName?: string;
     cityName?: string;
     tags?: Tag[];
+    deletedTags?: Tag[];
 }

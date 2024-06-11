@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
   allCountries: Country[] = [];
   allCities: City[] = [];
 
+  deletedTags: Tag[] = [];
   newTag: string = '';
 
   constructor(private profileService: ProfileService, private countriesService: CountriesService, private http: HttpClient, private globalsService: GlobalsService) {
@@ -163,11 +164,16 @@ export class ProfileComponent implements OnInit {
 
   onTagSelected(event: any): void {
     this.newTag = event.option.value;
-    // this.addTag();
+    this.addTag();
   }
 
   removeTag(tagId: number): void {
     if (this.profile) {
+      const tag = this.profile.tags.find(t => t.id === tagId);
+      if (tag) {
+        // tag.oldPosition = this.profile.tags.indexOf(tag);
+        this.deletedTags.push(tag);
+      }
       this.profile.tags = this.profile.tags.filter(tag => tag.id !== tagId);
       console.log('Tags:', this.profile.tags);
       this.changes['tags'] = true;
@@ -178,6 +184,7 @@ export class ProfileComponent implements OnInit {
   addTag(): void {
     const tag = this.allTags.find(t => t.tag === this.newTag);
     if (tag && this.profile && !this.profile.tags.find(t => t.id === tag.id)) {
+      tag.oldPosition = -1;
       this.profile.tags.push(tag);
       console.log('Tags:', this.profile.tags);
       this.newTag = '';
@@ -188,7 +195,6 @@ export class ProfileComponent implements OnInit {
 
   drop(event: CdkDragDrop<Tag[]>): void {
     if (this.profile) {
-      // this.profile.tags[event.previousIndex].newPosition = event.currentIndex;
       moveItemInArray(this.profile.tags, event.previousIndex, event.currentIndex);
       console.log('Tags:', this.profile.tags);
       this.changesMade = true;
@@ -210,11 +216,7 @@ export class ProfileComponent implements OnInit {
     }
     if (this.changes['tags']) {
       updatedProfile.tags = this.profile?.tags;
-      if (updatedProfile.tags) {
-        for (let i = 0; i < updatedProfile.tags.length; i++) {
-          updatedProfile.tags[i].newPosition = i;
-        }
-      }
+      updatedProfile.deletedTags = this.deletedTags;
     }
     // if (this.changes.profilePhoto) {
     //   updatedProfile.profilePhoto = this.profile.profilePhoto;

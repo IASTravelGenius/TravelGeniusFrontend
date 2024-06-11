@@ -26,6 +26,26 @@
   
       <section id="reviews">
         <h3>Reviews</h3>
+
+        <form (ngSubmit)="addReview()" #reviewForm="ngForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="newReview.title" name="title" required minlength="4">
+            <mat-error *ngIf="reviewForm.controls['title']?.errors?.['required']">Title is required</mat-error>
+            <mat-error *ngIf="reviewForm.controls['title']?.errors?.['minlength']">Title must be at least 4 characters long</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Text</mat-label>
+            <textarea matInput [(ngModel)]="newReview.text" name="text"></textarea>
+          </mat-form-field>
+          <div>
+            <label for="rating">Rating</label>
+            <app-star-rating [(rating)]="newReview.rating" required></app-star-rating>
+          </div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!reviewForm.form.valid || newReview.rating === 0">Add Review</button>
+        </form>
+
+        
         <ul>
           <li *ngFor="let review of attraction.reviews">
             <h4>{{ review.title }} - <span [innerHTML]="getStars(review.rating)"></span></h4>
