@@ -119,7 +119,7 @@ export class ProfileService {
       observe: 'response' as 'response'  // Correct usage for the observe option
     };
 
-    return this.http.post(urlBackend, profile, options).pipe(
+    return this.http.put(urlBackend, profile, options).pipe(
       map(response => {
         console.log('Update profile response:', response);
         return response;

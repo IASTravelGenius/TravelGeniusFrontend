@@ -63,8 +63,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadProfile();
     this.loadCountries();
+    this.loadProfile();
+
     this.loadTags();
 
     this.countryControl.valueChanges.subscribe(value => {
@@ -78,7 +79,19 @@ export class ProfileComponent implements OnInit {
 
   loadProfile(): void {
     this.profileService.getProfile().subscribe(
-      (data: Profile) => this.profile = data,
+      (data: Profile) => {
+        this.profile = data;
+        console.log("Profile", this.profile)
+        console.log("Profile country name", this.profile?.countryName)
+        if (this.profile && this.profile?.countryName) {
+          console.log("Profile country name", this.profile?.countryName);
+          const country = this.allCountries.find(country => country.name === this.profile?.countryName);
+          console.log("Gasesc country", country);
+          this.countryControl.setValue(country?.name);
+          this.loadCities(country?.id.toString() || '');
+
+        }
+      },
       (error: any) => console.error('Error fetching profile', error)
     );
   }
@@ -122,6 +135,11 @@ export class ProfileComponent implements OnInit {
       })
     ).subscribe(cities => {
       this.allCities = cities;
+      if (this.profile?.cityName) {
+        const city = this.allCities.find(city => city.name === this.profile?.cityName);
+
+        this.cityControl.setValue(city?.name);
+      }
       console.log('Cities:', this.allCities);
     });
   }
@@ -183,7 +201,7 @@ export class ProfileComponent implements OnInit {
 
   addTag(): void {
     const tag = this.allTags.find(t => t.tag === this.newTag);
-    if (tag && this.profile && !this.profile.tags.find(t => t.id === tag.id)) {
+    if (tag && this.profile && !this.profile.tags.find(t => t.id === tag.id) && this.profile.tags.length < 5) {
       tag.oldPosition = -1;
       this.profile.tags.push(tag);
       console.log('Tags:', this.profile.tags);
