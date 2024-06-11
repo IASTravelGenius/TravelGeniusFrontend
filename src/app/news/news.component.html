@@ -17,10 +17,10 @@
             <ul class="news-list">
               <li *ngFor="let newsItem of news" class="news-item">
                 <h4 class="news-title">{{ newsItem.title }}</h4>
-                <p class="news-excerpt">{{ newsItem.excerpt }}</p>
+                <p class="news-excerpt">{{ newsItem.text }}</p>
                 <div class="tags">
                     <div>Tags: </div>
-                    <span *ngFor="let tag of newsItem.tags" class="tag">{{ tag }}</span>
+                    <span *ngFor="let tag of newsItem.tags" class="tag">{{ tag.tag }}</span>
                   </div>
                   <a [href]="newsItem.source" target="_blank" class="read-more">Read more</a>
               </li>

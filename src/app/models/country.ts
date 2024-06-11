@@ -7,7 +7,7 @@ export interface Country {
   name: string;
   countryCode: string;
   description: string;
-  mainPhoto: Photo;
+  mainPhotoUrl: Photo;
   photos: Photo[];
   tags: Tag[];
   destinations: Destination[];

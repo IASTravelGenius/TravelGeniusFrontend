@@ -163,7 +163,7 @@ export class ProfileComponent implements OnInit {
 
   onTagSelected(event: any): void {
     this.newTag = event.option.value;
-    this.addTag();
+    // this.addTag();
   }
 
   removeTag(tagId: number): void {
@@ -188,6 +188,7 @@ export class ProfileComponent implements OnInit {
 
   drop(event: CdkDragDrop<Tag[]>): void {
     if (this.profile) {
+      // this.profile.tags[event.previousIndex].newPosition = event.currentIndex;
       moveItemInArray(this.profile.tags, event.previousIndex, event.currentIndex);
       console.log('Tags:', this.profile.tags);
       this.changesMade = true;
@@ -209,6 +210,11 @@ export class ProfileComponent implements OnInit {
     }
     if (this.changes['tags']) {
       updatedProfile.tags = this.profile?.tags;
+      if (updatedProfile.tags) {
+        for (let i = 0; i < updatedProfile.tags.length; i++) {
+          updatedProfile.tags[i].newPosition = i;
+        }
+      }
     }
     // if (this.changes.profilePhoto) {
     //   updatedProfile.profilePhoto = this.profile.profilePhoto;
