@@ -13,12 +13,12 @@
 import { Photo } from './photo.interface';
 
 export interface Review {
-  id: number;
+  id?: number;
   title: string;
   text: string;
   rating: number;
   username: string;
   userPhoto: Photo;
   publishingDate: string;
-  photoAttached: Photo[];
+  photoAttached?: Photo[];
 }

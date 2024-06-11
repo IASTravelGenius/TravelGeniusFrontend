@@ -86,3 +86,14 @@ li {
   height: 3vw;
   border-radius: 50%;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form mat-form-field {
+  width: 100%;
+}
