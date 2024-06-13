@@ -39,6 +39,7 @@ export class NewsComponent implements OnInit {
   loadNews(): void {
     this.newsService.getNews().subscribe(news => {
       this.news = news;
+      console.log('News:', news);
     }, error => {
       console.error('Error loading news:', error);
     });

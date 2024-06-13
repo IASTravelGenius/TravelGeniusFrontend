@@ -14,6 +14,7 @@
   <main *ngIf="country">
     <section id="top-cities">
       <h2>{{ country.name }}</h2>
+      <p>{{country.description}}</p>
       <ul id="mixed-list">
         <ng-container *ngFor="let destination of country.destinations; let i = index">
           <li *ngIf="destination.type === 'city'" class="top-city-item">
@@ -21,7 +22,7 @@
               <h2 class="city-name"><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, destination.name.toLowerCase() + '_' + destination.id]">{{ destination.name }}</a></h2>
               <img [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
             </div>
-            <h3>Tourist Attractions:</h3>
+            <h3 *ngIf="destination.touristicAttractions">Tourist Attractions:</h3>
             <div class="attractions">
               <div class="attraction" *ngFor="let attraction of destination.touristicAttractions">
                 <h4><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, 'ta', attraction.name.toLowerCase() + '_' + attraction.id]">{{ attraction.name }}</a></h4>

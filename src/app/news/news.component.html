@@ -22,7 +22,7 @@
                     <div>Tags: </div>
                     <span *ngFor="let tag of newsItem.tags" class="tag">{{ tag.tag }}</span>
                   </div>
-                  <a [href]="newsItem.source" target="_blank" class="read-more">Read more</a>
+                  <a [href]="newsItem.link" target="_blank" class="read-more">Read more</a>
               </li>
             </ul>
           </section>
