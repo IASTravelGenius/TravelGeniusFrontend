@@ -11,9 +11,12 @@
     </header>
   
     <main>
+      <h2 *ngIf="attractions.length === 0">
+        <p>No attractions found</p>
+      </h2>
       <div class="search-controls">
-        <label for="range">Range (km):</label>
-        <input id="range" type="number" [(ngModel)]="range"  class="styled-input">
+        <!-- <label for="range">Range (km):</label>
+        <input id="range" type="number" [(ngModel)]="range"  class="styled-input"> -->
         <button class="btn-toggle" (click)="toggleMap()">{{ showMap ? 'Hide Map' : 'Show Map' }}</button>
       </div>
   
@@ -35,6 +38,7 @@
             <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.photoUrl }}" class="attraction-photo">
             <p>{{ attraction.description }}</p>
           </li>
+
         </ul>
       </section>
     </main>

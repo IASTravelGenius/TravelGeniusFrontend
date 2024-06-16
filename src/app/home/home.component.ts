@@ -37,6 +37,11 @@ export class HomeComponent {
       this.lastAccessedPaths = paths;
     });
 
+    console.log(this.globalsService.areTokensSet());
+    if (this.globalsService.areTokensSet() === false) {
+      this.router.navigate(['/login']);
+    }
+
     this.loadArticles();
   }
   

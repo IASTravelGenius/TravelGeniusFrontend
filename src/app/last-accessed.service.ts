@@ -44,6 +44,10 @@ export class LastAccessedService {
 
   private formatPath(path: string): string {
     const pathSegments = path.split('/');
+    console.log('Path segments:', pathSegments);
+    if (pathSegments[1] === 'touristic-attractions' && pathSegments.length > 3) {
+      return 'Touristic attractions results';
+    }
     const lastSegment = pathSegments.pop() || '';
     const removedIdSegment = lastSegment.split('_')[0];
     const decodedSegment = decodeURIComponent(removedIdSegment); // Decode URI component

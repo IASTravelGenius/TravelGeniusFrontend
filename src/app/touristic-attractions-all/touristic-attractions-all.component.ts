@@ -64,8 +64,9 @@ export class TouristicAttractionsAllComponent implements OnInit, AfterViewInit {
   }
 
   initMap(): void {
+    console.log(this.globalsService.latitude, this.globalsService.longitude);
     const map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: -34.397, lng: 150.644 },
+      center: { lat: this.globalsService.latitude, lng: this.globalsService.longitude },
       zoom: 8
     });
 
@@ -79,6 +80,8 @@ export class TouristicAttractionsAllComponent implements OnInit, AfterViewInit {
 
       this.latitude = event.latLng.lat();
       this.longitude = event.latLng.lng();
+      this.globalsService.latitude = this.latitude;
+      this.globalsService.longitude = this.longitude;
       console.log('Latitude: ' + this.latitude + ', Longitude: ' + this.longitude);
     });
   }

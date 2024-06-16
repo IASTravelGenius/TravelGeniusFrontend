@@ -12,6 +12,9 @@ export class GlobalsService {
   private accessTokenKey = 'accessToken';
   private refreshTokenKey = 'refreshToken';
 
+  public latitude = 44.44;
+  public longitude = 26.11;
+
   dropdownOpen$ = this.dropdownOpenSource.asObservable();
 
   constructor(private router: Router) {
@@ -62,6 +65,6 @@ export class GlobalsService {
   }
 
   areTokensSet(): boolean {
-    return !!this.getAccessToken() && !!this.getRefreshToken();
+    return !!this.getAccessToken() && !!this.getRefreshToken() && this.getAccessToken() !== 'default';
   }
 }
