@@ -24,7 +24,14 @@
         <h3>Touristic Attractions</h3>
         <ul>
           <li *ngFor="let attraction of attractions" class="attraction-item">
-            <h4><a [routerLink]="['/countries', attraction.countryName.toLowerCase() + '_' + attraction.countryId, 'ta', attraction.name.toLowerCase() + '_' + attraction.id]">{{ attraction.name }}</a></h4>
+            <h4>
+              <a [routerLink]="[
+              '/countries', 
+              (attraction.countryName ? attraction.countryName.toLowerCase() + '_' + attraction.countryId : 'generic'), 
+              'ta', 
+              attraction.name.toLowerCase() + '_' + attraction.id
+            ]">
+                            {{ attraction.name }}</a></h4>
             <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.photoUrl }}" class="attraction-photo">
             <p>{{ attraction.description }}</p>
           </li>

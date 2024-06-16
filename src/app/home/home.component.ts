@@ -69,7 +69,10 @@ export class HomeComponent {
       return;
     }
     if (destination.type === 'touristicAttraction') {
-      this.router.navigate(['/countries', destination.countryName.toLowerCase() + '_' + destination.countryId, 'ta',  destination.name.toLowerCase() + '_' + destination.id]);
+      if (destination.countryName)
+        this.router.navigate(['/countries', destination.countryName.toLowerCase() + '_' + destination.countryId, 'ta',  destination.name.toLowerCase() + '_' + destination.id]);
+      else
+        this.router.navigate(['/countries', 'generic', 'ta',  destination.name.toLowerCase() + '_' + destination.id]);
       return;
     } else {
       this.router.navigate(['/countries', destination.name.toLowerCase() + '_' + destination.id]);
