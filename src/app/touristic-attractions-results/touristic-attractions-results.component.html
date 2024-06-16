@@ -11,7 +11,7 @@
     </header>
   
     <main>
-      <h2 *ngIf="attractions.length === 0">
+      <h2 *ngIf="showSection && (attractions.length === 0)">
         <p>No attractions found</p>
       </h2>
       <div class="search-controls">

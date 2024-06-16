@@ -26,6 +26,8 @@ export class TouristicAttractionsResultsComponent implements OnInit {
   latitude: number = 0;
   longitude: number = 0;
 
+  showSection: boolean = false;
+
   private markers: any[] = [];
 
 
@@ -42,6 +44,9 @@ export class TouristicAttractionsResultsComponent implements OnInit {
       this.deals = deals;
     });
     
+    this.delaySectionDisplay();
+
+
     this.route.params.subscribe(params => {
       this.latitude = +params['latitude'];
       this.longitude = +params['longitude'];
@@ -73,6 +78,12 @@ export class TouristicAttractionsResultsComponent implements OnInit {
     if (this.showMap) {
       this.router.navigate(['/touristic-attractions']);
     }
+  }
+
+  delaySectionDisplay(): void {
+    setTimeout(() => {
+      this.showSection = true;
+    }, 2000); // Adjust the delay time as needed
   }
 
   // searchAttractions(): void {
