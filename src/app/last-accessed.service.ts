@@ -45,6 +45,9 @@ export class LastAccessedService {
   private formatPath(path: string): string {
     const pathSegments = path.split('/');
     const lastSegment = pathSegments.pop() || '';
-    return lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
+    const removedIdSegment = lastSegment.split('_')[0];
+    const decodedSegment = decodeURIComponent(removedIdSegment); // Decode URI component
+
+    return decodedSegment.charAt(0).toUpperCase() + decodedSegment.slice(1);
   }
 }
