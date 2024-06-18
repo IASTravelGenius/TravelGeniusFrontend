@@ -83,7 +83,9 @@ export class CityComponent implements OnInit {
     if (this.globalsService.getUsername() !== null) {
       this.newReview.username = this.globalsService.getUsername() ?? '';
     }
-    
+    this.newReview.publishingDate = new Date().toISOString();
+
+
     console.log(this.newReview);
     if (this.city) {
       const url = `${environment.backendUrl}/addReview/entity_id=${this.city.id}/entity_type=2`;
