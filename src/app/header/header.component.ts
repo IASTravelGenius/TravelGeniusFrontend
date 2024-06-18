@@ -3,6 +3,7 @@ import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { GlobalsService } from '../globals.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
+  searchResults: any[] = [];
 
   constructor(private globalsService: GlobalsService, private router: Router, private http: HttpClient) {}
 
@@ -24,6 +26,35 @@ export class HeaderComponent implements OnInit {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
       this.isDropdownOpen = isOpen;
     });
+  }
+
+  onSearch(event: any) {
+    const query = event.target.value;
+    const url = environment.backendUrl + '/search?query=' + query;
+    const headers_dict = {
+      Authorization: 'Bearer ' + this.globalsService.getAccessToken()
+    };
+
+    const headers = new HttpHeaders(headers_dict);
+
+    const options = { headers: headers };
+
+    if (query.length >= 1) { // Minimum characters before sending a request
+    
+      this.http.get(url, options).subscribe((response: any) => {
+        this.searchResults = response;
+      }, error => {
+        console.error('Search error:', error);
+        this.searchResults = [];
+      });
+    } else {
+      this.searchResults = [];
+    }
+  }
+
+  onSelectResult(result: any) {
+    // Use entity_id and entity_type for navigation
+    this.router.navigate([`/${result.entity_type}`, result.entity_id]);
   }
 
   toggleDropdown() {

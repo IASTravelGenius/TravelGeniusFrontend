@@ -94,3 +94,32 @@ body {
     height: auto;
     border-radius: 50%;
 }
+
+
+
+
+.btn-primary {
+    background-color: white;
+    color: black;
+    border-color: gray;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: 40vh;
+}
+
+.search-dropdown .dropdown-item {
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.search-dropdown .dropdown-item:hover {
+    background-color: #f1f1f1;
+}
