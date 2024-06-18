@@ -92,6 +92,9 @@ export class TouristicAttractionComponent implements OnInit {
   }
 
   addReview(): void {
+    if (this.globalsService.getUsername() !== null) {
+      this.newReview.username = this.globalsService.getUsername() ?? '';
+    }
     console.log(this.newReview);
     if (this.attraction) {
       const url = `${environment.backendUrl}/addReview/entity_id=${this.attraction.id}/entity_type=3`;

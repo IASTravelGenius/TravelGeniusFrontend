@@ -182,7 +182,6 @@ export class ProfileComponent implements OnInit {
 
   onTagSelected(event: any): void {
     this.newTag = event.option.value;
-    this.addTag();
   }
 
   removeTag(tagId: number): void {
