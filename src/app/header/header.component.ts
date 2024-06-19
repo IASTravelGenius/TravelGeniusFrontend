@@ -54,7 +54,14 @@ export class HeaderComponent implements OnInit {
 
   onSelectResult(result: any) {
     // Use entity_id and entity_type for navigation
-    this.router.navigate([`/${result.entity_type}`, result.entity_id]);
+    console.log(result);
+    if (result.entityType === 'TOURISTIC_ATTRACTION')
+      this.router.navigate(['/countries', 'generic', 'ta', result.name.toLowerCase() + '_' + result.id]);
+    else if (result.entityType === 'CITY')
+      this.router.navigate(['/countries', 'search', result.name.toLowerCase() + '_' + result.id]);
+    else
+      this.router.navigate(['/countries', result.name.toLowerCase() + '_' + result.id]);
+    // this.router.navigate([`/${result.entity_type}`, result.entity_id]);
   }
 
   toggleDropdown() {
