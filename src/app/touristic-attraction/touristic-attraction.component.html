@@ -15,7 +15,7 @@
         <h2>{{ attraction.name }}</h2>
         <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-main-photo">
         <p id="attraction-description">{{ attraction.description }}</p>
-        <div class="tags">
+        <div *ngIf="attraction.tags.length > 0" class="tags">
           <span>Tags: </span>
           <span *ngFor="let tag of attraction.tags" class="tag">{{ tag.tag }}</span>
         </div>

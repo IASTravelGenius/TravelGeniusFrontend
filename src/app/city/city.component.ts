@@ -56,6 +56,7 @@ export class CityComponent implements OnInit {
   loadCityData(cityId: string): void {
     this.cityService.getCityById(cityId).subscribe(city => {
       this.city = city;
+      console.log(this.city);
     }, error => {
       console.error('Error loading city data:', error);
     });

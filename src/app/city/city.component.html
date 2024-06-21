@@ -13,9 +13,9 @@
     <main>
       <section id="city-info">
         <h2>{{ city.name }}</h2>
-        <img [src]="city.mainPhotoUrl" alt="{{ city.name }}" class="city-main-photo">
+        <img [src]="city.mainPhotoUrl.source" alt="{{ city.name }}" class="city-main-photo">
         <p id="city-description">{{ city.description }}</p>
-        <div class="tags">
+        <div *ngIf="city.tags.length > 0" class="tags">
           <span>Tags: </span>
           <span *ngFor="let tag of city.tags" class="tag">{{ tag.tag }}</span>
         </div>
@@ -24,7 +24,7 @@
         </div>
       </section>
   
-      <section id="tourist-attractions">
+      <section *ngIf="city.touristicAttractions && city.touristicAttractions.length > 0" id="tourist-attractions">
         <h3>Touristic Attractions</h3>
         <ul>
           <li *ngFor="let attraction of city.touristicAttractions">
