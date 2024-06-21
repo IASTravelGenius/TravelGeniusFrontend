@@ -13,7 +13,7 @@
     <main>
       <section id="city-info">
         <h2>{{ city.name }}</h2>
-        <img [src]="city.mainPhotoUrl.source" alt="{{ city.name }}" class="city-main-photo">
+        <img *ngIf="city.mainPhotoUrl.photoUrl" [src]="city.mainPhotoUrl.photoUrl" alt="{{ city.name }}" class="city-main-photo">
         <p id="city-description">{{ city.description }}</p>
         <div *ngIf="city.tags.length > 0" class="tags">
           <span>Tags: </span>
@@ -29,7 +29,7 @@
         <ul>
           <li *ngFor="let attraction of city.touristicAttractions">
             <h4><a [routerLink]="['/countries', countryId, 'ta', attraction.name + '_' +  attraction.id.toString()]">{{ attraction.name }}</a></h4>
-            <img [src]="attraction.mainPhotoUrl.source" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-photo">
+            <img *ngIf="attraction.mainPhotoUrl.photoUrl" [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-photo">
           </li>
         </ul>
       </section>

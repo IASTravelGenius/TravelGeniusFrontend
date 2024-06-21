@@ -9,6 +9,7 @@ import { LastAccessedService } from '../last-accessed.service';
 import { DealsService } from '../deals.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Photo } from '../models/photo.interface';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./city.component.css']
 })
 export class CityComponent implements OnInit {
-  city: City = new City('Not found', 'Not Found', 'Not found', 'Not found', 0, [], [], [], [], [], 'Not found', 0);
+  city: City = new City('Not found', 'Not Found', 'Not found', { id: 0, photoUrl: '', source: '' }, 0, [], [], [], [], [], 'Not found', 0);
   // attractions: Attraction[] = [];
   news: any[] = [];
   // reviews: any[] = [];

@@ -20,20 +20,20 @@
           <li *ngIf="destination.type === 'city'" class="top-city-item">
             <div class="city-header">
               <h2 class="city-name"><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, destination.name.toLowerCase() + '_' + destination.id]">{{ destination.name }}</a></h2>
-              <img [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
+              <img *ngIf="destination.mainPhotoUrl.photoUrl" [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
             </div>
             <h3 *ngIf="destination.touristicAttractions.length > 0">Tourist Attractions:</h3>
             <div class="attractions">
               <div class="attraction" *ngFor="let attraction of destination.touristicAttractions">
                 <h4><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, 'ta', attraction.name.toLowerCase() + '_' + attraction.id]">{{ attraction.name }}</a></h4>
-                <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+                <img *ngIf="destination.mainPhotoUrl.photoUrl" [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
               </div>
             </div>
           </li>
           <li *ngIf="destination.type === 'touristicAttraction'" class="tourist-attraction-item">
             <div class="attraction-header">
               <h2 class="attraction-name"><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, 'ta', destination.name.toLowerCase() + '_' + destination.id]">{{ destination.name }} </a></h2>
-              <img [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
+              <img *ngIf="destination.mainPhotoUrl.photoUrl" [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}" class="city-photo">
             </div>
           </li>
         </ng-container>

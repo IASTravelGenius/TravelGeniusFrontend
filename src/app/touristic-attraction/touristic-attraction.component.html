@@ -13,7 +13,7 @@
     <main>
       <section id="attraction-info">
         <h2>{{ attraction.name }}</h2>
-        <img [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-main-photo">
+        <img *ngIf="attraction.mainPhotoUrl.photoUrl" [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.mainPhotoUrl.source }}" class="attraction-main-photo">
         <p id="attraction-description">{{ attraction.description }}</p>
         <div *ngIf="attraction.tags.length > 0" class="tags">
           <span>Tags: </span>
