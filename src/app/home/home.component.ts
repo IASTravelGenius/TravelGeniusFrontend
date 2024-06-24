@@ -5,8 +5,8 @@ import { HomeEntity } from '../models/home-entity';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Destination } from '../models/destination.interface';
-
+import { Deal } from '../models/deal';
+import { DealsService } from '../deals.service';
 
 @Component({
   selector: 'app-home',
@@ -15,18 +15,12 @@ import { Destination } from '../models/destination.interface';
 })
 export class HomeComponent {
   isMenuOpen = false;
-  menuItems = [
-    'Home',
-    'Countries',
-    'News',
-    'Flight',
-    'Must See'
-  ];
   isDropdownOpen = false;
   lastAccessedPaths: { path: string, display: string }[] = [];
   topArticles: HomeEntity[] = [];
+  deals: Deal[] = [];
 
-  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private http: HttpClient, private router: Router) {}
+  constructor(private globalsService: GlobalsService, private lastAccessedService: LastAccessedService, private http: HttpClient, private router: Router, private dealsService: DealsService) {}
 
   ngOnInit() {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
@@ -35,6 +29,10 @@ export class HomeComponent {
 
     this.lastAccessedService.lastAccessed$.subscribe(paths => {
       this.lastAccessedPaths = paths;
+    });
+
+    this.dealsService.getDeals().subscribe(deals => {
+      this.deals = deals;
     });
 
     console.log(this.globalsService.areTokensSet());
@@ -84,6 +82,10 @@ export class HomeComponent {
     
     }
 
+  }
+
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
   }
 
   toggleMenu() {

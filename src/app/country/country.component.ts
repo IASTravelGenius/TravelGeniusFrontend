@@ -63,6 +63,10 @@ export class CountryComponent implements OnInit {
     );
   }
 
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
+  }
+
     // this.cityService.getCities(countryId).subscribe(cities => {
     //   this.cities = cities;
     //   this.createMixedList();

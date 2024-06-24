@@ -118,7 +118,9 @@ export class CityComponent implements OnInit {
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
-
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
+  }
   getStars(rating: number): string {
     return '⭐'.repeat(rating);
   }

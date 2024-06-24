@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { User } from './models/user';
+import { Deal } from './models/deal';
 
 
 @Injectable({
@@ -117,5 +118,16 @@ export class GlobalsService {
   areTokensSet(): boolean {
     return !!this.getAccessToken() && !!this.getRefreshToken() && this.getAccessToken() !== 'default';
   }
+
+  navigateToDeal(deal: Deal) {
+    console.log(deal);
+    if (deal.entityType === 'TOURISTIC_ATTRACTION')
+      this.router.navigate(['/countries', 'generic', 'ta', deal.name.toLowerCase() + '_' + deal.id]);
+    else if (deal.entityType === 'CITY')
+      this.router.navigate(['/countries', 'search', deal.name.toLowerCase() + '_' + deal.id]);
+    else
+      this.router.navigate(['/countries', deal.name.toLowerCase() + '_' + deal.id]);  
+  }
+
 
 }

@@ -96,4 +96,7 @@ export class CountriesComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
+  }
 }

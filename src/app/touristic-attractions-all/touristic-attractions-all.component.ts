@@ -92,7 +92,9 @@ export class TouristicAttractionsAllComponent implements OnInit, AfterViewInit {
     }
     this.markers = [];
   }
-
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
+  }
   searchAttractions(): void {
     if (this.latitude && this.longitude && this.range) {
       this.router.navigate(['/touristic-attractions', this.latitude, this.longitude, this.range]);

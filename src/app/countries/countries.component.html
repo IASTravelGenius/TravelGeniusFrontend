@@ -49,14 +49,15 @@
         </section>
 
         <section id="best-deals"  [ngClass]="{'best-deals-lowered': isDropdownOpen}">
-            <h2>Best Deals</h2>
+            <h2>Discover</h2>
             <ul id="best-deals-list">
                 <li class="best-deals-item" *ngFor="let deal of deals.slice(0, 3)">
                     <div class="deal-info">
-                        <p class="deal-title"> {{deal.title}} </p>
+                        <p class="deal-title"> {{deal.name}} </p>
                         <p class="deal-text"> {{deal.description}} </p>
-                        <!-- <p class="deal-title">E moca bro!</p>
-                        <p class="deal-text">Egipt is now on sale!</p> -->
+                        <div>
+                            <button class="deal-button" (click)="navigateToDeal(deal)">View destination</button>
+                        </div>
                     </div>
                 </li>
             </ul>

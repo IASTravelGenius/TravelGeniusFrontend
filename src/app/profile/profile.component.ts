@@ -184,6 +184,18 @@ export class ProfileComponent implements OnInit {
     this.newTag = event.option.value;
   }
 
+  addTag(): void {
+    const tag = this.allTags.find(t => t.tag === this.newTag);
+    if (tag && this.profile && !this.profile.tags.find(t => t.id === tag.id) && this.profile.tags.length < 5) {
+      tag.oldPosition = -1;
+      this.profile.tags.push(tag);
+      console.log('Tags:', this.profile.tags);
+      this.newTag = '';
+      this.changesMade = true;
+      this.changes['tags'] = true;
+    }
+  }
+  
   removeTag(tagId: number): void {
     if (this.profile) {
       const tag = this.profile.tags.find(t => t.id === tagId);
@@ -195,18 +207,6 @@ export class ProfileComponent implements OnInit {
       console.log('Tags:', this.profile.tags);
       this.changes['tags'] = true;
       this.changesMade = true;
-    }
-  }
-
-  addTag(): void {
-    const tag = this.allTags.find(t => t.tag === this.newTag);
-    if (tag && this.profile && !this.profile.tags.find(t => t.id === tag.id) && this.profile.tags.length < 5) {
-      tag.oldPosition = -1;
-      this.profile.tags.push(tag);
-      console.log('Tags:', this.profile.tags);
-      this.newTag = '';
-      this.changesMade = true;
-      this.changes['tags'] = true;
     }
   }
 
@@ -235,10 +235,6 @@ export class ProfileComponent implements OnInit {
       updatedProfile.tags = this.profile?.tags;
       updatedProfile.deletedTags = this.deletedTags;
     }
-    // if (this.changes.profilePhoto) {
-    //   updatedProfile.profilePhoto = this.profile.profilePhoto;
-    // }
-
     console.log('Updating profile:', updatedProfile);
     this.profileService.updateProfile(updatedProfile).subscribe(
       response => {
@@ -259,7 +255,6 @@ export class ProfileComponent implements OnInit {
 
   private _filterCountries(value: string): Country[] {
     console.log('Filtering countries:', value);
-    
     const filterValue = (value || '').toLowerCase();
     console.log('All countries:', this.allCountries);
     return this.allCountries.filter(country => country.name.toLowerCase().includes(filterValue));

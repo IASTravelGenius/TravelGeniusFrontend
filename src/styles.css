@@ -5,7 +5,7 @@ body {
 
 #best-deals {
     position: fixed;
-    right: 0;
+    right: 2.5vh;
     top: 9vh; /* Adjust based on the height of the other header */
     width: 10vw;
     border-radius: 1.5vw;
@@ -36,6 +36,16 @@ body {
 .deal-title {
     font-weight: bold;
     color: #007BFF;
+}
+
+.deal-button {
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    padding: 0.5vw 1vw;
+    font-size: 0.8vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
 }
 
 header {

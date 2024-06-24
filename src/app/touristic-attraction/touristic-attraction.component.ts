@@ -86,7 +86,9 @@ export class TouristicAttractionComponent implements OnInit {
       
   //   ];
   // }
-
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
+  }
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }

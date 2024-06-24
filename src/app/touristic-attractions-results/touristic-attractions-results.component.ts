@@ -103,4 +103,8 @@ export class TouristicAttractionsResultsComponent implements OnInit {
   getStars(rating: number): string {
     return '⭐'.repeat(rating);
   }
+
+  navigateToDeal(deal: Deal) {
+    this.globalsService.navigateToDeal(deal);
+  }
 }
