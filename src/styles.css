@@ -7,18 +7,20 @@ body {
     position: fixed;
     right: 2.5vh;
     top: 9vh; /* Adjust based on the height of the other header */
+    bottom: 9vh;
     width: 10vw;
     border-radius: 1.5vw;
     background-color: #ffffff;
     box-shadow: -0.1vw 0 0.3vw rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    overflow-x: hidden; /* Ensure no horizontal scrolling */
     padding: 0.5vw;
 }
 
 .best-deals-item {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Change to column to stack text and button vertically */
+    align-items: flex-start; /* Align items to the start */
     padding: 0.5vw;
     border-bottom: 0.1vw solid #dddddd;
 }
@@ -26,16 +28,19 @@ body {
 .deal-text {
     font-size: 0.8vw;
     color: #666666;
+    word-wrap: break-word; /* Ensure long words break to the next line */
 }
 
 .deal-info {
     flex: 1;
     font-size: 0.8vw;
+    width: 100%; /* Ensure text takes the full width of the container */
 }
 
 .deal-title {
     font-weight: bold;
     color: #007BFF;
+    width: 100%; /* Ensure title takes the full width of the container */
 }
 
 .deal-button {
@@ -46,6 +51,8 @@ body {
     font-size: 0.8vw;
     border-radius: 0.5vw;
     cursor: pointer;
+    align-self: flex-end; /* Align button to the end */
+
 }
 
 header {
