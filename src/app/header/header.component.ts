@@ -52,10 +52,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  onSelectResult(result: any) {
+  onSelectResult(result: any, searchInput: HTMLInputElement) {
     // Use entity_id and entity_type for navigation
     console.log(result);
-    if (result.entityType === 'TOURISTIC_ATTRACTION')
+    searchInput.value = '';
+    this.searchResults = [];
+    if (result.entityType === 'TOURISTIC_ATTRACTION') 
       this.router.navigate(['/countries', 'generic', 'ta', result.name.toLowerCase() + '_' + result.id]);
     else if (result.entityType === 'CITY')
       this.router.navigate(['/countries', 'search', result.name.toLowerCase() + '_' + result.id]);

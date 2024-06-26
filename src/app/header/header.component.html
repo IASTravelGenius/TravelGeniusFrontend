@@ -12,13 +12,13 @@
     <div class="container-fluid">
         <!-- Search bar on the left -->
         <form class="d-flex search-bar">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (input)="onSearch($event)">
+            <input #searchInput class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (input)="onSearch($event)">
             <div class="search-dropdown" *ngIf="searchResults.length">
-                <div class="dropdown-item" *ngFor="let result of searchResults" (click)="onSelectResult(result)">
+                <div class="dropdown-item" *ngFor="let result of searchResults" (click)="onSelectResult(result, searchInput)">
                     {{ result.name }}
                 </div>
             </div>
-    </form>
+        </form>
 
         <!-- Centered nav buttons -->
         <div class="navbar-nav" (click)="closeDropdown()">
