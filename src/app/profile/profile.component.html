@@ -36,7 +36,7 @@
     </div>
 
     <div class="profile-tags">
-      <h3>Our guess of your most interested tags?</h3>sn
+      <h3>Our guess of your most interested tags?</h3>
       <div cdkDropList class="tags" (cdkDropListDropped)="drop($event)" [cdkDropListData]="profile.tags">
         <div *ngFor="let tag of profile.tags; let i = index" cdkDrag class="tag">
           {{i + 1}}. {{ tag.tag }} <button (click)="removeTag(tag.id)">x</button>

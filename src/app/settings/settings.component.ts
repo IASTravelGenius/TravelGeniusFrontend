@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-settings',
@@ -22,7 +23,7 @@ export class SettingsComponent implements OnInit {
   };
   notificationsEnabled: boolean = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private globalService: GlobalsService) {
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', Validators.required],
       newPassword: ['', Validators.required],
@@ -48,6 +49,21 @@ export class SettingsComponent implements OnInit {
   toggleNotifications(enabled: boolean): void {
     console.log('Notifications toggled successfully');
     this.notificationsEnabled = enabled;
+    const url = environment.backendUrl + '/user/toggleNotifications?notificationsEnabled=' + enabled;
+ 
+    const headers_dict = {
+      Authorization: 'Bearer ' + this.globalService.getAccessToken()
+    };
+
+    const options = {
+      headers: headers_dict
+    };
+
+    this.http.put(url, null, options).subscribe(response => {
+      console.log('Notifications toggled successfully', response);
+    }, error => {
+      console.error('Error toggling notifications', error);
+    });
     // const url = `${environment.apiUrl}/notifications`;
     // this.http.post(url, { notificationsEnabled: enabled }).subscribe(response => {
     //   console.log('Notifications toggled successfully', response);
@@ -113,6 +129,22 @@ export class SettingsComponent implements OnInit {
 
   deleteData(): void {
     console.log('Data deleted successfully');
+    const url = environment.backendUrl + '/user/deleteData';
+
+    const headers_dict = {
+      Authorization: 'Bearer ' + this.globalService.getAccessToken()
+    };
+
+    const options = {
+      headers: headers_dict
+    };
+
+    this.http.delete(url, options).subscribe(response => {
+      console.log('Data deleted successfully', response);
+    }, error => {
+      console.error('Error deleting data', error);
+    });
+
     // const url = `${environment.apiUrl}/delete-data`;
     // this.http.post(url, {}).subscribe(response => {
     //   console.log('Data deleted successfully', response);
