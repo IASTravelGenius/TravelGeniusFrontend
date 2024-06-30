@@ -71,7 +71,7 @@
             <h4>{{ review.title }} - <span [innerHTML]="getStars(review.rating)"></span></h4>
             <p>{{ review.text }}</p>
             <small>By {{ review.username }} on {{ review.publishingDate | date }}</small>
-            <img [src]="review.userPhoto.photoUrl" alt="{{ review.userPhoto.source }}" class="author-photo">
+            <img *ngIf="review.userPhoto.photoUrl" [src]="review.userPhoto.photoUrl" alt="{{ review.userPhoto.source }}" class="author-photo">
           </li>
         </ul>
       </section>

@@ -2,25 +2,24 @@
 body {    
     background-color: #ffffd9;
 }
-
 #best-deals {
     position: fixed;
     right: 2.5vh;
-    top: 9vh; /* Adjust based on the height of the other header */
+    top: 9vh;
     bottom: 9vh;
     width: 10vw;
     border-radius: 1.5vw;
     background-color: #ffffff;
     box-shadow: -0.1vw 0 0.3vw rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    overflow-x: hidden; /* Ensure no horizontal scrolling */
+    overflow-x: hidden;
     padding: 0.5vw;
 }
 
 .best-deals-item {
     display: flex;
-    flex-direction: column; /* Change to column to stack text and button vertically */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: column;
+    align-items: flex-start;
     padding: 0.5vw;
     border-bottom: 0.1vw solid #dddddd;
 }
@@ -28,32 +27,34 @@ body {
 .deal-text {
     font-size: 0.8vw;
     color: #666666;
-    word-wrap: break-word; /* Ensure long words break to the next line */
+    word-wrap: break-word;
+    white-space: normal; /* Ensure text wraps properly */
 }
 
 .deal-info {
     flex: 1;
     font-size: 0.8vw;
-    width: 100%; /* Ensure text takes the full width of the container */
+    width: 100%;
 }
 
 .deal-title {
     font-weight: bold;
     color: #007BFF;
-    width: 100%; /* Ensure title takes the full width of the container */
+    width: 100%;
 }
 
 .deal-button {
     background-color: #007BFF;
     color: #ffffff;
     border: none;
-    padding: 0.5vw 1vw;
-    font-size: 0.8vw;
+    padding: 0.3vw 0.6vw; /* Reduced padding for a smaller button */
+    font-size: 0.7vw; /* Reduced font size for a smaller button */
     border-radius: 0.5vw;
     cursor: pointer;
-    align-self: flex-end; /* Align button to the end */
-
+    align-self: flex-end;
+    margin-top: 0.5vw; /* Add some space between text and button */
 }
+
 
 header {
     background-color: #007BFF;

@@ -28,7 +28,7 @@
                         <p id="article-title" class="hover-effect-underline" (click)="navigateToDestination(destination)">{{ destination.name }}</p>
                         <p id="article-text">{{ destination.description }}</p>
                     </div>
-                    <img id="image-part" [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}">
+                    <img *ngIf="destination.mainPhotoUrl.photoUrl" id="image-part" [src]="destination.mainPhotoUrl.photoUrl" alt="{{ destination.mainPhotoUrl.source }}">
                 </li>
             </ul>
         </section>
