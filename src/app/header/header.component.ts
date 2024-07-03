@@ -33,7 +33,11 @@ export class HeaderComponent implements OnInit {
     });
 
     this.globalsService.getUserPhotoObservable().subscribe(photo => {
-      this.profilePhoto = photo || 'assets/download.jpeg';
+      console.log('Photo:', photo);
+      if (photo == 'null')
+        this.profilePhoto = 'assets/download.jpeg';
+      else
+        this.profilePhoto = photo || 'assets/download.jpeg';
     });
   }
 
