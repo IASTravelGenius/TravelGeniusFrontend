@@ -152,6 +152,7 @@ export class GlobalsService {
   clearTokens() {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
+    localStorage.removeItem(this.usernameKey);
   }
 
   areTokensSet(): boolean {
