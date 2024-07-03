@@ -3,7 +3,7 @@
     <div class="profile-header">
       <h2>{{ profile.username }}</h2>
       <div class="profile-pic-container" (click)="fileInput.click()">
-        <img [src]="profile.profilePhoto?.photoUrl || 'assets/default-profile-pic.jpg'" alt="Profile Picture" class="profile-pic">
+        <img [src]="profile.profilePhoto?.photoUrl || 'assets/download.jpeg'" alt="Profile Picture" class="profile-pic">
         <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
       </div>
     </div>

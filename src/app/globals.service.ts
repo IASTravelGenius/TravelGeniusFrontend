@@ -7,6 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { User } from './models/user';
 import { Deal } from './models/deal';
+import { Profile } from './models/profile.interface';
 
 
 @Injectable({
@@ -23,6 +24,7 @@ export class GlobalsService {
   public longitude = 26.11;
 
   public usernameKey = 'username';
+  public userPhotoKey = 'userPhoto';
 
   dropdownOpen$ = this.dropdownOpenSource.asObservable();
 
@@ -51,6 +53,28 @@ export class GlobalsService {
     this.setDropdownOpen(false);
   }
 
+  getProfile(): Observable<Profile> {
+    const urlBackend = environment.backendUrl + "/user/completeProfile";
+    const headers_dict = {
+      'Authorization': 'Bearer ' + this.getAccessToken(),
+    };
+    const options = {
+      headers: new HttpHeaders(headers_dict),
+      observe: 'response' as 'response'  // Correct usage for the observe option
+    };
+
+    return this.http.get<Profile>(urlBackend, options).pipe(
+      map(response => {
+        console.log('Profile response:', response);
+        return response.body as Profile;
+      }),
+      catchError(error => {
+        console.error('Backend error:', error);
+        return throwError(error);
+      })
+    );
+  }
+
   setTokens(accessToken: string, refreshToken: string) {
     localStorage.setItem(this.accessTokenKey, accessToken);
     localStorage.setItem(this.refreshTokenKey, refreshToken);
@@ -58,6 +82,11 @@ export class GlobalsService {
     this.validateToken().subscribe(user => {
       console.log('User:', user);
       localStorage.setItem(this.usernameKey, user.username);
+    });
+
+    this.getProfile().subscribe(profile => {
+      console.log('Profile:', profile);
+      localStorage.setItem(this.userPhotoKey, profile.profilePhoto.photoUrl);
     });
   }
 
@@ -108,6 +137,10 @@ export class GlobalsService {
 
   getUsername(): string | null {
     return localStorage.getItem(this.usernameKey);
+  }
+
+  getUserPhoto(): string | null {
+    return localStorage.getItem(this.userPhotoKey);
   }
 
   clearTokens() {

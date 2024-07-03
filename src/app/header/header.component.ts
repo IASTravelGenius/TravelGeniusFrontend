@@ -13,6 +13,8 @@ import { HttpHeaders } from '@angular/common/http';
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   searchResults: any[] = [];
+  profilePhoto: string = 'assets/download.jpeg';
+
 
   constructor(private globalsService: GlobalsService, private router: Router, private http: HttpClient) {}
 
@@ -26,6 +28,8 @@ export class HeaderComponent implements OnInit {
     this.globalsService.dropdownOpen$.subscribe(isOpen => {
       this.isDropdownOpen = isOpen;
     });
+
+    this.profilePhoto = this.globalsService.getUserPhoto() || 'assets/download.jpeg';
   }
 
   onSearch(event: any) {
