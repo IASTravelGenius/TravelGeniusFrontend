@@ -4,6 +4,9 @@ import { GlobalsService } from '../globals.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders } from '@angular/common/http';
+import { interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +32,9 @@ export class HeaderComponent implements OnInit {
       this.isDropdownOpen = isOpen;
     });
 
-    this.profilePhoto = this.globalsService.getUserPhoto() || 'assets/download.jpeg';
+    this.globalsService.getUserPhotoObservable().subscribe(photo => {
+      this.profilePhoto = photo || 'assets/download.jpeg';
+    });
   }
 
   onSearch(event: any) {

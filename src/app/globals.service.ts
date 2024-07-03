@@ -8,6 +8,7 @@ import { throwError } from 'rxjs';
 import { User } from './models/user';
 import { Deal } from './models/deal';
 import { Profile } from './models/profile.interface';
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -142,6 +143,11 @@ export class GlobalsService {
   getUserPhoto(): string | null {
     return localStorage.getItem(this.userPhotoKey);
   }
+
+  getUserPhotoObservable(): Observable<string> {
+    return of(localStorage.getItem(this.userPhotoKey) || 'assets/download.jpeg');
+  };
+  
 
   clearTokens() {
     localStorage.removeItem(this.accessTokenKey);
