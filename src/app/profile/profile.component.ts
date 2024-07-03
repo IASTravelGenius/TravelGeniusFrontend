@@ -64,6 +64,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCountries();
+    //we want to wait for the countries to be loaded before loading the profile
+    while (this.allCountries.length === 0) {
+    }
     this.loadProfile();
 
     this.loadTags();
