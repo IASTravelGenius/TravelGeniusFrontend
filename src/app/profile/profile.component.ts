@@ -65,8 +65,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.loadCountries();
     //we want to wait for the countries to be loaded before loading the profile
-    while (this.allCountries.length === 0) {
-    }
     this.loadProfile();
 
     this.loadTags();
@@ -90,7 +88,7 @@ export class ProfileComponent implements OnInit {
           console.log("Profile country name", this.profile?.countryName);
           const country = this.allCountries.find(country => country.name === this.profile?.countryName);
           console.log("Gasesc country", country);
-          this.countryControl.setValue(country?.name);
+          this.countryControl.setValue(this.profile?.countryName);
           this.loadCities(country?.id.toString() || '');
 
         }
