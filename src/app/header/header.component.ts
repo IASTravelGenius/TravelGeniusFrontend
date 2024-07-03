@@ -102,6 +102,7 @@ export class HeaderComponent implements OnInit {
     this.http.post(url, requestBody).subscribe(() => {
       this.globalsService.clearTokens();
       this.globalsService.closeDropdown();
+      this.router.navigate(['/login']);
     }, error => {
       console.error('Logout error:', error);
       this.globalsService.clearTokens();
