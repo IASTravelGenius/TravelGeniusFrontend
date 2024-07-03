@@ -152,7 +152,9 @@ export class RegisterComponent implements OnInit {
           this.http.post(urlBackend, {}, options).subscribe((response2: HttpResponse<any>) => {
             console.log('Backend response:', response2);
             if (response2.status >= 200 && response2.status < 300) {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/home'], {
+                queryParams: { refresh: new Date().getTime() }
+              });
             }
           }, error => {
             console.error('Backend error:', error);

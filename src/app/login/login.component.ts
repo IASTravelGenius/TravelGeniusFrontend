@@ -44,7 +44,9 @@ export class LoginComponent implements OnInit {
       this.http.post(url, requestBody).subscribe((response: any) => {
         if (response.error === null) {
           this.globalsService.setTokens(response.accessToken, response.refreshToken);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], {
+            queryParams: { refresh: new Date().getTime() }
+          });
         } else {
           this.errorMessage = response.error;
         }
