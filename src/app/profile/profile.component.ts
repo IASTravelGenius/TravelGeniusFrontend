@@ -139,7 +139,7 @@ export class ProfileComponent implements OnInit {
       if (this.profile?.cityName) {
         const city = this.allCities.find(city => city.name === this.profile?.cityName);
 
-        this.cityControl.setValue(city?.name);
+        this.cityControl.setValue(this.profile?.cityName);
       }
       console.log('Cities:', this.allCities);
     });
