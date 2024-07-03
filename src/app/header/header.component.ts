@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
   isDropdownOpen = false;
   searchResults: any[] = [];
-  profilePhoto: string = 'assets/download.jpeg';
+  profilePhoto: string = this.globalsService.userPhoto;
 
 
   constructor(private globalsService: GlobalsService, private router: Router, private http: HttpClient) {}

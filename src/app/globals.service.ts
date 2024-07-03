@@ -27,6 +27,8 @@ export class GlobalsService {
   public usernameKey = 'username';
   public userPhotoKey = 'userPhoto';
 
+  public userPhoto = 'assets/download.jpeg';
+
   dropdownOpen$ = this.dropdownOpenSource.asObservable();
 
   constructor(private router: Router, private http: HttpClient) {
@@ -88,6 +90,7 @@ export class GlobalsService {
     this.getProfile().subscribe(profile => {
       console.log('Profile:', profile);
       localStorage.setItem(this.userPhotoKey, profile.profilePhoto.photoUrl);
+      this.userPhoto = profile.profilePhoto.photoUrl;
     });
   }
 
