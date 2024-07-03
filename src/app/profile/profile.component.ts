@@ -89,6 +89,7 @@ export class ProfileComponent implements OnInit {
           const country = this.allCountries.find(country => country.name === this.profile?.countryName);
           console.log("Gasesc country", country);
           this.countryControl.setValue(this.profile?.countryName);
+          this.cityControl.setValue(this.profile?.cityName);
           this.loadCities(country?.id.toString() || '');
 
         }
