@@ -32,6 +32,13 @@ export class HeaderComponent implements OnInit {
       this.isDropdownOpen = isOpen;
     });
 
+    this.globalsService.getUserPhotoObservable().subscribe(photo => {
+      console.log('Photo:', photo);
+      if (photo == 'null')
+        this.profilePhoto = 'assets/download.jpeg';
+      else
+        this.profilePhoto = photo || 'assets/download.jpeg';
+    });
   }
 
   onSearch(event: any) {
