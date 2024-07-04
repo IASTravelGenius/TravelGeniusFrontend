@@ -26,7 +26,7 @@
             <div class="attractions">
               <div class="attraction" *ngFor="let attraction of destination.touristicAttractions">
                 <h4><a [routerLink]="['/countries', country.name.toLowerCase() + '_' + country.id, 'ta', attraction.name.toLowerCase() + '_' + attraction.id]">{{ attraction.name }}</a></h4>
-                <img *ngIf="destination.mainPhotoUrl.photoUrl" [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
+                <img *ngIf="attraction.mainPhotoUrl.photoUrl" [src]="attraction.mainPhotoUrl.photoUrl" alt="{{ attraction.name }}" class="attraction-photo">
               </div>
             </div>
           </li>
