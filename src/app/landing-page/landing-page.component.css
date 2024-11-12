@@ -1,0 +1,292 @@
+/* landing-page.component.css */
+.landing-page {
+    background: url('../../assets/landing_page_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    /* Adjust text color as needed */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .landing-page {
+        background-position: center;
+        padding: 20px;
+    }
+
+    .landing-page h1 {
+        font-size: 1.5rem;
+    }
+
+    .landing-page p {
+        font-size: 1rem;
+    }
+
+    .landing-page button {
+        font-size: 0.9rem;
+    }
+}
+
+.text-banner {
+    position: absolute;
+    /* Position it absolutely to place it precisely on the background */
+    top: 298px;
+    /* Position based on the design */
+    left: 100px;
+    width: 996px;
+    /* Matches the width from your specs */
+    height: 213px;
+    /* Matches the height from your specs */
+    font-family: 'Poppins', sans-serif;
+    /* Ensure correct font family */
+    font-weight: 700;
+    font-size: 90px;
+    /* Adjust for readability */
+    line-height: 110px;
+    color: #FFFFFF;
+    /* White text color */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* Drop shadow for better readability */
+}
+
+@media (max-width: 1024px) {
+    .text-banner {
+        font-size: 60px;
+        /* Adjust for smaller screens */
+        line-height: 75px;
+        top: 200px;
+        left: 50px;
+        width: auto;
+        /* Allow flexibility */
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-banner {
+        font-size: 40px;
+        /* Further reduce for smaller devices */
+        line-height: 50px;
+        text-align: center;
+        top: 150px;
+        left: 20px;
+        right: 20px;
+    }
+}
+
+.subtext-banner {
+    position: absolute;
+    /* Allows precise positioning */
+    top: 548px;
+    /* Position according to provided specs */
+    left: 100px;
+    width: 560px;
+    /* Matches the provided width */
+    height: 93px;
+    /* Matches the provided height */
+    font-family: 'Poppins', sans-serif;
+    /* Ensure Poppins font */
+    font-weight: 500;
+    font-size: 35px;
+    /* As specified */
+    line-height: 36px;
+    color: #FFFFFF;
+    /* Ensure white text stands out */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    /* White text */
+}
+
+@media (max-width: 1024px) {
+    .subtext-banner {
+        font-size: 28px;
+        /* Adjust for smaller screens */
+        line-height: 32px;
+        top: 500px;
+        left: 50px;
+        width: auto;
+        /* Flexibility for smaller screens */
+        height: auto;
+        color: #FFFFFF;
+        /* Ensure white text stands out */
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media (max-width: 768px) {
+    .subtext-banner {
+        top: 350px;
+        /* Move it higher on the screen */
+        font-size: 18px;
+        /* Adjust font size for better fit */
+        line-height: 24px;
+        /* Adjust line height accordingly */
+        left: 20px;
+        right: 20px;
+        text-align: center;
+        color: #FFFFFF;
+        /* Ensure white text stands out */
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Keep the text centered */
+    }
+}
+
+.button-discover {
+    position: absolute;
+    top: 663px;
+    left: 100px;
+    width: 252.76px;
+    height: 71px;
+    background-color: #000000;
+    /* Black background */
+    border: none;
+    /* Remove default button borders */
+    border-radius: 30px;
+    /* Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* Pointer cursor for better UX */
+    outline: none;
+    /* Remove focus outline */
+}
+
+.button-discover:hover {
+    background-color: #333333;
+    /* Darker background on hover */
+}
+
+.button-discover-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: #FFFFFF;
+    /* White text */
+    text-align: center;
+}
+
+.button-discover {
+    position: absolute;
+    top: 663px;
+    left: 100px;
+    width: 252.76px;
+    height: 71px;
+    background-color: #000000;
+    /* Black background */
+    border: none;
+    /* Remove default button borders */
+    border-radius: 30px;
+    /* Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* Pointer cursor for better UX */
+    outline: none;
+    /* Remove focus outline */
+}
+
+.button-discover:hover {
+    background-color: #333333;
+    /* Darker background on hover */
+}
+
+.button-discover-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: #FFFFFF;
+    /* White text */
+    text-align: center;
+}
+
+
+.button-plan-trip {
+    position: absolute;
+    /* Positioning the button precisely */
+    top: 663px;
+    /* Matches the top value */
+    left: 407px;
+    /* Matches the left value */
+    width: 252.76px;
+    /* Matches the button width */
+    height: 71px;
+    /* Matches the button height */
+    background-color: #000000;
+    /* Black background color */
+    border: none;
+    /* Removes default button border */
+    border-radius: 30px;
+    /* Rounded corners */
+    display: flex;
+    justify-content: center;
+    /* Centers the text horizontally */
+    align-items: center;
+    /* Centers the text vertically */
+    cursor: pointer;
+    /* Adds pointer cursor */
+    outline: none;
+    /* Removes focus outline */
+}
+
+.button-plan-trip:hover {
+    background-color: #333333;
+    /* Darker black for hover */
+}
+
+.button-plan-trip-text {
+    font-family: 'Poppins', sans-serif;
+    /* Use Poppins font */
+    font-weight: 600;
+    /* Bold weight */
+    font-size: 22px;
+    /* Matches text size */
+    line-height: 33px;
+    /* Matches line height */
+    color: #FFFFFF;
+    /* White text color */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .button-discover {
+        top: 500px;
+        /* Adjust the top position */
+        left: 50%;
+        /* Center horizontally */
+        transform: translateX(-50%);
+        /* Center alignment correction */
+        width: 200px;
+        /* Adjust width for mobile screens */
+        height: 60px;
+        /* Adjust height for smaller screens */
+    }
+
+    .button-plan-trip {
+        top: 580px;
+        /* Position below the first button */
+        left: 50%;
+        /* Center horizontally */
+        transform: translateX(-50%);
+        /* Center alignment correction */
+        width: 200px;
+        /* Adjust width for mobile screens */
+        height: 60px;
+        /* Adjust height for smaller screens */
+    }
+
+    .button-discover-text,
+    .button-plan-trip-text {
+        font-size: 16px;
+        /* Reduce font size for buttons on small screens */
+        line-height: 20px;
+        /* Adjust line height */
+    }
+}

@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
@@ -122,4 +122,116 @@ body {
 
 .search-dropdown .dropdown-item:hover {
     background-color: #f1f1f1;
+} */
+
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 128px;
+    background-color: rgba(18, 11, 11, 0.51);
+    /* Semi-transparent black background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 100;
+}
+
+.header-container .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.header-container .nav-links {
+    display: flex;
+    gap: 30px;
+    /* Space between menu items */
+}
+
+.header-container .nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 13px 10px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.header-container .nav-links a:hover {
+    color: #FFD700;
+}
+
+.menu-toggle {
+    display: none;
+    /* Hidden on larger screens */
+    background: none;
+    border: none;
+    font-size: 24px;
+    /* Adjust size for better visibility */
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    /* Align to the right edge */
+    top: 10px;
+    /* Align vertically within the header */
+    z-index: 101;
+    /* Ensure it stays above other content */
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        height: 60px;
+        /* Adjust height for mobile */
+        padding: 10px 20px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .menu-toggle {
+        display: block;
+        /* Show menu toggle on mobile */
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .header-container .nav-links {
+        display: none;
+        /* Initially hide nav links on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        /* Position below the header */
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 99;
+        /* Ensure dropdown stays above content */
+    }
+
+    .header-container .nav-links.show {
+        display: flex;
+        /* Show menu when 'show' class is added */
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        /* Adjust font size for mobile */
+        padding: 5px 0;
+    }
 }
