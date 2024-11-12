@@ -31,7 +31,8 @@ import { TouristicAttractionComponent } from './touristic-attraction/touristic-a
 import { TouristicAttractionsAllComponent } from './touristic-attractions-all/touristic-attractions-all.component';
 import { TouristicAttractionsResultsComponent } from './touristic-attractions-results/touristic-attractions-results.component';
 import { MatSliderAccessorDirective } from './mat-slider-accessor.directive';
-import { StarRatingComponent } from './star-rating/star-rating.component'; // Import MatAutocompleteModule
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { LandingPageComponent } from './landing-page/landing-page.component'; // Import MatAutocompleteModule
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { StarRatingComponent } from './star-rating/star-rating.component'; // Im
     TouristicAttractionsAllComponent,
     TouristicAttractionsResultsComponent,
     MatSliderAccessorDirective,
-    StarRatingComponent
+    StarRatingComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

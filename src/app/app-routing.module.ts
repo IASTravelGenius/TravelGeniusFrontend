@@ -13,10 +13,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component';
 import { TouristicAttractionsAllComponent } from './touristic-attractions-all/touristic-attractions-all.component';
+import {LandingPageComponent} from './landing-page/landing-page.component'
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LandingPageComponent },
+  { path: 'landing-page', component: LandingPageComponent },
   { path: 'home', component: HomeComponent },
   { path: 'countries', component: CountriesComponent },
   { path: 'countries/:countryId', component: CountryComponent},
