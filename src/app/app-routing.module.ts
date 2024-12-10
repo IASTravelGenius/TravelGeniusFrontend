@@ -14,27 +14,31 @@ import { SettingsComponent } from './settings/settings.component';
 import { TouristicAttractionComponent } from './touristic-attraction/touristic-attraction.component';
 import { TouristicAttractionsAllComponent } from './touristic-attractions-all/touristic-attractions-all.component';
 import {LandingPageComponent} from './landing-page/landing-page.component'
+import { EmailOptInComponent } from './email-opt-in/email-opt-in.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
-  { path: 'landing-page', component: LandingPageComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'countries', component: CountriesComponent },
-  { path: 'countries/:countryId', component: CountryComponent},
+  { path: "", component: LandingPageComponent },
+  { path: "landing-page", component: LandingPageComponent },
+  { path: "email-opt-in", component: EmailOptInComponent },
+  { path: "maintenance", component: MaintenanceComponent },
+  // { path: 'home', component: HomeComponent },
+  // { path: 'countries', component: CountriesComponent },
+  // { path: 'countries/:countryId', component: CountryComponent},
   // , children: [
   // { path: ':cityId', component: CityComponent },
   // ]},
-  { path: 'countries/:countryId/:cityId', component: CityComponent},
-  { path: 'countries/:countryId/ta/:touristicAttractionId', component: TouristicAttractionComponent},
-  { path: 'news', component: NewsComponent },
-  { path: 'flights', component: FlightsComponent },
-  { path: 'touristic-attractions', component: TouristicAttractionsAllComponent },
-  { path: 'touristic-attractions/:latitude/:longitude/:range', component: TouristicAttractionsResultsComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent},
-  { path: 'settings', component: SettingsComponent},
+  // { path: 'countries/:countryId/:cityId', component: CityComponent},
+  // { path: 'countries/:countryId/ta/:touristicAttractionId', component: TouristicAttractionComponent},
+  // { path: 'news', component: NewsComponent },
+  // { path: 'flights', component: FlightsComponent },
+  // { path: 'touristic-attractions', component: TouristicAttractionsAllComponent },
+  // { path: 'touristic-attractions/:latitude/:longitude/:range', component: TouristicAttractionsResultsComponent },
+  // { path: 'register', component: RegisterComponent },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'profile', component: ProfileComponent},
+  // { path: 'settings', component: SettingsComponent},
 
   // Add other routes here
 ];

@@ -1,0 +1,25 @@
+<div class="maintenance-container">
+  <h1>We're Still Working on It!</h1>
+  <p>Our website is under construction. We'll be live soon with amazing features for you.</p>
+  <div class="loader"></div>
+  <div class="email-opt-in-container">
+    <p>
+      Would you like to receive updates on our services status? Share
+      your email with us!
+    </p>
+    <form (ngSubmit)="onSubmit()">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+    </form>
+    <div class="button-container">
+      <button (click)="onSubmit()">
+        <span class="button-text">Submit</span>
+      </button>
+    </div>
+  </div>
+</div>
