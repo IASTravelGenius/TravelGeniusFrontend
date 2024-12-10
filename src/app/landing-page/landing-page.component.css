@@ -290,3 +290,626 @@
         /* Adjust line height */
     }
 }
+
+.top-destinations {
+    padding: 50px 20px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+        /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    /* Space between elements */
+    margin-bottom: 30px;
+    /* Add spacing below the search section */
+}
+
+.search-section p {
+    font-family: 'Poppins', sans-serif;
+    /* Modern font */
+    font-size: 18px;
+    /* Font size for text */
+    font-weight: 500;
+    /* Medium weight */
+    line-height: 36px;
+    /* Line height for better readability */
+    color: #878787;
+    /* Gray color for the text */
+    text-align: center;
+    /* Center-align the text */
+    margin: 0;
+    /* Remove default margin */
+}
+
+.search-section input {
+    padding: 10px 20px;
+    /* Padding inside the input box */
+    font-family: 'Poppins', sans-serif;
+    /* Matching font */
+    font-size: 16px;
+    /* Font size */
+    border: 1px solid #CCCCCC;
+    /* Light gray border */
+    border-radius: 25px;
+    /* Rounded corners */
+    width: 300px;
+    /* Set a fixed width */
+    outline: none;
+    /* Remove focus outline */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+.search-section input::placeholder {
+    color: #878787;
+    /* Matching placeholder text color */
+    font-family: 'Poppins', sans-serif;
+    /* Matching font */
+}
+
+.search-section button {
+    background-color: #000000;
+    /* Black background */
+    color: #FFFFFF;
+    /* White text */
+    padding: 10px 20px;
+    /* Padding inside the button */
+    font-family: 'Poppins', sans-serif;
+    /* Matching font */
+    font-size: 16px;
+    /* Font size */
+    font-weight: 500;
+    /* Medium weight */
+    border: none;
+    /* Remove default border */
+    border-radius: 25px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor for better UX */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* Add shadow */
+    transition: background-color 0.3s;
+    z-index: 1;
+    /* Smooth hover transition */
+}
+
+.search-section button:hover {
+    background-color: #333333;
+    /* Slightly lighter black on hover */
+}
+
+.search-button {
+    background-color: #000;
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #333;
+}
+
+.destination-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.destination-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.destination-header p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #6C6C6C;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.destination-carousel {
+    display: flex;
+        justify-content: center;
+        /* Centers the entire carousel horizontally */
+        align-items: center;
+        /* Aligns the content vertically */
+        gap: 20px;
+        /* Space between cards and controls */
+        padding: 20px 0;
+        /* Add some padding for spacing */
+        overflow: hidden;
+        /* Hide any overflowing content */
+        position: relative;
+        /* Allows for absolute positioning of controls */
+        background-color: #FFFFFF;
+        /* Set the background color if necessary */
+}
+
+.carousel-control {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1;
+}
+
+.carousel-control:hover {
+    color: #333;
+}
+
+.destination-cards {
+    display: flex;
+    justify-content: left;
+    /* Center cards horizontally */
+    gap: 20px;
+    /* Space between the cards */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    scroll-behavior: smooth;
+    /* Smooth scrolling behavior */
+    /* width: 200%; */
+        /* Let the width adjust to the content */
+    /* Make the cards container responsive */
+    padding: 20px 0;
+    /* Add padding for spacing */
+    background-color: #FFFFFF;
+    /* Optional: Background for cards */
+}
+
+.destination-card {
+    background: #FFF;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    /* Fixed width for cards */
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    flex-shrink: 0;
+        /* Prevent shrinking on small screens */
+}
+
+.destination-card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.destination-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 0 10px;
+    padding: 0 15px;
+}
+
+.destination-card p {
+    font-size: 14px;
+    color: #6C6C6C;
+    margin: 0;
+    padding: 0 15px 15px;
+}
+
+@media (max-width: 768px) {
+    .search-section {
+        flex-direction: column;
+        /* Stack items vertically */
+        gap: 10px;
+        /* Reduce the gap */
+    }
+
+    .search-section button {
+        margin-top: 10px;
+    }
+
+    .destination-card {
+        width: 150px;
+    }
+}
+
+.heading-title {
+    font-family: 'Poppins', sans-serif;
+    /* Modern font */
+    font-weight: 600;
+    /* Semi-bold weight for emphasis */
+    font-size: 50px;
+    /* Large font size */
+    line-height: 70px;
+    /* Line height for proper spacing */
+    color: #020202;
+    /* Almost black color */
+    text-align: center;
+    /* Center-align the text */
+    margin: 0;
+    /* Remove default margins */
+    padding: 0;
+    /* Remove default padding */
+}
+
+/* Overall Component Styling */
+.destination-highlight {
+    padding: 50px 20px;
+    /* Padding for spacing */
+    text-align: center;
+    /* Center-align title and subtitle */
+    background: url('../../assets/greece.png') no-repeat center center fixed;
+    height: 600px;
+    /* Light background color for contrast */
+}
+
+/* Header Section */
+.highlight-header h1 {
+    font-family: 'Poppins', sans-serif;
+    /* Modern font */
+    font-weight: 700;
+    /* Bold weight for emphasis */
+    font-size: 48px;
+    /* Large font size */
+    color: white;
+    /* Black color for visibility */
+    margin-bottom: 10px;
+    /* Spacing below title */
+}
+
+.highlight-header p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    /* Gray color for the subtitle */
+    margin-bottom: 40px;
+    /* Spacing below subtitle */
+}
+
+/* Feature Cards Container */
+.highlight-features {
+    display: flex;
+    justify-content: center;
+    /* Center cards horizontally */
+    gap: 60px;
+    /* Space between cards */
+    flex-wrap: wrap;
+    /* Wrap cards for smaller screens */
+}
+
+/* Individual Feature Cards */
+.feature-card {
+    background: #FFFFFF;
+    /* White background */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for elevation */
+    padding: 20px;
+    /* Internal padding for content */
+    width: 300px;
+    /* Fixed width for each card */
+    text-align: left;
+    /* Align text to the left */
+    box-shadow: 0px 8px 60px rgba(0, 0, 0, 1);
+    z-index: 2;
+        /* Add the shadow */
+}
+
+.feature-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    /* Semi-bold for emphasis */
+    font-size: 20px;
+    /* Medium font size */
+    color: #000000;
+    /* Black color for the heading */
+    margin-bottom: 10px;
+    margin-top: 20px;
+    /* Spacing below heading */
+}
+
+.feature-card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6C6C6C;
+    /* Gray color for text */
+    margin-bottom: 10px;
+    /* Space between paragraphs */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .highlight-features {
+        flex-direction: column;
+        /* Stack cards vertically */
+        align-items: center;
+        /* Center-align cards */
+        gap: 20px;
+        /* Space between stacked cards */
+    }
+
+    .feature-card {
+        width: 100%;
+        /* Full width for mobile view */
+        max-width: 350px;
+        /* Set a max-width to keep cards consistent */
+    }
+
+    .highlight-header h1 {
+        font-size: 36px;
+        /* Smaller title font size for mobile */
+    }
+
+    .highlight-header p {
+        font-size: 16px;
+        /* Smaller subtitle font size for mobile */
+    }
+}
+
+/* General Section Styling */
+.athens-overview {
+    display: flex;
+    flex-wrap: wrap;
+    /* Ensure responsiveness */
+    gap: 20px;
+    padding: 100px 300px;
+    background-color: #F9F9F9;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.featured-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.description h2 {
+    font-weight: 600;
+    font-size: 24px;
+    margin: 20px 0 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Recommendations */
+.recommendations {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.recommendation-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.recommendation-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.recommendation-item p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Reviews */
+.reviews {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviews h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.review-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.review-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-text h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+}
+
+.review-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #6C6C6C;
+    margin: 5px 0 0;
+}
+
+@media (max-width: 768px) {
+    .athens-overview {
+        flex-direction: column;
+        /* Stack content vertically */
+        align-items: center;
+        /* Center align the items */
+        gap: 20px;
+        /* Add spacing between sections */
+        padding: 20px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .main-content {
+        width: 100%;
+        /* Full width for main content */
+        text-align: left;
+        /* Left-align the text for better readability */
+    }
+
+    .featured-image {
+        width: 100%;
+        /* Ensure the image spans the full width */
+        max-width: 600px;
+        /* Optional: Set a max width for larger screens */
+        margin: 0 auto;
+        /* Center the image horizontally */
+    }
+
+    .description {
+        padding: 20px;
+        /* Add padding for better spacing */
+    }
+
+    .sidebar {
+        width: 100%;
+        /* Full width for the sidebar */
+        text-align: left;
+        /* Left-align the content */
+    }
+
+    .recommendations,
+    .reviews {
+        margin-bottom: 20px;
+        /* Add spacing between sections */
+    }
+}
+
+/* Final Elements: Tags and Share */
+.tags-share {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #6C6C6C;
+    background-color: white;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tags span {
+    font-weight: 600;
+    color: #333333;
+}
+
+.tags a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.tags a:hover {
+    color: #0056b3;
+}
+
+.share {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.share span {
+    font-weight: 600;
+    color: #333333;
+}
+
+.share a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #FFF;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.share a:hover {
+    background-color: #333333;
+}
+
+.share i {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .tags-share {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .tags,
+    .share {
+        justify-content: center;
+        width: auto;
+    }
+
+    .share {
+        margin-top: 10px;
+    }
+
+    .share a {
+        margin-right: 10px;
+    }
+}
