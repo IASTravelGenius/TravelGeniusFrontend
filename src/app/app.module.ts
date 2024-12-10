@@ -32,7 +32,12 @@ import { TouristicAttractionsAllComponent } from './touristic-attractions-all/to
 import { TouristicAttractionsResultsComponent } from './touristic-attractions-results/touristic-attractions-results.component';
 import { MatSliderAccessorDirective } from './mat-slider-accessor.directive';
 import { StarRatingComponent } from './star-rating/star-rating.component';
-import { LandingPageComponent } from './landing-page/landing-page.component'; // Import MatAutocompleteModule
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { EmailOptInComponent } from './email-opt-in/email-opt-in.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component'; // Import MatAutocompleteModule
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { environment } from "../environments/environment";
 
 
 @NgModule({
@@ -55,7 +60,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component'; //
     TouristicAttractionsResultsComponent,
     MatSliderAccessorDirective,
     StarRatingComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    EmailOptInComponent,
+    MaintenanceComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,10 +77,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component'; //
     MatButtonModule,
     MatAutocompleteModule,
     DragDropModule,
-    MatSliderModule
-    
+    MatSliderModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

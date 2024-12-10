@@ -1,0 +1,149 @@
+.entire-container {
+  background-color: white;
+  background-size: cover;
+  height: 100vh;
+  /* Full viewport height */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* Adjust text color if needed */
+  text-align: center;
+}
+
+.email-opt-in-container {
+  text-align: center;
+  margin: auto;
+  /* Center container vertically and horizontally */
+  padding: 40px;
+  /* Add some padding for spacing */
+  max-width: 600px;
+  /* Restrict max width */
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  box-shadow: 0px 8px 60px rgba(0, 0, 0, 0.1);
+  /* Add subtle shadow */
+  border-radius: 15px;
+  /* Add rounded corners for container */
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  /* Darker text color for visibility */
+  margin-bottom: 10px;
+  /* Add spacing below heading */
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  /* Neutral gray color for paragraph text */
+  margin-bottom: 20px;
+  /* Add spacing below paragraph */
+}
+
+form {
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center align form content */
+  gap: 15px;
+  /* Add spacing between form elements */
+}
+
+input[type="email"] {
+  width: 100%;
+  max-width: 400px;
+  /* Restrict input width for better design */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  /* Rounded input */
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for input */
+}
+
+input[type="email"]::placeholder {
+  color: #aaa;
+  /* Lighter color for placeholder text */
+}
+
+button {
+  width: 252.76px;
+  height: 71px;
+  background-color: #000000;
+  /* Black background */
+  border: none;
+  /* Remove default button borders */
+  border-radius: 30px;
+  /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* Pointer cursor for better UX */
+  outline: none;
+  /* Remove focus outline */
+  transition: background-color 0.3s ease;
+  /* Smooth hover transition */
+}
+
+button:hover {
+  background-color: #333333;
+  /* Darker color on hover */
+}
+
+.button-text {
+  color: white;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  /* Stack buttons vertically */
+  align-items: center;
+  /* Center align buttons */
+  gap: 20px;
+  /* Space between buttons */
+}
+
+@media (max-width: 768px) {
+  .email-opt-in-container {
+    padding: 20px;
+    /* Reduce padding on smaller screens */
+  }
+
+  h2 {
+    font-size: 20px;
+    /* Smaller font for heading */
+  }
+
+  p {
+    font-size: 14px;
+    /* Smaller font for paragraph */
+  }
+
+  button {
+    width: 200px;
+    /* Reduce button size for smaller screens */
+    height: 60px;
+  }
+
+  .button-text {
+    font-size: 16px;
+    /* Adjust button text size */
+  }
+
+  input[type="email"] {
+    max-width: 300px;
+    /* Adjust input width for smaller screens */
+  }
+}

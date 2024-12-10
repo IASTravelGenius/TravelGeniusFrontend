@@ -1,0 +1,26 @@
+<div class="entire-container">
+  <div class="email-opt-in-container">
+    <h2>Before Accessing Our Services</h2>
+    <p>
+      Would you like to receive updates on new trips and announcements? Share
+      your email with us!
+    </p>
+    <form (ngSubmit)="onSubmit()">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+    </form>
+    <div class="button-container">
+      <button (click)="onSubmit()">
+        <span class="button-text">Submit</span>
+      </button>
+      <button (click)="onSkip()">
+        <span class="button-text">Skip</span>
+      </button>
+    </div>
+  </div>
+</div>
