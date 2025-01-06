@@ -4,9 +4,10 @@ import { FirestoreService } from "../services/firestore.service";
 import { PosthogService } from "../services/posthog.service";
 
 @Component({
-  selector: "app-email-opt-in",
-  templateUrl: "./email-opt-in.component.html",
-  styleUrls: ["./email-opt-in.component.css"],
+    selector: "app-email-opt-in",
+    templateUrl: "./email-opt-in.component.html",
+    styleUrls: ["./email-opt-in.component.css"],
+    standalone: false
 })
 export class EmailOptInComponent implements OnInit {
   email: string = "";

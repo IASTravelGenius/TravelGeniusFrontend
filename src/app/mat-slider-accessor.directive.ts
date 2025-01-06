@@ -1,7 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appMatSliderAccessor]'
+    selector: '[appMatSliderAccessor]',
+    standalone: false
 })
 export class MatSliderAccessorDirective {
 

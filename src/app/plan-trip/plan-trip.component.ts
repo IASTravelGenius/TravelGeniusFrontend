@@ -3,9 +3,10 @@ import { OpenaiService } from '../openai.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-plan-trip",
-  templateUrl: "./plan-trip.component.html",
-  styleUrls: ["./plan-trip.component.css"],
+    selector: "app-plan-trip",
+    templateUrl: "./plan-trip.component.html",
+    styleUrls: ["./plan-trip.component.css"],
+    standalone: false
 })
 export class PlanTripComponent implements OnInit {
   searchContent: string = "a";

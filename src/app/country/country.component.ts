@@ -13,9 +13,10 @@ import { Country } from '../models/country';
 
 
 @Component({
-  selector: 'app-country',
-  templateUrl: './country.component.html',
-  styleUrls: ['./country.component.css']
+    selector: 'app-country',
+    templateUrl: './country.component.html',
+    styleUrls: ['./country.component.css'],
+    standalone: false
 })
 export class CountryComponent implements OnInit {
   country: Country | null = null;

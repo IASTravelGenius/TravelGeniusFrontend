@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/router';
 
 @Component({
-  selector: "app-destination-suggestion",
-  templateUrl: "./destination-suggestion.component.html",
-  styleUrls: ["./destination-suggestion.component.css"],
+    selector: "app-destination-suggestion",
+    templateUrl: "./destination-suggestion.component.html",
+    styleUrls: ["./destination-suggestion.component.css"],
+    standalone: false
 })
 export class DestinationSuggestionComponent implements OnInit {
   public destinations: { name: string; image: string; rating: number }[];

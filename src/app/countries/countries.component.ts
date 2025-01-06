@@ -8,9 +8,10 @@ import { Deal } from '../models/deal';
 
 
 @Component({
-  selector: 'app-countries',
-  templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.css']
+    selector: 'app-countries',
+    templateUrl: './countries.component.html',
+    styleUrls: ['./countries.component.css'],
+    standalone: false
 })
 export class CountriesComponent {
   isMenuOpen = false;

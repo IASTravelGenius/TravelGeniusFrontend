@@ -9,9 +9,10 @@ import { News } from '../models/news';
 import { Deal } from '../models/deal';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+    selector: 'app-news',
+    templateUrl: './news.component.html',
+    styleUrls: ['./news.component.css'],
+    standalone: false
 })
 export class NewsComponent implements OnInit {
   news: News[] = [];

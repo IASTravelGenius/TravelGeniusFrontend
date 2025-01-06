@@ -4,9 +4,10 @@ import { FirestoreService } from "../services/firestore.service";
 import { PosthogService } from "../services/posthog.service";
 
 @Component({
-  selector: "app-maintenance",
-  templateUrl: "./maintenance.component.html",
-  styleUrls: ["./maintenance.component.css"],
+    selector: "app-maintenance",
+    templateUrl: "./maintenance.component.html",
+    styleUrls: ["./maintenance.component.css"],
+    standalone: false
 })
 export class MaintenanceComponent implements OnInit {
   email: string = "";

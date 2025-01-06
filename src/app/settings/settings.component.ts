@@ -5,9 +5,10 @@ import { environment } from 'src/environments/environment';
 import { GlobalsService } from '../globals.service';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.css'],
+    standalone: false
 })
 export class SettingsComponent implements OnInit {
   changePasswordForm: UntypedFormGroup;

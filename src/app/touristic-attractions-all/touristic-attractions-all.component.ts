@@ -11,9 +11,10 @@ import { DealsService } from '../deals.service';
 declare const google: any;
 
 @Component({
-  selector: 'app-touristic-attractions-all',
-  templateUrl: './touristic-attractions-all.component.html',
-  styleUrls: ['./touristic-attractions-all.component.css']
+    selector: 'app-touristic-attractions-all',
+    templateUrl: './touristic-attractions-all.component.html',
+    styleUrls: ['./touristic-attractions-all.component.css'],
+    standalone: false
 })
 export class TouristicAttractionsAllComponent implements OnInit, AfterViewInit {
   attractions: Attraction[] = [];

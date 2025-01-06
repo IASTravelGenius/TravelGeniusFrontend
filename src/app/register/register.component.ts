@@ -6,9 +6,10 @@ import { GlobalsService } from '../globals.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   registerForm: UntypedFormGroup;

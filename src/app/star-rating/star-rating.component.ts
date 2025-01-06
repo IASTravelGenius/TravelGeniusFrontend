@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-star-rating',
-  templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.css']
+    selector: 'app-star-rating',
+    templateUrl: './star-rating.component.html',
+    styleUrls: ['./star-rating.component.css'],
+    standalone: false
 })
 export class StarRatingComponent {
   @Input() rating: number = 0;

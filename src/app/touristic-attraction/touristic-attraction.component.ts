@@ -13,9 +13,10 @@ import { HttpHeaders } from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-touristic-attraction',
-  templateUrl: './touristic-attraction.component.html',
-  styleUrls: ['./touristic-attraction.component.css']
+    selector: 'app-touristic-attraction',
+    templateUrl: './touristic-attraction.component.html',
+    styleUrls: ['./touristic-attraction.component.css'],
+    standalone: false
 })
 export class TouristicAttractionComponent implements OnInit {
   attraction: TouristicAttraction = {

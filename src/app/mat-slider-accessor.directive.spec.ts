@@ -2,14 +2,15 @@ import { Directive, HostListener, ElementRef, Renderer2, forwardRef } from '@ang
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'mat-slider[formControlName], mat-slider[formControl], mat-slider[ngModel]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MatSliderValueAccessorDirective),
-      multi: true
-    }
-  ]
+    selector: 'mat-slider[formControlName], mat-slider[formControl], mat-slider[ngModel]',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => MatSliderValueAccessorDirective),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class MatSliderValueAccessorDirective implements ControlValueAccessor {
   onChange = (_: any) => {};

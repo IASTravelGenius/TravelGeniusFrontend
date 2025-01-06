@@ -13,9 +13,10 @@ import { Photo } from '../models/photo.interface';
 
 
 @Component({
-  selector: 'app-city',
-  templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+    selector: 'app-city',
+    templateUrl: './city.component.html',
+    styleUrls: ['./city.component.css'],
+    standalone: false
 })
 export class CityComponent implements OnInit {
   city: City = new City('Not found', 'Not Found', 'Not found', { id: 0, photoUrl: '', source: '' }, 0, [], [], [], [], [], 'Not found', 0);
