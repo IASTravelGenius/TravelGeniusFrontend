@@ -1,0 +1,158 @@
+.plan-trip-container {
+    background: url('../../assets/decide_location.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.search-section {
+    position: absolute;
+    left: 100px;
+    display: flex;
+    margin-top: 300px;
+    margin-bottom: 30px;
+    width: 676px;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.search-section input {
+    position: absolute;
+    height: 69px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    border: 1px solid #CCCCCC;
+    border-radius: 25px;
+    width: 676px;
+    outline: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+.search-section input::placeholder {
+    color: #878787;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-section button {
+    vertical-align: baseline;
+    background-color: #006EB6;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s;
+    z-index: 1;
+    width: 146px;
+    margin-right: 10px;
+}
+
+.search-section button:hover {
+    background-color: #333333;
+}
+
+.search-button:hover {
+    background-color: #333;
+}
+
+.text-banner {
+    position: absolute;
+    top: 298px;
+    left: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 90px;
+    line-height: 110px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.subtext-banner {
+    position: absolute;
+    left: 100px;
+    margin-top: 20px;
+    height: 93px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1024px) {
+    .text-banner {
+        font-size: 60px;
+        /* Adjust for smaller screens */
+        line-height: 75px;
+        top: 200px;
+        left: 50px;
+        width: auto;
+        /* Allow flexibility */
+        height: auto;
+    }
+
+    .subtext-banner {
+        font-size: 28px;
+        /* Adjust for smaller screens */
+        line-height: 32px;
+        top: 500px;
+        left: 50px;
+        width: auto;
+        /* Flexibility for smaller screens */
+        height: auto;
+        color: #FFFFFF;
+        /* Ensure white text stands out */
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media (max-width: 768px) {
+    .plan-trip-container {
+        background-position: center;
+        padding: 20px;
+    }
+
+    .text-banner {
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+        top: 150px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .subtext-banner {
+        top: 300px;
+        font-size: 18px;
+        line-height: 24px;
+        left: 20px;
+        right: 20px;
+        text-align: center;
+        color: #FFFFFF;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-section {
+        left: 20px;
+        right: 20px;
+        width: 80%;
+    }
+
+    .search-section input {
+        width: 100%;
+    }
+
+    .search-section button{
+        width: 100px;
+    }
+}

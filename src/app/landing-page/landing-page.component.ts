@@ -7,33 +7,39 @@ import { PosthogService } from '../services/posthog.service';
   styleUrls: ["./landing-page.component.css"],
 })
 export class LandingPageComponent implements OnInit {
-  constructor(
-    private posthog: PosthogService
-  ) {}
+  constructor(private posthog: PosthogService) {}
 
   ngOnInit(): void {
     this.posthog.trackEvent("$pageview");
-    
+
     const prevButton = document.querySelector(".prev");
     const nextButton = document.querySelector(".next");
     const cardsContainer = document.querySelector(".destination-cards");
 
     if (prevButton != null && nextButton != null && cardsContainer != null) {
-      // Scroll left when the "prev" button is clicked
       prevButton.addEventListener("click", () => {
         cardsContainer.scrollBy({
-          left: -300, // Scroll by 300px to the left
+          left: -300,
           behavior: "smooth",
         });
       });
 
-      // Scroll right when the "next" button is clicked
       nextButton.addEventListener("click", () => {
         cardsContainer.scrollBy({
-          left: 300, // Scroll by 300px to the right
+          left: 300,
           behavior: "smooth",
         });
       });
+    }
+  }
+
+  scrollToSection(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const yOffset = -100;
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   }
 }

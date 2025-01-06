@@ -41,7 +41,7 @@ export class MaintenanceComponent implements OnInit {
     } else {
       setTimeout(() => {
         this.router.navigate(["/"]);
-      }, 1000); // 1 second delay for loading effect
+      }, 1000);
     }
   }
 

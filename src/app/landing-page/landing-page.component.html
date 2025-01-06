@@ -7,7 +7,7 @@
         Explore the world’s best places and travel safe.
       </div>
 
-      <button class="button-discover" [routerLink]="['/email-opt-in']">
+      <button class="button-discover" (click)="scrollToSection('discover-places')">
         <span class="button-discover-text">Discover places</span>
       </button>
 
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <section class="top-destinations">
+  <section id="discover-places" class="top-destinations">
     <div class="search-section">
       <p>Have a specific country in mind?</p>
       <div>

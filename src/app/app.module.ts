@@ -38,6 +38,10 @@ import { MaintenanceComponent } from './maintenance/maintenance.component'; // I
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { environment } from "../environments/environment";
+import { PlanTripComponent } from './plan-trip/plan-trip.component';
+import { DestinationSuggestionComponent } from './destination-suggestion/destination-suggestion.component';
+import { SuggestionCardComponent } from './suggestion-card/suggestion-card.component';
+import { DateTimeComponent } from './date-time/date-time.component';
 
 
 @NgModule({
@@ -63,6 +67,10 @@ import { environment } from "../environments/environment";
     LandingPageComponent,
     EmailOptInComponent,
     MaintenanceComponent,
+    PlanTripComponent,
+    DestinationSuggestionComponent,
+    SuggestionCardComponent,
+    DateTimeComponent,
   ],
   imports: [
     BrowserModule,

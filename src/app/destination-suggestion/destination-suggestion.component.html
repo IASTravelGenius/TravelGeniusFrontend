@@ -1,0 +1,15 @@
+<div class="suggestion-container">
+    <div class="header-container">
+        <div class="title">Where are we going?</div>
+        <div class="search-container">
+            <div class="header-text">Still not decided? Try again.</div>
+            <div class="search-section">
+                <input type="search" placeholder="Search destination" />
+                <button>Find</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-container">
+        <app-suggestion-card class="destination-cards" *ngFor="let destination of destinations" [destination]="destination"></app-suggestion-card>
+    </div>
+</div>

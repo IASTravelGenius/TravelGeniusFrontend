@@ -23,7 +23,7 @@ export class EmailOptInComponent implements OnInit {
 
   onSkip() {
     this.posthog.trackEvent("newsletter skipped");
-    this.navigateToMaintenance();
+    this.navigateToTripPlan();
   }
 
   async onSubmit() {
@@ -45,15 +45,14 @@ export class EmailOptInComponent implements OnInit {
 
     if (this.email === "") {
     } else {
-      this.navigateToMaintenance();
+      this.navigateToTripPlan();
     }
   }
 
-  navigateToMaintenance() {
-    // Simulate a delay for loading animation
+  navigateToTripPlan() {
     setTimeout(() => {
-      this.router.navigate(["/maintenance"]);
-    }, 1000); // 1 second delay for loading effect
+      this.router.navigate(["/plan-trip"]);
+    }, 1000);
   }
 
   generateGUID(): string {

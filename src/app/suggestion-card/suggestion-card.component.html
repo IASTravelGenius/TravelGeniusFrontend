@@ -1,0 +1,8 @@
+<div class="card">
+  <img [src]="destination.image" [alt]="destination.name" />
+  <h3>{{ destination.name }}</h3>
+  <div class="stars">
+    <span *ngFor="let star of [].constructor(destination.rating)">&#9733;</span>
+  </div>
+  <button (click)="onLocationChoosed()">Choose now</button>
+</div>
