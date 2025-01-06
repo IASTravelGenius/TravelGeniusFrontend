@@ -11,29 +11,29 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~16.2.12",
+    "@angular/animations": "~17.3.12",
     "@angular/cdk": "~13.3.9",
-    "@angular/common": "~16.2.12",
-    "@angular/compiler": "~16.2.12",
-    "@angular/core": "~16.2.12",
+    "@angular/common": "~17.3.12",
+    "@angular/compiler": "~17.3.12",
+    "@angular/core": "~17.3.12",
     "@angular/fire": "^7.6.1",
-    "@angular/forms": "~16.2.12",
+    "@angular/forms": "~17.3.12",
     "@angular/material": "~13.3.9",
-    "@angular/platform-browser": "~16.2.12",
-    "@angular/platform-browser-dynamic": "~16.2.12",
-    "@angular/router": "~16.2.12",
+    "@angular/platform-browser": "~17.3.12",
+    "@angular/platform-browser-dynamic": "~17.3.12",
+    "@angular/router": "~17.3.12",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
     "posthog-js": "^1.181.0",
     "rrweb": "^2.0.0-alpha.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.3"
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.6",
     "@angular/cli": "~13.3.6",
-    "@angular/compiler-cli": "~16.2.12",
+    "@angular/compiler-cli": "~17.3.12",
     "@rrweb/types": "^2.0.0-alpha.16",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
@@ -45,6 +45,6 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "rrweb-snapshot": "^2.0.0-alpha.16",
-    "typescript": "~4.9.5"
+    "typescript": "~5.4.5"
   }
 }
