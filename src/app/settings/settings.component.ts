@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { GlobalsService } from '../globals.service';
@@ -10,7 +10,7 @@ import { GlobalsService } from '../globals.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  changePasswordForm: FormGroup;
+  changePasswordForm: UntypedFormGroup;
   isChangePasswordModalOpen = false;
   isConfirmationModalOpen = false;
   actionToConfirm: string = '';
@@ -23,7 +23,7 @@ export class SettingsComponent implements OnInit {
   };
   notificationsEnabled: boolean = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private globalService: GlobalsService) {
+  constructor(private fb: UntypedFormBuilder, private http: HttpClient, private globalService: GlobalsService) {
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', Validators.required],
       newPassword: ['', Validators.required],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ProfileService } from '../profile.service';
@@ -32,9 +32,9 @@ export class ProfileComponent implements OnInit {
     tags: false
   };
 
-  countryControl = new FormControl();
-  cityControl = new FormControl();
-  tagControl = new FormControl();
+  countryControl = new UntypedFormControl();
+  cityControl = new UntypedFormControl();
+  tagControl = new UntypedFormControl();
 
   filteredCountries: Observable<Country[]>;
   filteredCities: Observable<City[]>;
