@@ -17,8 +17,10 @@ export const environment = {
     appId: "1:903496072959:web:7efcc95d4ccb8bbd4f96ca",
     measurementId: "G-HS11WEJ8HF",
   },
-  POSTHOG_KEY: 'phc_lqsZ43Tgho5FnOwDui7VyMzG7trkCHzNRJX9p5KOYQk',
-  POSTHOG_HOST: 'https://us.i.posthog.com'
+  POSTHOG_KEY: "phc_lqsZ43Tgho5FnOwDui7VyMzG7trkCHzNRJX9p5KOYQk",
+  POSTHOG_HOST: "https://us.i.posthog.com",
+  OPENAPI_KEY:
+    "",
 };
 
 /*
