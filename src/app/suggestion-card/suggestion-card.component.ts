@@ -18,8 +18,14 @@ export class SuggestionCardComponent implements OnInit {
   onLocationChoosed(): void {
     this.globals.citySelected = this.destination.name
 
-    setTimeout(() => {
-      this.router.navigate(["/date-time"]);
-    }, 1000);
+    if (this.destination.name.includes('Restaurant')) {
+      setTimeout(() => {
+        this.router.navigate(["/"]);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.router.navigate(["/date-time"]);
+      }, 1000);
+    }
   }
 }
