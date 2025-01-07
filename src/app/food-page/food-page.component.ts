@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PosthogService } from '../services/posthog.service';
 
 @Component({
   selector: "app-food-page",
@@ -8,15 +9,18 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class FoodPageComponent implements OnInit {
-
-  constructor(private router: Router){}
+  constructor(private router: Router, private posthog: PosthogService) {}
 
   ngOnInit(): void {
+    this.posthog.trackEvent("$pageview");
   }
 
   onNavigateToResult(): void {
+    this.posthog.trackEvent("see_plan_clicked", {
+      timestamp: new Date().toISOString(),
+    });
     setTimeout(() => {
-      this.router.navigate(['/result-page'])
-    }, 1000)
+      this.router.navigate(["/result-page"]);
+    }, 1000);
   }
 }

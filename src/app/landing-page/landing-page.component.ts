@@ -3,13 +3,13 @@ import { PosthogService } from '../services/posthog.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: "app-landing-page",
-    templateUrl: "./landing-page.component.html",
-    styleUrls: ["./landing-page.component.css"],
-    standalone: false
+  selector: "app-landing-page",
+  templateUrl: "./landing-page.component.html",
+  styleUrls: ["./landing-page.component.css"],
+  standalone: false,
 })
 export class LandingPageComponent implements OnInit {
-  destinationString: string = ''
+  destinationString: string = "";
 
   constructor(private posthog: PosthogService, private router: Router) {}
 
@@ -48,10 +48,24 @@ export class LandingPageComponent implements OnInit {
   }
 
   chooseDestination(): void {
-    if (this.destinationString === '') {
-      this.router.navigate(['/plan-trip'])
+    this.onSearch()
+    if (this.destinationString === "") {
+      this.router.navigate(["/plan-trip"]);
     } else {
       this.router.navigate(["/destination-suggestion"]);
     }
+  }
+
+  onFocus(): void {
+    this.posthog.trackEvent("Search Input Focused", {
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  onSearch(): void {
+    this.posthog.trackEvent("Search Button Clicked", {
+      search_query: this.destinationString,
+      timestamp: new Date().toISOString(),
+    });
   }
 }

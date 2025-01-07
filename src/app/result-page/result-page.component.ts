@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalsService } from '../globals.service';
+import { PosthogService } from '../services/posthog.service';
 
 @Component({
   selector: "app-result-page",
@@ -12,7 +13,7 @@ export class ResultPageComponent implements OnInit {
   public destinations: { name: string; image: string; rating: number }[];
   title: string = "Paris - 20-25 December 2024";
 
-  constructor(private router: Router, private globals: GlobalsService) {
+  constructor(private router: Router, private globals: GlobalsService, private pothog: PosthogService) {
     this.destinations = [
       {
         name: "Restaurant 1",
@@ -60,6 +61,10 @@ export class ResultPageComponent implements OnInit {
       this.title =
         citytSelected + " - " + startDateSelected + " - " + endDateSelected;
     }
+
+    this.pothog.trackEvent('$pageview', {
+      locationAndDate: this.title
+    });
 
     const prevButton = document.querySelector(".prev");
     const nextButton = document.querySelector(".next");

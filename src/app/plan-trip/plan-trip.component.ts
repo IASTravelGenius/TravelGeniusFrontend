@@ -1,21 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenaiService } from '../openai.service';
 import { Router } from '@angular/router';
+import { PosthogService } from '../services/posthog.service';
 
 @Component({
-    selector: "app-plan-trip",
-    templateUrl: "./plan-trip.component.html",
-    styleUrls: ["./plan-trip.component.css"],
-    standalone: false
+  selector: "app-plan-trip",
+  templateUrl: "./plan-trip.component.html",
+  styleUrls: ["./plan-trip.component.css"],
+  standalone: false,
 })
 export class PlanTripComponent implements OnInit {
   searchContent: string = "";
 
-  constructor(private openaiService: OpenaiService, private router: Router) {}
+  constructor(
+    private openaiService: OpenaiService,
+    private router: Router,
+    private posthog: PosthogService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.posthog.trackEvent("$pageview");}
 
   onSubmit(): void {
+    this.posthog.trackEvent("Search Button Clicked", {
+      search_query: this.searchContent,
+      timestamp: new Date().toISOString(),
+    });
+
     if (this.searchContent === "") {
       alert("Please provide search parameters");
     } else {
@@ -33,9 +43,15 @@ export class PlanTripComponent implements OnInit {
       //     console.log(err);
       //   },
       // });
-       setTimeout(() => {
-         this.router.navigate(["/destination-suggestion"]);
-       }, 1000);
+      setTimeout(() => {
+        this.router.navigate(["/destination-suggestion"]);
+      }, 1000);
     }
+  }
+
+  onFocus(): void {
+    this.posthog.trackEvent("Search Input Focused", {
+      timestamp: new Date().toISOString(),
+    });
   }
 }

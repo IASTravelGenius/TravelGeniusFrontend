@@ -13,6 +13,8 @@
                 [alwaysShowCalendars]="true"
                 [opens]="'center'"
                 placeholder="Choose a date"
+                (focus)="onDatePickerOpen()"
+                (datesUpdated)="onDateSelection($event.startDate, $event.endDate)"
             />
         </div>
         <button class="food-button" (click)="onNavigateToFood()">

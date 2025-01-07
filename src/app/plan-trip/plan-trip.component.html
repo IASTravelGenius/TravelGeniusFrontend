@@ -10,6 +10,7 @@
       required
       [(ngModel)]="searchContent"
       name="searchContent"
+      (focus)="onFocus()"
       />
     <button (click)="onSubmit()">Find</button>
   </div>

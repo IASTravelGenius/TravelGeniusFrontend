@@ -9,6 +9,7 @@
                     placeholder="Search destination"
                     [(ngModel)]="destinationString"
                     name="destinationString"
+                    (focus)="onFocus()"
                 />
                 <button (click)="selectOtherDestination()">Find</button>
             </div>

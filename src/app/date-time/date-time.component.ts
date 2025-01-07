@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { GlobalsService } from '../globals.service';
+import { PosthogService } from '../services/posthog.service';
+import { Dayjs } from 'dayjs';
 
 @Component({
   selector: "app-date-time",
@@ -31,9 +33,15 @@ export class DateTimeComponent implements OnInit {
 
   showCustomRangeLabel: boolean = true;
 
-  constructor(private router: Router, private globals: GlobalsService) {}
+  constructor(
+    private router: Router,
+    private globals: GlobalsService,
+    private posthog: PosthogService
+  ) {}
 
   ngOnInit(): void {
+    this.posthog.trackEvent("$pageview");
+
     if (window.screen.width <= 768) {
       this.showCustomRangeLabel = false;
       this.ranges = {};
@@ -44,10 +52,28 @@ export class DateTimeComponent implements OnInit {
     if (this.selected === undefined) {
       alert("Choose a date of departure");
     } else {
-      this.globals.dateSelected = this.selected
+      this.globals.dateSelected = this.selected;
+      this.posthog.trackEvent("Next Step Clicked", {
+        selected_date_range: this.selected,
+        timestamp: new Date().toISOString(),
+      });
       setTimeout(() => {
         this.router.navigate(["/food-page"]);
       });
     }
+  }
+
+  onDatePickerOpen(): void {
+    this.posthog.trackEvent("Date Picker Opened", {
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  onDateSelection(startDate: Dayjs, endDate: Dayjs): void {
+    this.posthog.trackEvent("Date Selected", {
+      start_date: startDate,
+      end_date: endDate,
+      timestamp: new Date().toISOString(),
+    });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PosthogService } from '../services/posthog.service';
 
 @Component({
   selector: "app-destination-suggestion",
@@ -76,11 +77,13 @@ export class DestinationSuggestionComponent implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(private posthog: PosthogService) {
     this.destinations = this.placeholder1;
   }
 
   ngOnInit(): void {
+    this.posthog.trackEvent("$pageview");
+
     const prevButton = document.querySelector(".prev");
     const nextButton = document.querySelector(".next");
     const cardsContainer = document.querySelector(".destination-container");
@@ -113,6 +116,11 @@ export class DestinationSuggestionComponent implements OnInit {
   }
 
   selectOtherDestination() {
+    this.posthog.trackEvent("Search Button Clicked", {
+      search_query: this.destinationString,
+      timestamp: new Date().toISOString(),
+    });
+
     if (this.destinationString === "") {
       alert("A destination information must be provided");
     } else {
@@ -122,5 +130,11 @@ export class DestinationSuggestionComponent implements OnInit {
         this.destinations = this.placeholder1;
       }
     }
+  }
+
+  onFocus(): void {
+    this.posthog.trackEvent("Search Input Focused", {
+      timestamp: new Date().toISOString(),
+    });
   }
 }
