@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PosthogService } from '../services/posthog.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: "app-landing-page",
@@ -8,7 +9,9 @@ import { PosthogService } from '../services/posthog.service';
     standalone: false
 })
 export class LandingPageComponent implements OnInit {
-  constructor(private posthog: PosthogService) {}
+  destinationString: string = ''
+
+  constructor(private posthog: PosthogService, private router: Router) {}
 
   ngOnInit(): void {
     this.posthog.trackEvent("$pageview");
@@ -41,6 +44,14 @@ export class LandingPageComponent implements OnInit {
       const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
 
       window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }
+
+  chooseDestination(): void {
+    if (this.destinationString === '') {
+      this.router.navigate(['/plan-trip'])
+    } else {
+      this.router.navigate(["/destination-suggestion"]);
     }
   }
 }

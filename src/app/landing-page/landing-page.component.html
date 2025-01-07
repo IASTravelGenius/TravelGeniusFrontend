@@ -21,8 +21,13 @@
     <div class="search-section">
       <p>Have a specific country in mind?</p>
       <div>
-        <input type="text" placeholder="Search for your country here" />
-        <button>Find</button>
+        <input
+          type="text"
+          placeholder="Search for your destination here"
+          [(ngModel)]="destinationString"
+          name="destinationString"
+        />
+        <button (click)="chooseDestination()">Find</button>
       </div>
     </div>
     <div class="destination-header">

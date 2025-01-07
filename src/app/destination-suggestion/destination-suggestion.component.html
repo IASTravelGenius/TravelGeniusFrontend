@@ -4,8 +4,13 @@
         <div class="search-container">
             <div class="header-text">Still not decided? Try again.</div>
             <div class="search-section">
-                <input type="search" placeholder="Search destination" />
-                <button>Find</button>
+                <input
+                    type="search"
+                    placeholder="Search destination"
+                    [(ngModel)]="destinationString"
+                    name="destinationString"
+                />
+                <button (click)="selectOtherDestination()">Find</button>
             </div>
         </div>
     </div>
