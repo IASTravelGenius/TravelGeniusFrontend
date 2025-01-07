@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
-import { CarouselModule } from "primeng/carousel";
 
 @Component({
   selector: "app-destination-suggestion",

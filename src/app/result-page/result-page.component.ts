@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: "app-result-page",
@@ -8,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultPageComponent implements OnInit {
   public destinations: { name: string; image: string; rating: number }[];
+  title: string = "Paris - 20-25 December 2024";
 
-  constructor() {
+  constructor(private router: Router, private globals: GlobalsService) {
     this.destinations = [
       {
         name: "Restaurant 1",
@@ -40,6 +43,19 @@ export class ResultPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const citytSelected = this.globals.citySelected
+    const startDateSelected =
+      this.globals.dateSelected?.startDate.format("D MMMM YYYY");
+    const endDateSelected =
+      this.globals.dateSelected?.endDate.format("D MMMM YYYY");
+
+    if (citytSelected === '' || startDateSelected === undefined || endDateSelected === undefined) {
+
+    } else {
+      this.title =
+        citytSelected + " - " + startDateSelected + " - " + endDateSelected;
+    }
+
     const prevButton = document.querySelector(".prev");
     const nextButton = document.querySelector(".next");
     const cardsContainer = document.querySelector(".destination-container");

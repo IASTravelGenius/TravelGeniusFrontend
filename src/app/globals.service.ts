@@ -12,22 +12,24 @@ import { of } from 'rxjs';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class GlobalsService {
   private dropdownOpenSource = new BehaviorSubject<boolean>(false);
 
+  citySelected: string = "";
+  dateSelected: { startDate: moment.Moment; endDate: moment.Moment } | undefined;
 
-  private accessTokenKey = 'accessToken';
-  private refreshTokenKey = 'refreshToken';
+  private accessTokenKey = "accessToken";
+  private refreshTokenKey = "refreshToken";
 
   public latitude = 44.44;
   public longitude = 26.11;
 
-  public usernameKey = 'username';
-  public userPhotoKey = 'userPhoto';
+  public usernameKey = "username";
+  public userPhotoKey = "userPhoto";
 
-  public userPhoto = 'assets/download.jpeg';
+  public userPhoto = "assets/download.jpeg";
 
   dropdownOpen$ = this.dropdownOpenSource.asObservable();
 
@@ -41,7 +43,7 @@ export class GlobalsService {
   }
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.closeDropdown();
       }
@@ -59,20 +61,20 @@ export class GlobalsService {
   getProfile(): Observable<Profile> {
     const urlBackend = environment.backendUrl + "/user/completeProfile";
     const headers_dict = {
-      'Authorization': 'Bearer ' + this.getAccessToken(),
+      Authorization: "Bearer " + this.getAccessToken(),
     };
     const options = {
       headers: new HttpHeaders(headers_dict),
-      observe: 'response' as 'response'  // Correct usage for the observe option
+      observe: "response" as "response", // Correct usage for the observe option
     };
 
     return this.http.get<Profile>(urlBackend, options).pipe(
-      map(response => {
-        console.log('Profile response:', response);
+      map((response) => {
+        console.log("Profile response:", response);
         return response.body as Profile;
       }),
-      catchError(error => {
-        console.error('Backend error:', error);
+      catchError((error) => {
+        console.error("Backend error:", error);
         return throwError(error);
       })
     );
@@ -82,36 +84,37 @@ export class GlobalsService {
     localStorage.setItem(this.accessTokenKey, accessToken);
     localStorage.setItem(this.refreshTokenKey, refreshToken);
 
-    this.validateToken().subscribe(user => {
-      console.log('User:', user);
+    this.validateToken().subscribe((user) => {
+      console.log("User:", user);
       localStorage.setItem(this.usernameKey, user.username);
     });
 
-    this.getProfile().subscribe(profile => {
-      console.log('Profile:', profile);
+    this.getProfile().subscribe((profile) => {
+      console.log("Profile:", profile);
       localStorage.setItem(this.userPhotoKey, profile.profilePhoto.photoUrl);
       this.userPhoto = profile.profilePhoto.photoUrl;
     });
   }
 
   validateToken(): Observable<User> {
-    const urlBackend = environment.authenticationServiceUrl + "/authService/validateToken";
+    const urlBackend =
+      environment.authenticationServiceUrl + "/authService/validateToken";
 
     const options = {
-      observe: 'response' as 'response'  // Correct usage for the observe option
+      observe: "response" as "response", // Correct usage for the observe option
     };
 
     const body = {
-      token: this.getAccessToken()
-    }
+      token: this.getAccessToken(),
+    };
 
     return this.http.post(urlBackend, body, options).pipe(
-      map(response => {
-        console.log('Profile response:', response);
+      map((response) => {
+        console.log("Profile response:", response);
         return response.body as User;
       }),
-      catchError(error => {
-        console.error('Backend error:', error);
+      catchError((error) => {
+        console.error("Backend error:", error);
         return throwError(error);
       })
     );
@@ -129,8 +132,8 @@ export class GlobalsService {
 
   getAccessToken(): string | null {
     if (!localStorage.getItem(this.accessTokenKey)) {
-      console.log('Access token is null');
-      return 'default';
+      console.log("Access token is null");
+      return "default";
     }
     return localStorage.getItem(this.accessTokenKey);
   }
@@ -148,9 +151,10 @@ export class GlobalsService {
   }
 
   getUserPhotoObservable(): Observable<string> {
-    return of(localStorage.getItem(this.userPhotoKey) || 'assets/download.jpeg');
-  };
-  
+    return of(
+      localStorage.getItem(this.userPhotoKey) || "assets/download.jpeg"
+    );
+  }
 
   clearTokens() {
     localStorage.removeItem(this.accessTokenKey);
@@ -159,18 +163,32 @@ export class GlobalsService {
   }
 
   areTokensSet(): boolean {
-    return !!this.getAccessToken() && !!this.getRefreshToken() && this.getAccessToken() !== 'default';
+    return (
+      !!this.getAccessToken() &&
+      !!this.getRefreshToken() &&
+      this.getAccessToken() !== "default"
+    );
   }
 
   navigateToDeal(deal: Deal) {
     console.log(deal);
-    if (deal.entityType === 'TOURISTIC_ATTRACTION')
-      this.router.navigate(['/countries', 'generic', 'ta', deal.name.toLowerCase() + '_' + deal.id]);
-    else if (deal.entityType === 'CITY')
-      this.router.navigate(['/countries', 'search', deal.name.toLowerCase() + '_' + deal.id]);
+    if (deal.entityType === "TOURISTIC_ATTRACTION")
+      this.router.navigate([
+        "/countries",
+        "generic",
+        "ta",
+        deal.name.toLowerCase() + "_" + deal.id,
+      ]);
+    else if (deal.entityType === "CITY")
+      this.router.navigate([
+        "/countries",
+        "search",
+        deal.name.toLowerCase() + "_" + deal.id,
+      ]);
     else
-      this.router.navigate(['/countries', deal.name.toLowerCase() + '_' + deal.id]);  
+      this.router.navigate([
+        "/countries",
+        deal.name.toLowerCase() + "_" + deal.id,
+      ]);
   }
-
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import moment from 'moment';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: "app-date-time",
@@ -30,23 +31,23 @@ export class DateTimeComponent implements OnInit {
 
   showCustomRangeLabel: boolean = true;
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router, private globals: GlobalsService) {}
 
   ngOnInit(): void {
     if (window.screen.width <= 768) {
       this.showCustomRangeLabel = false;
-      this.ranges = {}
+      this.ranges = {};
     }
   }
 
   onNavigateToFood(): void {
     if (this.selected === undefined) {
-      alert ('Choose a date of departure')
+      alert("Choose a date of departure");
     } else {
+      this.globals.dateSelected = this.selected
       setTimeout(() => {
-        this.router.navigate(['/food-page'])
-      })
+        this.router.navigate(["/food-page"]);
+      });
     }
   }
 }
