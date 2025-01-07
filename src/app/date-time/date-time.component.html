@@ -1,3 +1,22 @@
 <div class="date-time-container">
-    <div></div>
+    <div class="text-header">When are we going?</div>
+    <div class="date-time-container-content">
+        <div class="date-picker-container">
+            <input
+                class="form-control"
+                type="text"
+                ngxDaterangepickerMd
+                [(ngModel)]="selected"
+                [locale]="locale"
+                [ranges]="ranges"
+                [showCustomRangeLabel]="showCustomRangeLabel"
+                [alwaysShowCalendars]="true"
+                [opens]="'center'"
+                placeholder="Choose a date"
+            />
+        </div>
+        <button class="food-button" (click)="onNavigateToFood()">
+            <span class="food-text">Let’s choose what to eat</span>
+        </button>
+    </div>
 </div>

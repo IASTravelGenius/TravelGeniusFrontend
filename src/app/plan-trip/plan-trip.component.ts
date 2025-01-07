@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     standalone: false
 })
 export class PlanTripComponent implements OnInit {
-  searchContent: string = "a";
+  searchContent: string = "";
 
   constructor(private openaiService: OpenaiService, private router: Router) {}
 
@@ -19,9 +19,23 @@ export class PlanTripComponent implements OnInit {
     if (this.searchContent === "") {
       alert("Please provide search parameters");
     } else {
-      setTimeout(() => {
-        this.router.navigate(["/destination-suggestion"]);
-      }, 1000);
+      this.openaiService.generateText(this.searchContent).subscribe({
+        next: (response) => {
+          const content = response["choices"][0]["message"]["content"];
+          const lines = content.split('\n');
+          lines.shift()
+          lines.pop()
+          const cleanedContent = lines.join('\n');
+          console.log(cleanedContent);
+          console.log(JSON.parse(cleanedContent));
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+       setTimeout(() => {
+         this.router.navigate(["/destination-suggestion"]);
+       }, 1000);
     }
   }
 }

@@ -124,18 +124,13 @@
     width: 252.76px;
     height: 71px;
     background-color: #000000;
-    /* Black background */
     border: none;
-    /* Remove default button borders */
     border-radius: 30px;
-    /* Rounded corners */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* Pointer cursor for better UX */
     outline: none;
-    /* Remove focus outline */
 }
 
 .button-discover:hover {

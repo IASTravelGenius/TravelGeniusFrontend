@@ -4,7 +4,13 @@
       Write about what you want to visit. It can be either a place, a vibe or even something to eat.
   </div>
   <div class="search-section">
-    <input type="search" placeholder="Search destination" />
+    <input
+      type="search"
+      placeholder="Search destination"
+      required
+      [(ngModel)]="searchContent"
+      name="searchContent"
+      />
     <button (click)="onSubmit()">Find</button>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';  // Import FormsModule
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSliderModule } from '@angular/material/slider';
 // import { MatSliderValueAccessor } from './mat-slider-accessor';
+import { NgxDaterangepickerMd } from "ngx-daterangepicker-material";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,54 +36,64 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EmailOptInComponent } from './email-opt-in/email-opt-in.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component'; // Import MatAutocompleteModule
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { environment } from "../environments/environment";
 import { PlanTripComponent } from './plan-trip/plan-trip.component';
 import { DestinationSuggestionComponent } from './destination-suggestion/destination-suggestion.component';
 import { SuggestionCardComponent } from './suggestion-card/suggestion-card.component';
 import { DateTimeComponent } from './date-time/date-time.component';
+import { CarouselModule } from "primeng/carousel";
+import { FoodPageComponent } from './food-page/food-page.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 
-@NgModule({ declarations: [
-        AppComponent,
-        HomeComponent,
-        CountriesComponent,
-        NewsComponent,
-        FlightsComponent,
-        MustSeeComponent,
-        ProfileComponent,
-        HeaderComponent,
-        CountryComponent,
-        CityComponent,
-        RegisterComponent,
-        LoginComponent,
-        SettingsComponent,
-        TouristicAttractionComponent,
-        TouristicAttractionsAllComponent,
-        TouristicAttractionsResultsComponent,
-        MatSliderAccessorDirective,
-        StarRatingComponent,
-        LandingPageComponent,
-        EmailOptInComponent,
-        MaintenanceComponent,
-        PlanTripComponent,
-        DestinationSuggestionComponent,
-        SuggestionCardComponent,
-        DateTimeComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatSelectModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatAutocompleteModule,
-        DragDropModule,
-        MatSliderModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAuthModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CountriesComponent,
+    NewsComponent,
+    FlightsComponent,
+    MustSeeComponent,
+    ProfileComponent,
+    HeaderComponent,
+    CountryComponent,
+    CityComponent,
+    RegisterComponent,
+    LoginComponent,
+    SettingsComponent,
+    TouristicAttractionComponent,
+    TouristicAttractionsAllComponent,
+    TouristicAttractionsResultsComponent,
+    MatSliderAccessorDirective,
+    StarRatingComponent,
+    LandingPageComponent,
+    EmailOptInComponent,
+    MaintenanceComponent,
+    PlanTripComponent,
+    DestinationSuggestionComponent,
+    SuggestionCardComponent,
+    DateTimeComponent,
+    FoodPageComponent,
+    ResultPageComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    CarouselModule,
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    DragDropModule,
+    MatSliderModule,
+    NgxDaterangepickerMd,
+    NgxDaterangepickerMd.forRoot(),
+  ],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
+})
 export class AppModule {}

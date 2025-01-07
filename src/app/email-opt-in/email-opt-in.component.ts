@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { FirestoreService } from "../services/firestore.service";
 import { PosthogService } from "../services/posthog.service";
 
 @Component({
@@ -14,7 +13,6 @@ export class EmailOptInComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private firestore: FirestoreService,
     private posthog: PosthogService
   ) {}
 
@@ -33,7 +31,6 @@ export class EmailOptInComponent implements OnInit {
       this.posthog.trackEvent("submit to newsletter with empty email");
     } else if (this.email.trim()) {
       try {
-        await this.firestore.createDoc("users", { email: this.email });
         alert("Thank you for subscribing!");
       } catch (error) {
         console.error("Error saving email to Firestore:", error);

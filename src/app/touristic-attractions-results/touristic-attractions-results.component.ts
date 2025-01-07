@@ -2,11 +2,10 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TouristicAttractionService } from '../touristic-attraction.service';
 import { TouristicAttraction } from '../models/touristic-attraction';
 import { Deal } from '../models/deal';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { GlobalsService } from '../globals.service';
 import { LastAccessedService } from '../last-accessed.service';
 import { DealsService } from '../deals.service';
-
 
 declare const google: any;
 
@@ -48,7 +47,7 @@ export class TouristicAttractionsResultsComponent implements OnInit {
     this.delaySectionDisplay();
 
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params: Params) => {
       this.latitude = +params['latitude'];
       this.longitude = +params['longitude'];
       this.range = +params['range'];

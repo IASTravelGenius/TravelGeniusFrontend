@@ -1,5 +1,5 @@
 .suggestion-container {
-    background: url('../../assets/destination_suggestion.jpg') no-repeat center center fixed;
+    background: url('../../assets/result.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     width: 100%;
@@ -19,7 +19,7 @@
     width: 80%;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 

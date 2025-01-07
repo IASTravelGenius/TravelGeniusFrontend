@@ -19,6 +19,8 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { PlanTripComponent } from './plan-trip/plan-trip.component';
 import { DestinationSuggestionComponent } from './destination-suggestion/destination-suggestion.component';
 import { DateTimeComponent } from './date-time/date-time.component';
+import { FoodPageComponent } from './food-page/food-page.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 
 const routes: Routes = [
@@ -26,9 +28,11 @@ const routes: Routes = [
   { path: "landing-page", component: LandingPageComponent },
   { path: "email-opt-in", component: EmailOptInComponent },
   { path: "maintenance", component: MaintenanceComponent },
-  { path:'plan-trip', component: PlanTripComponent },
-  { path: 'destination-suggestion', component: DestinationSuggestionComponent },
-  { path: 'date-time', component: DateTimeComponent },
+  { path: "plan-trip", component: PlanTripComponent },
+  { path: "destination-suggestion", component: DestinationSuggestionComponent },
+  { path: "date-time", component: DateTimeComponent },
+  { path: "food-page", component: FoodPageComponent },
+  { path: "result-page", component: ResultPageComponent },
   // { path: 'home', component: HomeComponent },
   // { path: 'countries', component: CountriesComponent },
   // { path: 'countries/:countryId', component: CountryComponent},

@@ -1,42 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
-import { CarouselModule } from "primeng/carousel";
 
 @Component({
-  selector: "app-destination-suggestion",
-  templateUrl: "./destination-suggestion.component.html",
-  styleUrls: ["./destination-suggestion.component.css"],
+  selector: "app-result-page",
+  templateUrl: "./result-page.component.html",
+  styleUrl: "./result-page.component.css",
   standalone: false,
 })
-export class DestinationSuggestionComponent implements OnInit {
+export class ResultPageComponent implements OnInit {
   public destinations: { name: string; image: string; rating: number }[];
 
   constructor() {
     this.destinations = [
       {
-        name: "Paris",
+        name: "Restaurant 1",
         image: "https://via.placeholder.com/300x200",
         rating: 5,
       },
       {
-        name: "Swiss",
+        name: "Restaurant 2",
         image: "https://via.placeholder.com/300x200",
         rating: 4,
       },
       {
-        name: "Thailand",
+        name: "Restaurant 3",
         image: "https://via.placeholder.com/300x200",
         rating: 4,
       },
       {
-        name: "Paris",
+        name: "Restaurant 4",
         image: "https://via.placeholder.com/300x200",
-        rating: 5,
+        rating: 3,
       },
       {
-        name: "Swiss",
+        name: "Restaurant 5",
         image: "https://via.placeholder.com/300x200",
-        rating: 4,
+        rating: 1,
       },
     ];
   }

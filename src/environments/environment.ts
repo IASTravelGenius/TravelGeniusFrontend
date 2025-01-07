@@ -19,8 +19,6 @@ export const environment = {
   },
   POSTHOG_KEY: "phc_lqsZ43Tgho5FnOwDui7VyMzG7trkCHzNRJX9p5KOYQk",
   POSTHOG_HOST: "https://us.i.posthog.com",
-  OPENAPI_KEY:
-    "",
 };
 
 /*
